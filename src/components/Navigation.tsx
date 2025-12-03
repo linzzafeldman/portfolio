@@ -1,4 +1,4 @@
-import logo from 'figma:asset/0510d0d201555277c4b4bb367ce94b26951ab3da.png';
+import logo from '../images/home/logo.png';
 
 interface NavigationProps {
   currentPage: string;
