@@ -5,7 +5,7 @@
 
   export default defineConfig({
     plugins: [react()],
-    base: "/portfolio/",
+    base: "/portfolio",
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
@@ -18,7 +18,7 @@
         'next-themes@0.4.6': 'next-themes',
         'lucide-react@0.487.0': 'lucide-react',
         'input-otp@1.4.2': 'input-otp',
-        'figma:asset/c00e4a5eb0a33bb1e6ad4b7ec3910c16ba75d5cb.png': path.resolve(__dirname, '../images/home/background-01.png'),
+        'figma:asset/c00e4a5eb0a33bb1e6ad4b7ec3910c16ba75d5cb.png': path.resolve(__dirname, '.src/images/home/background-01.png'),
         'figma:asset/300d796150e03bba26ad94b17a701b92dd0793a0.png': path.resolve(__dirname, './src/assets/300d796150e03bba26ad94b17a701b92dd0793a0.png'),
         'figma:asset/0e340163d930663367a2823a579ddd20d93cd433.png': path.resolve(__dirname, './src/assets/0e340163d930663367a2823a579ddd20d93cd433.png'),
         'figma:asset/0510d0d201555277c4b4bb367ce94b26951ab3da.png': path.resolve(__dirname, './src/assets/0510d0d201555277c4b4bb367ce94b26951ab3da.png'),
