@@ -1,7 +1,7 @@
 
-  # Website Builder
+  # Olga Feldman Portfolio
 
-  This is a code bundle for Website Builder. The original project is available at https://www.figma.com/design/zojyYqalmwqX4V58xPeXzK/Website-Builder.
+  This is a code bundle for Olga Feldman Portfolio. The original project is available at https://www.figma.com/design/zojyYqalmwqX4V58xPeXzK/Olga-Feldman-Portfolio.
 
   ## Running the code
 
