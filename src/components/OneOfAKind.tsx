@@ -1,6 +1,6 @@
 import { Gallery } from "./Gallery";
-import artwork1 from "figma:asset/c00e4a5eb0a33bb1e6ad4b7ec3910c16ba75d5cb.png";
-import artwork2 from "figma:asset/0e340163d930663367a2823a579ddd20d93cd433.png";
+import artwork1 from "../images/projects/one-of-a-kind/artwork-01.png";
+import artwork2 from "../images/projects/one-of-a-kind/artwork-02.png";
 
 interface OneOfAKindProps {
   onBack: () => void;

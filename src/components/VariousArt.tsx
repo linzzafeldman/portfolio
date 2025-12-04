@@ -1,7 +1,7 @@
 import { MasonryGallery } from './MasonryGallery';
-import artwork1 from 'figma:asset/c00e4a5eb0a33bb1e6ad4b7ec3910c16ba75d5cb.png';
-import artwork2 from 'figma:asset/0e340163d930663367a2823a579ddd20d93cd433.png';
-import artwork3 from 'figma:asset/300d796150e03bba26ad94b17a701b92dd0793a0.png';
+import artwork1 from '../images/projects/various-art/artwork-01.png';
+import artwork2 from '../images/projects/various-art/artwork-02.png';
+import artwork3 from '../images/projects/various-art/artwork-03.png';
 
 interface VariousArtProps {
   onBack: () => void;
