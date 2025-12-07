@@ -4,6 +4,7 @@ import background2 from '../images/home/background-02.png';
 import background3 from '../images/home/background-03.png';
 import background4 from '../images/home/background-04.png';
 import background5 from '../images/home/background-05.png';
+import background6 from '../images/home/background-06.png';
 
 export function Home() {
   const [backgroundImage, setBackgroundImage] = useState('');
