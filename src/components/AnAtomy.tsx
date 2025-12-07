@@ -1,11 +1,11 @@
 import { Gallery } from './Gallery';
 
-import image1 from '../../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
-import image2 from '../../images/projects/an-atomy/02_AnAtomyFull_2022.jpg';
-import image3 from '../../images/projects/an-atomy/03_AnAtomyFull_2022.jpg';
-import image4 from '../../images/projects/an-atomy/04_AnAtomyFull_2022.jpg';
-import image5 from '../../images/projects/an-atomy/05_AnAtomyFull_2022.jpg';
-import image6 from '../../images/projects/an-atomy/06_AnAtomyFull_2022.jpg';
+import image1 from '../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
+import image2 from '../images/projects/an-atomy/02_AnAtomyFull_2022.jpg';
+import image3 from '../images/projects/an-atomy/03_AnAtomyFull_2022.jpg';
+import image4 from '../images/projects/an-atomy/04_AnAtomyFull_2022.jpg';
+import image5 from '../images/projects/an-atomy/05_AnAtomyFull_2022.jpg';
+import image6 from '../images/projects/an-atomy/06_AnAtomyFull_2022.jpg';
 
 interface AnAtomyProps {
   onBack: () => void;
