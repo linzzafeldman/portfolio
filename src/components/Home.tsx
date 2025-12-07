@@ -11,7 +11,7 @@ export function Home() {
 
   useEffect(() => {
     // Randomly select one of the images on component mount
-    const images = [background1, background2, background3, background4, background5];
+    const images = [background1, background2, background3, background4, background5, background6];
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBackgroundImage(randomImage);
   }, []);
