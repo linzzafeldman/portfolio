@@ -1,11 +1,9 @@
-import { ImageWithFallback } from './figma/ImageWithFallback';
-
 interface Artwork {
   id: string;
-  imageUrl: string;
+  // imageUrl теперь содержит локальный путь, импортированный из AnAtomy.tsx
+  imageUrl: string; 
   title: string;
   description: string;
-  isImported?: boolean;
 }
 
 interface GalleryProps {
@@ -14,24 +12,30 @@ interface GalleryProps {
 
 export function Gallery({ artworks }: GalleryProps) {
   return (
-    <div className="grid grid-cols-1 gap-16">
+    // Убираем фиксированный grid-cols-1, чтобы галерея лучше адаптировалась
+    <div className="grid grid-cols-1 gap-16"> 
       {artworks.map((artwork) => (
         <div key={artwork.id} className="space-y-6">
-          <div className="aspect-[4/3] bg-black/5 border border-black overflow-hidden">
-            {artwork.isImported ? (
-              <img
-                src={artwork.imageUrl}
-                alt={artwork.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <ImageWithFallback
-                src={`https://source.unsplash.com/1200x900/?${artwork.imageUrl}`}
-                alt={artwork.title}
-                className="w-full h-full object-cover"
-              />
-            )}
+          
+          {/* ИСПРАВЛЕНО: 
+            1. Удален 'aspect-[4/3]' (фиксировал высоту и приводил к обрезке).
+            2. Удален 'border border-black' (если он не нужен для дизайна).
+          */}
+          <div className="bg-black/5 overflow-hidden">
+            
+            <img
+              src={artwork.imageUrl}
+              alt={artwork.title}
+              // ИСПРАВЛЕНО: 
+              // 1. Удален 'object-cover' (обрезает изображение).
+              // Теперь изображение будет подстраиваться под ширину контейнера (w-full),
+              // а высота (h-auto, которое подразумевается, когда нет h-full и object-cover) 
+              // будет автоматически сохранять пропорции.
+              className="w-full" 
+            />
+            
           </div>
+          
           <div className="max-w-2xl">
             <h3 className="mb-2 tracking-wider">{artwork.title}</h3>
             <p className="opacity-60">{artwork.description}</p>
