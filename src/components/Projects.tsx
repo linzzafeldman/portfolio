@@ -95,7 +95,7 @@ export function Projects() {
             className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity"
           >
             <h2 className="mb-4 tracking-wider">{project.title}</h2>
-            <p className="opacity-60 mb-4">{project.year} — {project.medium}</p>
+            <p className="opacity-60 mb-4">{project.year} | {project.medium}</p>
             <p className="max-w-2xl">{project.description}</p>
           </button>
         ))}
