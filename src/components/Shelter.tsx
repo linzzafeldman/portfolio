@@ -1,7 +1,7 @@
 import { Gallery } from './Gallery';
 import photo1 from "../images/exhibitions/shelter/ShelterExhibition_Poster.jpeg";
-import photo2 from "../images/exhibitions/shelter/ShelterExhibition03.jpeg";
-import photo3 from "../images/exhibitions/shelter/ShelterExhibition02.jpeg";
+import photo2 from "../images/exhibitions/shelter/ShelterExhibition03.jpg";
+import photo3 from "../images/exhibitions/shelter/ShelterExhibition02.jpg";
 
 interface ShelterProps {
   onBack: () => void;
