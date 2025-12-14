@@ -36,7 +36,7 @@ export function Twisters({ onBack }: TwistersProps) {
       </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">TWISTERS</h1>
-        <p className="mb-2 opacity-60">2023 — Mixed Media</p>
+        <p className="mb-2 opacity-60">2023 | Mixed Media</p>
         <p className="max-w-2xl mt-6">
           A meditation on duality, examining how shadows define form and light creates meaning 
           in our visual experience.

@@ -30,7 +30,7 @@ export function Grieving({ onBack }: GrievingProps) {
       </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">GRIEVING</h1>
-        <p className="mb-2 opacity-60">2024 — Israel</p>
+        <p className="mb-2 opacity-60">2024 | Israel</p>
         <p className="max-w-2xl mt-6">
           A powerful group exhibition examining loss, memory, and the process of letting go through stark black and white imagery.
         </p>

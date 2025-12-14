@@ -62,7 +62,7 @@ export function Exhibitions() {
             className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity"
           >
             <h2 className="mb-4 tracking-wider">{exhibition.title}</h2>
-            <p className="opacity-60 mb-4">{exhibition.year} — {exhibition.location}</p>
+            <p className="opacity-60 mb-4">{exhibition.year} | {exhibition.location}</p>
             <p className="max-w-2xl">{exhibition.description}</p>
           </button>
         ))}

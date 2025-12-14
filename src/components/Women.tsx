@@ -34,7 +34,7 @@ export function Women({ onBack }: WomenProps) {
       </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">WOMEN</h1>
-        <p className="mb-2 opacity-60">2024 — 3D Digital Art, Generative Design</p>
+        <p className="mb-2 opacity-60">2024 | 3D Digital Art, Generative Design</p>
         <p className="max-w-2xl mt-6">
           An exploration of organic and geometric forms in digital space, examining the tension 
           between order and chaos through parametric design and computational aesthetics.

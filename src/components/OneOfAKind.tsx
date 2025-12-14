@@ -11,7 +11,7 @@ export function OneOfAKind({ onBack }: OneOfAKindProps) {
     {
       id: "art1",
       imageUrl: artwork1,
-      title: "Male 02",
+      title: "Cat 01",
       description:
         "Layered abstract forms creating a symmetrical composition that explores mirroring and balance in digital space.",
       isImported: true,
@@ -19,7 +19,7 @@ export function OneOfAKind({ onBack }: OneOfAKindProps) {
     {
       id: "art2",
       imageUrl: artwork2,
-      title: "Cat 01",
+      title: "Male 02",
       description:
         "Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.",
       isImported: true,
@@ -38,7 +38,7 @@ export function OneOfAKind({ onBack }: OneOfAKindProps) {
         <div className="mb-12">
           <h1 className="mb-4 tracking-wider">ONE OF A KIND</h1>
           <p className="mb-2 opacity-60">
-            2025 — Digital Art, AI, Vector Art
+            2025 | Digital Art, AI, Vector Art
           </p>
           <p className="max-w-2xl mt-6">
             "One of a Kind" explores the illusion of

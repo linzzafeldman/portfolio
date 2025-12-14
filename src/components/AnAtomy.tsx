@@ -61,7 +61,7 @@ export function AnAtomy({ onBack }: AnAtomyProps) {
       </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">AN ATOMY</h1>
-        <p className="mb-2 opacity-60">2022 — Photography, Digital Collage</p>
+        <p className="mb-2 opacity-60">2022 | Photography, Digital Artwork</p>
         <p className="max-w-2xl mt-6">
           Personal and collective memories explored through fragmented imagery and layered 
           compositions, questioning the reliability and construction of remembrance.
