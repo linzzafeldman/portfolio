@@ -39,7 +39,7 @@ export function Shelter({ onBack }: ShelterProps) {
       </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">SHELTER</h1>
-        <p className="mb-2 opacity-60">2024 — Israel</p>
+        <p className="mb-2 opacity-60">2024 | Israel</p>
         <p className="max-w-2xl mt-6">
           The "Shelter Exhibition" in Akko, Israel, refers to the MiklatArt Project by Vera Gailis, a community art initiative turning public bomb shelters into vibrant, hopeful art spaces with murals by local artists and residents, transforming scary places into points of connection and beauty during challenging times, with a specific project opening in Acre (Akko) in July 2024 as a "community laboratory" for the project. 
         </p>
