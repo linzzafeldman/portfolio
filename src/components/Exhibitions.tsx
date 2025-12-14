@@ -20,7 +20,7 @@ export function Exhibitions() {
       title: 'SHELTER',
       year: '2024',
       location: 'Israel',
-      description: 'A group exhibition exploring themes of safety, refuge, and belonging through minimalist visual language.',
+      description: 'A group exhibition exploring themes of safety, refuge, and belonging during challenging times.',
     },
     {
       id: 'grieving',

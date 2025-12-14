@@ -43,7 +43,9 @@ export function OneOfAKind({ onBack }: OneOfAKindProps) {
           <p className="max-w-2xl mt-6">
             "One of a Kind" explores the illusion of
             individuality: the fragile belief that we are singular
-            in form and essence. The series presents abstract,
+            in form and essence. </p>
+            <p className="max-w-2xl mt-6">
+            The series presents abstract,
             living shapes that hover between randomness and
             recognition, as if each were a fleeting signal, a
             momentary birth of a familiar form emerging from a
@@ -53,7 +55,8 @@ export function OneOfAKind({ onBack }: OneOfAKindProps) {
             geometry lies a quiet irony: every form claims
             uniqueness, yet all return to the same rhythm, an
             echo, endlessly looping through variations of one
-            code. Universe has a structure, and we are part of it.
+            code. Universe has a structure, and we are part of it.</p>
+            <p className="max-w-2xl mt-6">
             Though the series consists of multiple digital
             drawings, their origin is neither purely manual nor
             entirely artificial. Each image begins as a generative

@@ -22,7 +22,7 @@ export function Contact() {
           </div>
        <div>
             <p className="opacity-60 mb-2">Representation</p>
-            <p>Represented by curator Kate Filkenstain</p>
+            <p>Represented by </p>
             <a
               href="mailto:"
               className="hover:opacity-50 transition-opacity"
@@ -33,7 +33,7 @@ export function Contact() {
         </div>
 
         <div className="space-y-4 pt-12 border-t border-black">
-          <p className="opacity-60 mb-4">Social Media</p>
+          <p className="opacity-60 mb-4">Links</p>
           <div className="flex gap-8">
             <a
               href="https://instagram.com/_olgafeldman_"

@@ -1,4 +1,7 @@
 import { Gallery } from './Gallery';
+import photo1 from "../images/exhibitions/shelter/ShelterExhibition_Poster.jpeg";
+import photo2 from "../images/exhibitions/shelter/ShelterExhibition03.jpeg";
+import photo3 from "../images/exhibitions/shelter/ShelterExhibition02.jpeg";
 
 interface ShelterProps {
   onBack: () => void;
@@ -8,19 +11,19 @@ export function Shelter({ onBack }: ShelterProps) {
   const artworks = [
     {
       id: 'shelter1',
-      imageUrl: 'minimal-architecture',
-      title: 'Artwork Title 1',
+      imageUrl: photo1,
+      title: 'Shelter exhibition poster',
       description: 'Description of the artwork from Shelter exhibition.',
     },
     {
       id: 'shelter2',
-      imageUrl: 'minimal-interior',
+      imageUrl: photo2,
       title: 'Artwork Title 2',
       description: 'Description of the artwork from Shelter exhibition.',
     },
     {
       id: 'shelter3',
-      imageUrl: 'geometric-abstract',
+      imageUrl: photo3,
       title: 'Artwork Title 3',
       description: 'Description of the artwork from Shelter exhibition.',
     },
@@ -38,7 +41,7 @@ export function Shelter({ onBack }: ShelterProps) {
         <h1 className="mb-4 tracking-wider">SHELTER</h1>
         <p className="mb-2 opacity-60">2024 — Israel</p>
         <p className="max-w-2xl mt-6">
-          A group exhibition exploring themes of safety, refuge, and belonging through minimalist visual language.
+          The "Shelter Exhibition" in Akko, Israel, refers to the MiklatArt Project by Vera Gailis, a community art initiative turning public bomb shelters into vibrant, hopeful art spaces with murals by local artists and residents, transforming scary places into points of connection and beauty during challenging times, with a specific project opening in Acre (Akko) in July 2024 as a "community laboratory" for the project. 
         </p>
       </div>
       <Gallery artworks={artworks} />
