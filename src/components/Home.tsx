@@ -5,6 +5,7 @@ import background3 from '../images/home/background-03.png';
 import background4 from '../images/home/background-04.png';
 import background5 from '../images/home/background-05.png';
 import background6 from '../images/home/background-06.png';
+import background7 from '../media/twisters/TWISTERS I-2 Bipolar.mp4';
 
 export function Home() {
   const [backgroundImage, setBackgroundImage] = useState('');
