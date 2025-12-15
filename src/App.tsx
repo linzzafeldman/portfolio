@@ -1,3 +1,4 @@
+// Файл src/App.tsx (Вернуть к исходному коду)
 import { useState, useEffect } from 'react';
 import { Navigation } from './components/Navigation';
 import { Home } from './components/Home';
@@ -9,25 +10,12 @@ import { Contact } from './components/Contact';
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
-  useEffect(() => {
-    // Get initial page from hash
-    const hash = window.location.hash.slice(1) || 'home';
-    setCurrentPage(hash);
-
-    // Listen for hash changes
-    const handleHashChange = () => {
-      const newHash = window.location.hash.slice(1) || 'home';
-      setCurrentPage(newHash);
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  useEffect(() => { /* ... логика хэша ... */ }, []);
 
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <Home />;
+        return <Home />; // <--- Возвращаем <Home /> сюда!
       case 'about':
         return <About />;
       case 'exhibitions':
