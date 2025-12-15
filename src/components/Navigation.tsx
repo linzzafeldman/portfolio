@@ -135,16 +135,25 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
             {/* 2. КНОПКА ГАМБУРГЕР: Видима, если isMobile (ширина < 700px) */}
             <button
-              // Применяем явные стили для гамбургера, когда он виден
-              style={isMobile ? hamburgerStyle : hiddenStyle} 
-              className="z-[10000]" // Класс только для z-index
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-            >
-              <div className={`w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}></div>
-              <div className={`w-6 h-0.5 bg-black mt-1 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></div>
-              <div className={`w-6 h-0.5 bg-black mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}></div>
-            </button>
+    style={isMobile ? hamburgerStyle : hiddenStyle} 
+    className="z-[10000]" 
+    onClick={toggleMenu}
+    aria-label="Toggle menu"
+>
+    {/* ИЗМЕНЕННЫЕ ПОЛОСКИ ГАМБУРГЕРА */}
+    <div 
+        style={{ width: '24px', height: '2px', backgroundColor: 'black' }} 
+        className={`transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}
+    ></div>
+    <div 
+        style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
+        className={`transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}
+    ></div>
+    <div 
+        style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
+        className={`transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}
+    ></div>
+</button>
           
         </div>
 
