@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 // Импорт всех ресурсов
 import background1 from '../images/home/background-01.png';
-// ... (остальные импорты)
+import background2 from '../images/home/background-02.png';
+import background3 from '../images/home/background-03.png';
+import background4 from '../images/home/background-04.png';
+import background5 from '../images/home/background-05.png';
+import background6 from '../images/home/background-06.png';
 import background7 from '../media/twisters/TWISTERS I-2 Bipolar.mp4'; 
 import mobileBackground1 from '../images/home/mobile/background-01.png';
-// ... (остальные импорты мобильных)
+import mobileBackground2 from '../images/home/mobile/background-02.png';
+import mobileBackground3 from '../images/home/mobile/background-03.png';
+import mobileBackground4 from '../images/home/mobile/background-04.png';
+import mobileBackground5 from '../images/home/mobile/background-05.png';
 import mobileBackground6 from '../images/home/mobile/background-06.png';
 
 
@@ -38,7 +45,6 @@ export function Home() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []); 
-    // -------------------------
     
     // --- ЛОГИКА ЗАГРУЗКИ ФОНА ---
     useEffect(() => {
@@ -111,14 +117,11 @@ export function Home() {
 
 
     return (
-        // НОВОЕ ПОЗИЦИОНИРОВАНИЕ: 
-        // top-0 и bottom-0, но с отступом сверху, равным высоте меню (96px)
-        // Мы используем inset-x-0 (left/right 0) и top-[96px] (отступ сверху) и bottom-0
+        // ВОССТАНОВЛЕНИЕ: Используем БЕЗОПАСНЫЙ Tailwind класс top-24 (96px)
         <div 
-            className="fixed inset-x-0 bottom-0" 
+            className="fixed inset-x-0 bottom-0 top-24 h-auto" // top-24 - отступ 96px
             style={{ 
                 zIndex: 1,
-                top: '96px', // Эквивалент top-24, что должно соответствовать высоте меню
             }} 
         > 
             {finalType === 'video' ? (
