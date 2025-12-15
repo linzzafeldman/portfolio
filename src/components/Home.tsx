@@ -65,6 +65,8 @@ export function Home() {
         
         if (storedList) {
             try {
+                // ВАЖНО: Это исходная логика, которая может вызывать сбои, но мы ее сохраняем
+                // по вашему требованию.
                 remainingResources = JSON.parse(storedList);
             } catch (e) {
                 console.error("Error reading background list from Session Storage", e);
@@ -119,8 +121,15 @@ export function Home() {
 
 
     return (
-        // Родительский контейнер, который должен быть fixed и заполнять экран
-        <div className="fixed inset-x-0 bottom-0 top-24" style={{ zIndex: 1 }}> 
+        // ИСПРАВЛЕНИЕ ПОЗИЦИОНИРОВАНИЯ: Используем fixed inset-0 и переопределяем 'top' инлайн-стилем.
+        // Это самый надежный способ добавить отступ, не ломая Tailwind.
+        <div 
+            className="fixed inset-0" 
+            style={{ 
+                zIndex: 1,
+                top: '96px', // Инлайн-стиль для отступа, эквивалент top-24
+            }} 
+        > 
             {finalType === 'video' ? (
                 // Рендеринг видео
                 <video
@@ -132,15 +141,13 @@ export function Home() {
                     className="w-full h-full object-cover bg-black"
                 />
             ) : (
-                // Рендеринг изображения: ДОБАВЛЕНИЕ ИНЛАЙН СТИЛЕЙ
+                // Рендеринг изображения
                 <div
                     className="w-full h-full bg-cover bg-center"
                     style={{ 
                         backgroundImage: `url(${finalUrl})`,
-                        // ГАРАНТИЯ: Убеждаемся, что ширина контейнера 100%
                         width: '100%', 
                         height: '100%',
-                        // Для фона также используем cover, но на всякий случай
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
