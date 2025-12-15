@@ -127,7 +127,7 @@ export function Home() {
             className="fixed inset-0" 
             style={{ 
                 zIndex: 1,
-                top: '96px', // Инлайн-стиль для отступа, эквивалент top-24
+                top: '90px', // Инлайн-стиль для отступа, эквивалент top-24
             }} 
         > 
             {finalType === 'video' ? (
