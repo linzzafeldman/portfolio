@@ -56,7 +56,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           <div className="flex items-center">
           
             {/* 1. ДЕСКТОПНОЕ МЕНЮ (СПРАВА) - Видимо только на экранах 'sm' и выше */}
-            <ul className="hidden sm:flex gap-12 items-center"> 
+            <ul className="flex gap-12 items-center"> 
                 {pages.map((page) => (
                   <li key={page.id}>
                     <button
@@ -73,7 +73,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
             {/* 2. КНОПКА ГАМБУРГЕР (СПРАВА) - Видна только на экранах меньше 'sm' */}
             <button
-              className="flex sm:hidden flex-col items-end justify-center z-[10000]" 
+              className="hidden flex-col items-end justify-center z-[10000]" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
