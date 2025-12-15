@@ -141,7 +141,7 @@ export function Home() {
     return (
         // КОНТЕЙНЕР ФОНА: Отступ top-24 (96px) восстановлен
         <div 
-            className="fixed inset-x-0 bottom-0 top-24 h-auto" 
+            className="fixed inset-x-0 bottom-0 top-20 h-auto" 
             style={{ 
                 zIndex: 1,
             }} 
