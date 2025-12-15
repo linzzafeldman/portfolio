@@ -155,7 +155,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         >
             
             {/* КНОТКА ЗАКРЫТИЯ (X) */}
-            <div className="flex justify-end p-8">
+            <div className="flex justify-center p-8">
                 <button
                     onClick={closeMenu}
                     className="text-black text-3xl font-light hover:opacity-50 transition-opacity"
