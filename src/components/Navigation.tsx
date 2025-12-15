@@ -6,7 +6,7 @@ interface NavigationProps {
   onNavigate: (page: string) => void;
 }
 
-// ИЗМЕНЕНИЕ БРЕЙКПОИНТА: Теперь 700px
+// ИЗМЕНЕННЫЙ БРЕЙКПОИНТ: 700px
 const BREAKPOINT = 700; 
 
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {
@@ -54,11 +54,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     setIsOpen(false);
   };
 
-  // --- Стили для обхода конфликтов Tailwind ---
-  const menuContainerStyle = {
+  // --- ИНЛАЙН СТИЛИ ДЛЯ ГАРАНТИИ ПРИОРИТЕТА ---
+  const menuContainerStyle: React.CSSProperties = {
       position: 'absolute', 
       top: '50%', 
-      right: '2rem', 
+      right: '2rem', // Отступ от правого края
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
@@ -71,20 +71,16 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       alignItems: 'center',
   };
   
-  // НОВОЕ: Явные стили для кнопки Гамбургер, чтобы гарантировать видимость
+  const hiddenStyle: React.CSSProperties = {
+      display: 'none',
+  }
+  
   const hamburgerStyle: React.CSSProperties = {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-end',
       justifyContent: 'center',
-      // Можно добавить явный размер, если не сработает
-      // width: '30px', 
-      // height: '30px',
   };
-  
-  const hiddenStyle: React.CSSProperties = {
-      display: 'none',
-  }
   // ---------------------------------------------
 
 
@@ -111,7 +107,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           
         {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: ЧИСТЫЙ CSS */}
         <div 
-            style={menuContainerStyle as React.CSSProperties} 
+            style={menuContainerStyle} 
         > 
           
             {/* 1. ДЕСКТОПНОЕ МЕНЮ: Скрыто, если isMobile (ширина < 700px) */}
@@ -135,31 +131,31 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
             {/* 2. КНОПКА ГАМБУРГЕР: Видима, если isMobile (ширина < 700px) */}
             <button
-    style={isMobile ? hamburgerStyle : hiddenStyle} 
-    className="z-[10000]" 
-    onClick={toggleMenu}
-    aria-label="Toggle menu"
->
-    {/* ИЗМЕНЕННЫЕ ПОЛОСКИ ГАМБУРГЕРА */}
-    <div 
-        style={{ width: '24px', height: '2px', backgroundColor: 'black' }} 
-        className={`transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}
-    ></div>
-    <div 
-        style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
-        className={`transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}
-    ></div>
-    <div 
-        style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
-        className={`transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}
-    ></div>
-</button>
+              style={isMobile ? hamburgerStyle : hiddenStyle} 
+              className="z-[10000]" 
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              {/* Полоски гамбургера с инлайн стилями для гарантии размера и цвета */}
+              <div 
+                style={{ width: '24px', height: '2px', backgroundColor: 'black' }} 
+                className={`transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}
+              ></div>
+              <div 
+                style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
+                className={`transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}
+              ></div>
+              <div 
+                style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
+                className={`transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}
+              ></div>
+            </button>
           
         </div>
 
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Показывается только в мобильном режиме */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Показывается только в мобильном режиме и центрирован */}
       {isOpen && isMobile && ( 
         <div 
             className="fixed inset-0 bg-white/95 transition-opacity duration-300" 
@@ -177,8 +173,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 </button>
             </div>
 
-            {/* КОНТЕНТ МЕНЮ (центрирован) */}
-            <div className="flex flex-col items-center justify-start h-[calc(100vh-80px)]"> 
+            {/* КОНТЕНТ МЕНЮ: Вертикально и горизонтально центрирован */}
+            <div className="flex flex-col items-center justify-center flex-grow h-[calc(100%-80px)]"> 
                 <ul className="flex flex-col items-center gap-8">
                     {pages.map((page) => (
                         <li key={page.id}>
