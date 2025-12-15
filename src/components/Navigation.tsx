@@ -32,15 +32,14 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   };
 
   return (
-    // Фиксированное позиционирование и z-index для гарантии видимости
+    // Навигационная панель: фиксирована и имеет zIndex: 9999
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
     >
-      <div className="max-w-7xl mx-auto px-8 py-6">
+      <div className="max-w-7xl mx-auto px-8 py-6 relative"> 
         
-        {/* ГЛАВНЫЙ КОНТЕЙНЕР: justify-between разделяет логотип и меню по краям. 
-            items-center центрирует их по вертикали (ИСПРАВЛЕНИЕ ВЫРАВНИВАНИЯ) */}
+        {/* Контейнер для логотипа (остается в потоке) */}
         <div className="flex items-center justify-between w-full"> 
           
           {/* ЛОГОТИП (СЛЕВА) */}
@@ -53,12 +52,17 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               OLGA FELDMAN
             </button>
           </div>
+        </div>
           
-          {/* ПРАВЫЙ КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: items-center центрирует их по вертикали */}
-          <div className="flex items-center">
+        {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: 
+            ИЗОЛИРОВАН, прикреплен СПРАВА и ЦЕНТРИРОВАН по вертикали.
+            (Это решение, которое ГАРАНТИРУЕТ видимость и центрирование) */}
+        <div 
+            // УДАЛЕН bg-red-500, ИСПРАВЛЕНО ВЫРАВНИВАНИЕ
+            className="absolute top-1/2 right-8 transform -translate-y-1/2 flex items-center" 
+        > 
           
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Скрыто по умолчанию, видимо на 'sm' (640px) и выше 
-                (ИСПРАВЛЕНИЕ АДАПТИВНОСТИ) */}
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Видимо на 'sm' (640px) и выше */}
             <ul className="hidden sm:flex gap-12 items-center"> 
                 {pages.map((page) => (
                   <li key={page.id}>
@@ -74,8 +78,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР: Видима по умолчанию, скрыта на 'sm' (640px) и выше 
-                (ИСПРАВЛЕНИЕ АДАПТИВНОСТИ) */}
+            {/* 2. КНОПКА ГАМБУРГЕР: Видима по умолчанию, скрыта на 'sm' (640px) и выше */}
             <button
               className="flex sm:hidden flex-col items-end justify-center z-[10000]" 
               onClick={toggleMenu}
@@ -86,9 +89,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               <div className={`w-6 h-0.5 bg-black mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}></div>
             </button>
           
-          </div>
-
         </div>
+
       </div>
       
       {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на 'sm' и выше */}
@@ -98,7 +100,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             style={{ zIndex: 9998 }} 
         >
             
-            {/* КНОПКА ЗАКРЫТИЯ (X) */}
+            {/* КНОТКА ЗАКРЫТИЯ (X) */}
             <div className="flex justify-end p-8">
                 <button
                     onClick={closeMenu}
