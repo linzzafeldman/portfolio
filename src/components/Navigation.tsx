@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-import logo from '../images/home/logo.png'; // Убедитесь, что этот путь верен
+import logo from '../images/home/logo.png';
 
 interface NavigationProps {
   currentPage: string;
@@ -33,6 +33,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   };
 
   return (
+    // ГЛАВНОЕ ИСПРАВЛЕНИЕ Z-INDEX: Принудительное значение 9999 для гарантии видимости
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
@@ -52,26 +53,27 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             </button>
           </div>
           
-          {/* 1. ДЕСКТОПНОЕ МЕНЮ (СПРАВА) - Видимо только на экранах 'sm' и выше */}
-          <ul className="hidden sm:flex gap-12 items-center"> 
-              {pages.map((page) => (
-                <li key={page.id}>
-                  <button
-                    onClick={() => handleNavigate(page.id)}
-                    // Установлен черный цвет текста
-                    className={`text-black tracking-wider hover:opacity-50 transition-opacity ${
-                      currentPage === page.id ? 'opacity-100' : 'opacity-40'
-                    }`}
-                  >
-                    {page.label}
-                  </button>
-                </li>
-              ))}
+          <div className="flex items-center">
+          
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ (СПРАВА) - Видимо только на экранах 'sm' и выше */}
+            <ul className="hidden sm:flex gap-12 items-center"> 
+                {pages.map((page) => (
+                  <li key={page.id}>
+                    <button
+                      onClick={() => handleNavigate(page.id)}
+                      className={`text-black tracking-wider hover:opacity-50 transition-opacity ${
+                        currentPage === page.id ? 'opacity-100' : 'opacity-40'
+                      }`}
+                    >
+                      {page.label}
+                    </button>
+                  </li>
+                ))}
             </ul>
 
             {/* 2. КНОПКА ГАМБУРГЕР (СПРАВА) - Видна только на экранах меньше 'sm' */}
             <button
-              className="flex sm:hidden flex-col items-end justify-center z-[10000]" // Увеличен z-index для уверенности
+              className="flex sm:hidden flex-col items-end justify-center z-[10000]" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -79,6 +81,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               <div className={`w-6 h-0.5 bg-black mt-1 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></div>
               <div className={`w-6 h-0.5 bg-black mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}></div>
             </button>
+          
+          </div>
+
         </div>
       </div>
       
