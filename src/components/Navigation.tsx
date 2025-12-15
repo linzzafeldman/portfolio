@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
 import logo from '../images/home/logo.png';
 
 interface NavigationProps {
@@ -6,9 +6,32 @@ interface NavigationProps {
   onNavigate: (page: string) => void;
 }
 
+// Константа для брейкпоинта (640px = sm:)
+const BREAKPOINT = 640;
+
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   
   const [isOpen, setIsOpen] = useState(false);
+  // НОВОЕ: Состояние для отслеживания ширины окна
+  const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); 
+
+  // --- ЛОГИКА РЕАКТИВНОСТИ ---
+  useEffect(() => {
+    // Функция обновления состояния
+    const handleResize = () => {
+      // Обновляем isMobile, что вызывает перерисовку
+      setIsMobile(window.innerWidth < BREAKPOINT);
+    };
+
+    // Подписываемся на событие resize
+    window.addEventListener('resize', handleResize);
+    
+    // Очистка при размонтировании компонента
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); 
+  // -------------------------
 
   const pages = [
     { id: 'about', label: 'About' },
@@ -35,35 +58,32 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const menuContainerStyle = {
       position: 'absolute', 
       top: '50%', 
-      right: '2rem', // Эквивалент right-8
+      right: '2rem', 
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
-      // Добавим padding и background для гарантии, что элемент занимает место
       padding: '0 1rem', 
   };
   
-  const desktopMenuStyle = {
-      display: 'flex', // Гарантируем видимость на десктопе
-      gap: '3rem', // Эквивалент gap-12
+  const desktopMenuStyle: React.CSSProperties = {
+      display: 'flex', 
+      gap: '3rem', 
       alignItems: 'center',
   };
   
-  const hiddenOnMobileStyle = {
+  const hiddenStyle: React.CSSProperties = {
       display: 'none',
   }
   // ---------------------------------------------
 
 
   return (
-    // Навигационная панель: фиксирована и имеет zIndex: 9999
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
     >
       <div className="max-w-7xl mx-auto px-8 py-6 relative"> 
         
-        {/* Контейнер для логотипа (остается в потоке) */}
         <div className="flex items-center justify-between w-full"> 
           
           {/* ЛОГОТИП (СЛЕВА) */}
@@ -83,10 +103,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             style={menuContainerStyle as React.CSSProperties} 
         > 
           
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Используем медиа-запрос для скрытия на мобильном 
-                Для десктопа мы явно задаем display: flex */}
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Видимо, если НЕ isMobile */}
             <ul 
-                style={window.innerWidth >= 640 ? desktopMenuStyle as React.CSSProperties : hiddenOnMobileStyle as React.CSSProperties}
+                style={isMobile ? hiddenStyle : desktopMenuStyle}
                 className="gap-12 items-center" // Tailwind классы для отступов и шрифтов
             > 
                 {pages.map((page) => (
@@ -103,10 +122,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР: Скрыта на десктопе, видна на мобильном */}
+            {/* 2. КНОПКА ГАМБУРГЕР: Видима, если isMobile */}
             <button
-              // Инлайн стили для адаптивности (должны работать более надежно)
-              style={window.innerWidth >= 640 ? hiddenOnMobileStyle as React.CSSProperties : desktopMenuStyle as React.CSSProperties}
+              style={isMobile ? desktopMenuStyle : hiddenStyle}
               className="flex-col items-end justify-center z-[10000]" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
@@ -120,10 +138,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на десктопе */}
-      {isOpen && (
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт, если НЕ isMobile */}
+      {isOpen && isMobile && ( // Добавлено isMobile, чтобы оверлей не появлялся на десктопе
         <div 
-            className="fixed inset-0 bg-white/95 sm:hidden transition-opacity duration-300" 
+            className="fixed inset-0 bg-white/95 transition-opacity duration-300" 
             style={{ zIndex: 9998 }} 
         >
             
