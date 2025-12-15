@@ -78,7 +78,7 @@ export function Home() {
     const { url, type } = backgroundResource;
 
     return (
-        // Контейнер с позиционированием и z-index: 1
+        // УСТАНОВКА Z-INDEX: 1 (для фона)
         <div className="fixed inset-0 -mt-24" style={{ zIndex: 1 }}> 
             {type === 'video' ? (
                 // Рендеринг видео
