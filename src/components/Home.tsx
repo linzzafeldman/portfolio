@@ -34,6 +34,18 @@ function shuffleArray<T>(array: T[]): T[] {
     return newArray;
 }
 
+// Карта для сопоставления ID и адаптивных путей
+const RESOURCE_MAP = {
+    1: { desktop: background1, mobile: mobileBackground1, type: 'image' },
+    2: { desktop: background2, mobile: mobileBackground2, type: 'image' },
+    3: { desktop: background3, mobile: mobileBackground3, type: 'image' },
+    4: { desktop: background4, mobile: mobileBackground4, type: 'image' },
+    5: { desktop: background5, mobile: mobileBackground5, type: 'image' },
+    6: { desktop: background6, mobile: mobileBackground6, type: 'image' },
+    7: { desktop: background7, type: 'video' },
+};
+
+
 export function Home() {
     const [backgroundResource, setBackgroundResource] = useState<BackgroundResource | null>(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); 
@@ -50,28 +62,32 @@ export function Home() {
     
     // --- ЛОГИКА ЗАГРУЗКИ ФОНА (Выполняется только при загрузке) ---
     useEffect(() => {
-        const allResources: BackgroundResource[] = [
-            { id: 1, url: background1, type: 'image' },
-            { id: 2, url: background2, type: 'image' },
-            { id: 3, url: background3, type: 'image' },
-            { id: 4, url: background4, type: 'image' },
-            { id: 5, url: background5, type: 'image' },
-            { id: 6, url: background6, type: 'image' },
-            { id: 7, url: background7, type: 'video' },
-        ];
+        // Создаем полный массив ресурсов на основе карты (для цикла)
+        const allResources: BackgroundResource[] = Object.entries(RESOURCE_MAP).map(([id, item]) => ({
+            id: parseInt(id, 10),
+            url: item.desktop, // Для цикла используем десктопный URL
+            type: item.type,
+        }));
 
         let remainingResources: BackgroundResource[] = [];
         const storedList = sessionStorage.getItem(STORAGE_KEY);
         
         if (storedList) {
             try {
-                remainingResources = JSON.parse(storedList);
+                // ИСПРАВЛЕНИЕ: Восстанавливаем объекты из ID, чтобы гарантировать стабильность
+                const parsedData = JSON.parse(storedList);
+                if (Array.isArray(parsedData) && parsedData.length > 0) {
+                    remainingResources = parsedData.map((res: { id: number }) => {
+                        const mapItem = RESOURCE_MAP[res.id as keyof typeof RESOURCE_MAP];
+                        return mapItem ? { id: res.id, url: mapItem.desktop, type: mapItem.type } : null;
+                    }).filter((res): res is BackgroundResource => res !== null);
+                }
             } catch (e) {
                 console.error("Error reading background list from Session Storage", e);
             }
         }
 
-        if (!remainingResources || remainingResources.length === 0 || remainingResources.length > allResources.length) {
+        if (remainingResources.length === 0 || remainingResources.length > allResources.length) {
             remainingResources = shuffleArray(allResources);
         }
 
@@ -79,7 +95,9 @@ export function Home() {
 
         if (nextResource) {
             setBackgroundResource(nextResource);
-            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(remainingResources));
+            // Сохраняем только ID в Session Storage
+            const idsToSave = remainingResources.map(r => ({ id: r.id }));
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(idsToSave));
         }
         
     }, []); 
@@ -88,24 +106,18 @@ export function Home() {
     const getAdaptiveUrl = (resource: BackgroundResource | null, isMobileMode: boolean): string | null => {
         if (!resource) return null;
 
-        if (resource.type === 'video') {
-            return resource.url; 
+        const mapItem = RESOURCE_MAP[resource.id as keyof typeof RESOURCE_MAP];
+        if (!mapItem) return resource.url; 
+
+        if (mapItem.type === 'video') {
+            return mapItem.desktop; 
         }
 
-        const mobileImageMap: { [key: number]: string } = {
-            1: mobileBackground1,
-            2: mobileBackground2,
-            3: mobileBackground3,
-            4: mobileBackground4,
-            5: mobileBackground5,
-            6: mobileBackground6,
-        };
-        
-        if (isMobileMode && mobileImageMap[resource.id]) {
-            return mobileImageMap[resource.id];
+        if (isMobileMode && mapItem.mobile) {
+            return mapItem.mobile;
         }
 
-        return resource.url;
+        return mapItem.desktop;
     };
     // ---------------------------------
 
@@ -119,8 +131,8 @@ export function Home() {
 
 
     return (
-        // Родительский контейнер, который должен быть fixed и заполнять экран
-        <div className="fixed inset-0 top-[120px] h-auto" style={{ zIndex: 1 }}> 
+        // ИСПРАВЛЕНИЕ ПОЗИЦИОНИРОВАНИЯ: Используем inset-x-0 bottom-0 и ваш top-[120px]
+        <div className="fixed inset-x-0 bottom-0 top-[120px]" style={{ zIndex: 1 }}> 
             {finalType === 'video' ? (
                 // Рендеринг видео
                 <video
@@ -132,15 +144,13 @@ export function Home() {
                     className="w-full h-full object-cover bg-black"
                 />
             ) : (
-                // Рендеринг изображения: ДОБАВЛЕНИЕ ИНЛАЙН СТИЛЕЙ
+                // Рендеринг изображения
                 <div
                     className="w-full h-full bg-cover bg-center"
                     style={{ 
                         backgroundImage: `url(${finalUrl})`,
-                        // ГАРАНТИЯ: Убеждаемся, что ширина контейнера 100%
                         width: '100%', 
                         height: '100%',
-                        // Для фона также используем cover, но на всякий случай
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
