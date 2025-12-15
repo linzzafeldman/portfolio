@@ -32,13 +32,14 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   };
 
   return (
-    // Фиксированное позиционирование и z-index для гарантии видимости
+    // Навигационная панель: фиксирована и имеет zIndex: 9999
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
     >
-      <div className="max-w-7xl mx-auto px-8 py-6">
+      <div className="max-w-7xl mx-auto px-8 py-6 relative"> 
         
+        {/* Контейнер для логотипа (остается в потоке) */}
         <div className="flex items-center justify-between w-full"> 
           
           {/* ЛОГОТИП (СЛЕВА) */}
@@ -51,9 +52,15 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               OLGA FELDMAN
             </button>
           </div>
+        </div>
           
-          {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: КРАСНЫЙ ФОН ДЛЯ ДИАГНОСТИКИ */}
-          <div className="flex items-center bg-red-500 p-4"> 
+        {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: 
+            ИЗОЛИРОВАН (absolute), прикреплен к правой стороне
+            и центрирован по вертикали внутри <nav>
+        */}
+        <div 
+            className="absolute top-1/2 right-8 transform -translate-y-1/2 flex items-center bg-red-500 p-4" 
+        > 
           
             {/* 1. ДЕСКТОПНОЕ МЕНЮ: Видимо на 'sm' (640px) и выше */}
             <ul className="hidden sm:flex gap-12 items-center"> 
@@ -61,7 +68,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                   <li key={page.id}>
                     <button
                       onClick={() => handleNavigate(page.id)}
-                      // ЯВНЫЙ ЦВЕТ ТЕКСТА: text-black
+                      // ЯВНЫЙ ЦВЕТ ТЕКСТА
                       className={`text-black tracking-wider hover:opacity-50 transition-opacity ${
                         currentPage === page.id ? 'opacity-100' : 'opacity-40'
                       }`}
@@ -83,10 +90,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               <div className={`w-6 h-0.5 bg-black mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}></div>
             </button>
           
-          </div>
+        </div>
 
         </div>
-      </div>
       
       {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на 'sm' и выше */}
       {isOpen && (
