@@ -49,7 +49,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           </div>
           
           {/* 2. Десктопное меню (Правая часть, скрыто на мобильных) */}
-          <ul className="hidden md:flex gap-12 items-center"> 
+          <ul className="hidden sm:flex gap-12 items-center"> 
             {pages.map((page) => (
               <li key={page.id}>
                 <button
@@ -66,7 +66,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
           {/* 3. Кнопка-гамбургер (Правая часть, видна на мобильных) */}
           <button
-            className="md:hidden flex flex-col items-end justify-center"
+            className="sm:hidden flex flex-col items-end justify-center"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -81,7 +81,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       
       {/* 4. Мобильное меню (Появляется при нажатии на Гамбургер) */}
       <div 
-        className={`md:hidden transition-all duration-300 overflow-hidden ${
+        className={`sm:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-96 py-4 border-t border-black' : 'max-h-0' 
         }`}
       >
