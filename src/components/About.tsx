@@ -33,10 +33,7 @@ export function About() {
           purity of form. This principle became the foundation
           of her artistic language: strict lines, dynamic
           contrasts, rhythmic structures, and a minimalist color
-          palette. Her key series include Frequencies, the
-          digital cycle An Atomy, the Twisters series, and One
-          of a Kind, which explores the phenomenon of human
-          uniqueness.
+          palette.
         </p>
         <p>
           Her key series include Frequencies, the digital cycle
