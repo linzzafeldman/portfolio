@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-import logo from '../images/home/logo.png';
+import logo from '../images/home/logo.png'; // Убедитесь, что этот путь верен
 
 interface NavigationProps {
   currentPage: string;
@@ -18,18 +18,21 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   ];
 
   const handleNavigate = (pageId: string) => {
-    // Используем хеш-навигацию и вызываем колбэк для смены состояния
     window.location.hash = pageId;
     onNavigate(pageId);
-    setIsOpen(false); // Закрываем мобильное меню при навигации
+    setIsOpen(false); 
   };
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  
+  // Добавленная функция для кнопки "X" (закрытие оверлея)
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
-    // Навигация с высоким z-index, чтобы всегда быть поверх контента
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
@@ -38,26 +41,24 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         
         <div className="flex items-center justify-between w-full"> 
           
-          {/* Логотип и имя Olga Feldman */}
-          <div className="flex-shrink-0 mr-12"> 
+          {/* ЛОГОТИП (СЛЕВА) */}
+          <div className="flex-shrink-0"> 
             <button
               onClick={() => handleNavigate('home')}
-              className="tracking-wider hover:opacity-50 transition-opacity flex items-center gap-3"
+              className="tracking-wider text-black hover:opacity-50 transition-opacity flex items-center gap-3"
             >
               <img src={logo} alt="Logo" className="w-[30px] h-[30px]" />
               OLGA FELDMAN
             </button>
           </div>
           
-          <div className="flex items-center">
-            
-            {/* ДЕСКТОПНОЕ МЕНЮ (скрыто на мобильных, видно от sm и выше) */}
-            <ul className="hidden sm:flex gap-12 items-center"> 
+          {/* 1. ДЕСКТОПНОЕ МЕНЮ (СПРАВА) - Видимо только на экранах 'sm' и выше */}
+          <ul className="hidden sm:flex gap-12 items-center"> 
               {pages.map((page) => (
                 <li key={page.id}>
                   <button
                     onClick={() => handleNavigate(page.id)}
-                    // ИСПРАВЛЕНИЕ: text-black гарантирует видимость текста кнопок
+                    // Установлен черный цвет текста
                     className={`text-black tracking-wider hover:opacity-50 transition-opacity ${
                       currentPage === page.id ? 'opacity-100' : 'opacity-40'
                     }`}
@@ -68,9 +69,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               ))}
             </ul>
 
-            {/* КНОПКА ГАМБУРГЕР (видно только на мобильных) */}
+            {/* 2. КНОПКА ГАМБУРГЕР (СПРАВА) - Видна только на экранах меньше 'sm' */}
             <button
-              className="flex sm:hidden flex-col items-end justify-center" 
+              className="flex sm:hidden flex-col items-end justify-center z-[10000]" // Увеличен z-index для уверенности
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -78,32 +79,39 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               <div className={`w-6 h-0.5 bg-black mt-1 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></div>
               <div className={`w-6 h-0.5 bg-black mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}></div>
             </button>
-            
-          </div>
-
         </div>
       </div>
       
-      {/* МОБИЛЬНЫЙ ОВЕРЛЕЙ */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ (ПОЛНОЭКРАННЫЙ) */}
       {isOpen && (
         <div 
-            className="fixed inset-0 bg-white sm:hidden transition-opacity duration-300"
-            style={{ 
-                opacity: isOpen ? 1 : 0, 
-                pointerEvents: isOpen ? 'auto' : 'none',
-                zIndex: 9998,
-            }}
+            // Полупрозрачный белый фон, который перекрывает весь экран
+            className="fixed inset-0 bg-white/95 sm:hidden transition-opacity duration-300"
+            style={{ zIndex: 9998 }} // Чуть ниже основной навигации
         >
-            <div className="flex flex-col items-center justify-center min-h-screen pt-20 pb-20">
+            
+            {/* КНОПКА ЗАКРЫТИЯ (X) */}
+            <div className="flex justify-end p-8">
+                <button
+                    onClick={closeMenu}
+                    className="text-black text-3xl font-light hover:opacity-50 transition-opacity"
+                    aria-label="Close menu"
+                >
+                    &times; {/* HTML-сущность для крестика (X) */}
+                </button>
+            </div>
+
+            {/* КОНТЕНТ МЕНЮ (центрирован) */}
+            <div className="flex flex-col items-center justify-start h-[calc(100vh-80px)]"> 
                 <ul className="flex flex-col items-center gap-8">
                     {pages.map((page) => (
                         <li key={page.id}>
                             <button
                                 onClick={() => handleNavigate(page.id)}
-                                // ИСПРАВЛЕНИЕ: text-black гарантирует видимость текста кнопок
                                 className={`text-black tracking-wider text-2xl font-medium hover:opacity-50 transition-opacity ${
                                     currentPage === page.id ? 'opacity-100' : 'opacity-40'
                                 }`}
+                                style={{ textAlign: 'center' }} // Центральная выключка текста
                             >
                                 {page.label}
                             </button>
