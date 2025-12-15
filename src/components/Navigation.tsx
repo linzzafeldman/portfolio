@@ -33,11 +33,20 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     { id: 'contact', label: 'Contact' },
   ];
 
+  // --- ИЗМЕНЕННАЯ ФУНКЦИЯ НАВИГАЦИИ ---
   const handleNavigate = (pageId: string) => {
+    // Если пользователь на главной странице и нажимает на "Home" или логотип
+    if (pageId === 'home' && currentPage === 'home') {
+      window.location.reload(); // Принудительная полная перезагрузка страницы
+      return; // Останавливаем дальнейшее выполнение
+    }
+    
+    // Стандартная навигация
     window.location.hash = pageId;
     onNavigate(pageId);
     setIsOpen(false); 
   };
+  // ------------------------------------
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -75,12 +84,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       justifyContent: 'center',
   };
   
-  // НОВЫЙ СТИЛЬ: Гарантированный полупрозрачный белый фон (95%)
   const overlayStyle: React.CSSProperties = {
       position: 'fixed', 
       inset: 0,
       zIndex: 9998,
-      // Использование RGBA для гарантии белого цвета с 95% непрозрачности
       backgroundColor: 'rgba(255, 255, 255, 0.95)', 
       transition: 'opacity 300ms',
   }
@@ -157,10 +164,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ ФОНА */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ */}
       {isOpen && isMobile && ( 
         <div 
-            // Используем чистый CSS-объект для стиля
             style={overlayStyle} 
         >
             
