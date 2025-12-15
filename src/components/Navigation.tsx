@@ -32,7 +32,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   };
 
   return (
-    // Принудительное позиционирование: fixed и zIndex: 9999
+    // Фиксированное позиционирование и z-index для гарантии видимости
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
@@ -52,14 +52,16 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             </button>
           </div>
           
-          <div className="flex items-center">
+          {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: КРАСНЫЙ ФОН ДЛЯ ДИАГНОСТИКИ */}
+          <div className="flex items-center bg-red-500 p-4"> 
           
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Скрыто по умолчанию, видимо на 'md' (768px) и выше */}
-            <ul className="hidden md:flex gap-12 items-center"> 
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Видимо на 'sm' (640px) и выше */}
+            <ul className="hidden sm:flex gap-12 items-center"> 
                 {pages.map((page) => (
                   <li key={page.id}>
                     <button
                       onClick={() => handleNavigate(page.id)}
+                      // ЯВНЫЙ ЦВЕТ ТЕКСТА: text-black
                       className={`text-black tracking-wider hover:opacity-50 transition-opacity ${
                         currentPage === page.id ? 'opacity-100' : 'opacity-40'
                       }`}
@@ -70,9 +72,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР: Видима по умолчанию, скрыта на 'md' (768px) и выше */}
+            {/* 2. КНОПКА ГАМБУРГЕР: Видима по умолчанию, скрыта на 'sm' (640px) и выше */}
             <button
-              className="flex md:hidden flex-col items-end justify-center z-[10000]" 
+              className="flex sm:hidden flex-col items-end justify-center z-[10000]" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -86,11 +88,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         </div>
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на 'md' и выше */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на 'sm' и выше */}
       {isOpen && (
         <div 
-            // Полупрозрачный белый фон, скрыт на 'md' и выше
-            className="fixed inset-0 bg-white/95 md:hidden transition-opacity duration-300" 
+            className="fixed inset-0 bg-white/95 sm:hidden transition-opacity duration-300" 
             style={{ zIndex: 9998 }} 
         >
             
