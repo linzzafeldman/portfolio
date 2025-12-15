@@ -49,7 +49,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           </div>
           
           {/* 2. Десктопное меню (Правая часть, скрыто на мобильных) */}
-          <ul className="hidden sm:flex gap-12 items-center"> 
+          <ul className="flex gap-12 items-center"> 
             {pages.map((page) => (
               <li key={page.id}>
                 <button
@@ -66,7 +66,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
           {/* 3. Кнопка-гамбургер (Правая часть, видна на мобильных) */}
           <button
-            className="sm:hidden flex flex-col items-end justify-center"
+            className="flex flex-col items-end justify-center"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
