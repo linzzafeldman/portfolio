@@ -6,7 +6,7 @@ interface NavigationProps {
   onNavigate: (page: string) => void;
 }
 
-// ИЗМЕНЕННЫЙ БРЕЙКПОИНТ: 700px
+// БРЕЙКПОИНТ
 const BREAKPOINT = 700; 
 
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {
@@ -74,6 +74,16 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       alignItems: 'flex-end',
       justifyContent: 'center',
   };
+  
+  // НОВЫЙ СТИЛЬ: Гарантированный полупрозрачный белый фон (95%)
+  const overlayStyle: React.CSSProperties = {
+      position: 'fixed', 
+      inset: 0,
+      zIndex: 9998,
+      // Использование RGBA для гарантии белого цвета с 95% непрозрачности
+      backgroundColor: 'rgba(255, 255, 255, 0.95)', 
+      transition: 'opacity 300ms',
+  }
   // ---------------------------------------------
 
 
@@ -122,7 +132,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР */}
+            {/* 2. КНОТКА ГАМБУРГЕР */}
             <button
               style={isMobile ? hamburgerStyle : hiddenStyle} 
               className="z-[10000]" 
@@ -147,11 +157,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ ФОНА */}
       {isOpen && isMobile && ( 
         <div 
-            className="fixed inset-0 bg-white/95 transition-opacity duration-300" 
-            style={{ zIndex: 9998 }} 
+            // Используем чистый CSS-объект для стиля
+            style={overlayStyle} 
         >
             
             {/* КНОТКА ЗАКРЫТИЯ (X) */}
@@ -168,7 +178,6 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             {/* КОНТЕНТ МЕНЮ: Вертикально и горизонтально центрирован */}
             <div className="flex flex-col items-center justify-center flex-grow h-[calc(100%-80px)]"> 
                 <ul 
-                    // ИСПРАВЛЕНИЕ: Принудительно задаем flexDirection: 'column'
                     style={{ flexDirection: 'column' }}
                     className="flex items-center gap-8" 
                 >
