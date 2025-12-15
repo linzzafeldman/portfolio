@@ -19,11 +19,11 @@ import mobileBackground6 from '../images/home/mobile/background-06.png';
 interface BackgroundResource {
     url: string;
     type: 'image' | 'video';
-    id: number; // Добавлен ID для упрощения логики
+    id: number; 
 }
 
 const STORAGE_KEY = 'background_cycle_list';
-const BREAKPOINT = 700; // Используем тот же брейкпоинт, что и в Navigation.tsx
+const BREAKPOINT = 700; 
 
 function shuffleArray<T>(array: T[]): T[] {
     const newArray = [...array];
@@ -36,7 +36,7 @@ function shuffleArray<T>(array: T[]): T[] {
 
 export function Home() {
     const [backgroundResource, setBackgroundResource] = useState<BackgroundResource | null>(null);
-    const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); // НОВОЕ СОСТОЯНИЕ
+    const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); 
 
     // --- ЛОГИКА РЕАКТИВНОСТИ ---
     useEffect(() => {
@@ -48,9 +48,8 @@ export function Home() {
     }, []); 
     // -------------------------
     
-    // --- ЛОГИКА ЗАГРУЗКИ ФОНА ---
+    // --- ЛОГИКА ЗАГРУЗКИ ФОНА (Выполняется только при загрузке) ---
     useEffect(() => {
-        // Определение ресурсов (используем ID, чтобы связать десктоп и мобильный)
         const allResources: BackgroundResource[] = [
             { id: 1, url: background1, type: 'image' },
             { id: 2, url: background2, type: 'image' },
@@ -64,11 +63,8 @@ export function Home() {
         let remainingResources: BackgroundResource[] = [];
         const storedList = sessionStorage.getItem(STORAGE_KEY);
         
-        // ... (Логика shuffle и sessionStorage остается прежней) ...
-        
         if (storedList) {
             try {
-                // Если список найден, парсим его
                 remainingResources = JSON.parse(storedList);
             } catch (e) {
                 console.error("Error reading background list from Session Storage", e);
@@ -92,13 +88,11 @@ export function Home() {
     const getAdaptiveUrl = (resource: BackgroundResource | null, isMobileMode: boolean): string | null => {
         if (!resource) return null;
 
-        // Видео (мы предполагаем, что видео одно и используется одно и то же)
         if (resource.type === 'video') {
             return resource.url; 
         }
 
-        // Сопоставление десктопных ресурсов с мобильными
-        const mobileMap: { [key: number]: string } = {
+        const mobileImageMap: { [key: number]: string } = {
             1: mobileBackground1,
             2: mobileBackground2,
             3: mobileBackground3,
@@ -106,12 +100,11 @@ export function Home() {
             5: mobileBackground5,
             6: mobileBackground6,
         };
-
-        if (isMobileMode && mobileMap[resource.id]) {
-            return mobileMap[resource.id];
+        
+        if (isMobileMode && mobileImageMap[resource.id]) {
+            return mobileImageMap[resource.id];
         }
 
-        // Если не мобильный режим или ресурс не найден в карте, используем десктопный URL
         return resource.url;
     };
     // ---------------------------------
@@ -121,16 +114,17 @@ export function Home() {
         return null;
     }
 
-    // Получаем URL в зависимости от текущего размера экрана
     const finalUrl = getAdaptiveUrl(backgroundResource, isMobile);
-    const type = backgroundResource.type; // Тип ресурса (видео/изображение)
+    const finalType = backgroundResource.type;
+
 
     return (
+        // Родительский контейнер, который должен быть fixed и заполнять экран
         <div className="fixed inset-0 -mt-24" style={{ zIndex: 1 }}> 
-            {type === 'video' ? (
+            {finalType === 'video' ? (
                 // Рендеринг видео
                 <video
-                    src={finalUrl || ''} // Используем finalUrl, хотя для видео он не меняется
+                    src={finalUrl || ''} 
                     autoPlay
                     loop
                     muted
@@ -138,10 +132,18 @@ export function Home() {
                     className="w-full h-full object-cover bg-black"
                 />
             ) : (
-                // Рендеринг изображения
+                // Рендеринг изображения: ДОБАВЛЕНИЕ ИНЛАЙН СТИЛЕЙ
                 <div
                     className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${finalUrl})` }}
+                    style={{ 
+                        backgroundImage: `url(${finalUrl})`,
+                        // ГАРАНТИЯ: Убеждаемся, что ширина контейнера 100%
+                        width: '100%', 
+                        height: '100%',
+                        // Для фона также используем cover, но на всякий случай
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
                 />
             )}
         </div>
