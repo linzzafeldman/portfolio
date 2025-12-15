@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-// Раскомментируйте или проверьте все импорты:
+// Импорт всех фоновых ресурсов
 import background1 from '../images/home/background-01.png';
 import background2 from '../images/home/background-02.png';
 import background3 from '../images/home/background-03.png';
@@ -14,7 +13,7 @@ interface BackgroundResource {
     type: 'image' | 'video';
 }
 
-// Ключ для хранения списка ресурсов в памяти браузера
+// Ключ для хранения списка ресурсов в Session Storage
 const STORAGE_KEY = 'background_cycle_list';
 
 // Функция для перемешивания массива (Алгоритм Фишера-Йейтса)
@@ -48,20 +47,20 @@ export function Home() {
         const storedList = sessionStorage.getItem(STORAGE_KEY);
         if (storedList) {
             try {
-                // Преобразуем строку обратно в массив
                 remainingResources = JSON.parse(storedList);
             } catch (e) {
-                console.error("Ошибка при чтении списка фона из Session Storage", e);
+                // Если данные повреждены, начинаем с чистого списка
+                console.error("Error reading background list from Session Storage", e);
             }
         }
 
-        // 3. Если список пуст (все ресурсы были показаны), перемешиваем полный список заново
-        if (!remainingResources || remainingResources.length === 0) {
+        // 3. Если список пуст (все ресурсы были показаны или ошибка), перемешиваем полный список заново
+        if (!remainingResources || remainingResources.length === 0 || remainingResources.length !== initialResources.length) {
             remainingResources = shuffleArray(initialResources);
         }
 
-        // 4. Берем первый элемент из списка (тот, который еще не был показан)
-        const nextResource = remainingResources.shift(); // .shift() берет элемент и удаляет его из массива
+        // 4. Берем первый элемент из списка
+        const nextResource = remainingResources.shift(); 
 
         if (nextResource) {
             // 5. Устанавливаем его для отображения
@@ -71,7 +70,7 @@ export function Home() {
             sessionStorage.setItem(STORAGE_KEY, JSON.stringify(remainingResources));
         }
         
-    }, []); // Запускается только один раз при монтировании
+    }, []); 
 
     if (!backgroundResource) {
         return null;
@@ -80,8 +79,10 @@ export function Home() {
     const { url, type } = backgroundResource;
 
     return (
-        <div className="fixed inset-0 -mt-24">
+        // Контейнер с позиционированием и низким z-index, чтобы быть под навигацией
+        <div className="fixed inset-0 -mt-24 z-[-10]"> 
             {type === 'video' ? (
+                // Рендеринг видео
                 <video
                     src={url}
                     autoPlay
@@ -91,6 +92,7 @@ export function Home() {
                     className="w-full h-full object-cover bg-black"
                 />
             ) : (
+                // Рендеринг изображения
                 <div
                     className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${url})` }}
