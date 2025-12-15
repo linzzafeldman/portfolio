@@ -27,13 +27,12 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     setIsOpen(!isOpen);
   };
   
-  // Добавленная функция для кнопки "X" (закрытие оверлея)
   const closeMenu = () => {
     setIsOpen(false);
   };
 
   return (
-    // ГЛАВНОЕ ИСПРАВЛЕНИЕ Z-INDEX: Принудительное значение 9999 для гарантии видимости
+    // Принудительное позиционирование: fixed и zIndex: 9999
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
@@ -55,8 +54,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           
           <div className="flex items-center">
           
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ (СПРАВА) - Видимо только на экранах 'sm' и выше */}
-            <ul className="flex gap-12 items-center"> 
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Скрыто по умолчанию, видимо на 'md' (768px) и выше */}
+            <ul className="hidden md:flex gap-12 items-center"> 
                 {pages.map((page) => (
                   <li key={page.id}>
                     <button
@@ -71,9 +70,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР (СПРАВА) - Видна только на экранах меньше 'sm' */}
+            {/* 2. КНОПКА ГАМБУРГЕР: Видима по умолчанию, скрыта на 'md' (768px) и выше */}
             <button
-              className="hidden flex-col items-end justify-center z-[10000]" 
+              className="flex md:hidden flex-col items-end justify-center z-[10000]" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -87,12 +86,12 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         </div>
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ (ПОЛНОЭКРАННЫЙ) */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на 'md' и выше */}
       {isOpen && (
         <div 
-            // Полупрозрачный белый фон, который перекрывает весь экран
-            className="fixed inset-0 bg-white/95 sm:hidden transition-opacity duration-300"
-            style={{ zIndex: 9998 }} // Чуть ниже основной навигации
+            // Полупрозрачный белый фон, скрыт на 'md' и выше
+            className="fixed inset-0 bg-white/95 md:hidden transition-opacity duration-300" 
+            style={{ zIndex: 9998 }} 
         >
             
             {/* КНОПКА ЗАКРЫТИЯ (X) */}
@@ -102,7 +101,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                     className="text-black text-3xl font-light hover:opacity-50 transition-opacity"
                     aria-label="Close menu"
                 >
-                    &times; {/* HTML-сущность для крестика (X) */}
+                    &times; 
                 </button>
             </div>
 
@@ -116,7 +115,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                                 className={`text-black tracking-wider text-2xl font-medium hover:opacity-50 transition-opacity ${
                                     currentPage === page.id ? 'opacity-100' : 'opacity-40'
                                 }`}
-                                style={{ textAlign: 'center' }} // Центральная выключка текста
+                                style={{ textAlign: 'center' }} 
                             >
                                 {page.label}
                             </button>
