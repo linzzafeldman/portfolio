@@ -28,7 +28,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white border-b border-black z-[99]">
+    // ИСПРАВЛЕНО: Добавлен relative, чтобы гарантировать работу z-index
+    <nav className="fixed relative top-0 left-0 right-0 bg-white border-b border-black z-[99]">
       <div className="max-w-7xl mx-auto px-8 py-6">
         
         <div className="flex items-center justify-between w-full"> 
@@ -45,7 +46,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           
           <div className="flex items-center">
             
-            {/* ДЕСКТОПНОЕ МЕНЮ (скрыто на sm и ниже) */}
+            {/* ДЕСКТОПНОЕ МЕНЮ */}
             <ul className="hidden sm:flex gap-12 items-center"> 
               {pages.map((page) => (
                 <li key={page.id}>
@@ -61,7 +62,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               ))}
             </ul>
 
-            {/* КНОПКА ГАМБУРГЕР (видна на sm и ниже) */}
+            {/* КНОПКА ГАМБУРГЕР */}
             <button
               className="flex sm:hidden flex-col items-end justify-center" 
               onClick={toggleMenu}
