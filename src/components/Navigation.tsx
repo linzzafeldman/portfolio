@@ -6,13 +6,13 @@ interface NavigationProps {
   onNavigate: (page: string) => void;
 }
 
-// Константа для брейкпоинта (640px = sm:)
-const BREAKPOINT = 640;
+// ИЗМЕНЕНИЕ БРЕЙКПОИНТА: Теперь 700px
+const BREAKPOINT = 700; 
 
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   
   const [isOpen, setIsOpen] = useState(false);
-  // НОВОЕ: Состояние для отслеживания ширины окна
+  // Состояние для отслеживания ширины окна
   const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); 
 
   // --- ЛОГИКА РЕАКТИВНОСТИ ---
@@ -71,6 +71,17 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       alignItems: 'center',
   };
   
+  // НОВОЕ: Явные стили для кнопки Гамбургер, чтобы гарантировать видимость
+  const hamburgerStyle: React.CSSProperties = {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-end',
+      justifyContent: 'center',
+      // Можно добавить явный размер, если не сработает
+      // width: '30px', 
+      // height: '30px',
+  };
+  
   const hiddenStyle: React.CSSProperties = {
       display: 'none',
   }
@@ -103,10 +114,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             style={menuContainerStyle as React.CSSProperties} 
         > 
           
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Видимо, если НЕ isMobile */}
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Скрыто, если isMobile (ширина < 700px) */}
             <ul 
                 style={isMobile ? hiddenStyle : desktopMenuStyle}
-                className="gap-12 items-center" // Tailwind классы для отступов и шрифтов
+                className="gap-12 items-center" 
             > 
                 {pages.map((page) => (
                   <li key={page.id}>
@@ -122,10 +133,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР: Видима, если isMobile */}
+            {/* 2. КНОПКА ГАМБУРГЕР: Видима, если isMobile (ширина < 700px) */}
             <button
-              style={isMobile ? desktopMenuStyle : hiddenStyle}
-              className="flex-col items-end justify-center z-[10000]" 
+              // Применяем явные стили для гамбургера, когда он виден
+              style={isMobile ? hamburgerStyle : hiddenStyle} 
+              className="z-[10000]" // Класс только для z-index
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -138,8 +150,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт, если НЕ isMobile */}
-      {isOpen && isMobile && ( // Добавлено isMobile, чтобы оверлей не появлялся на десктопе
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Показывается только в мобильном режиме */}
+      {isOpen && isMobile && ( 
         <div 
             className="fixed inset-0 bg-white/95 transition-opacity duration-300" 
             style={{ zIndex: 9998 }} 
