@@ -1,18 +1,10 @@
 import { useState, useEffect } from 'react';
-// Импорт ВСЕХ десктопных ресурсов
+// Импорт всех ресурсов
 import background1 from '../images/home/background-01.png';
-import background2 from '../images/home/background-02.png';
-import background3 from '../images/home/background-03.png';
-import background4 from '../images/home/background-04.png';
-import background5 from '../images/home/background-05.png';
-import background6 from '../images/home/background-06.png';
+// ... (остальные импорты)
 import background7 from '../media/twisters/TWISTERS I-2 Bipolar.mp4'; 
-// !!! НОВЫЕ ИМПОРТЫ для мобильных картинок !!!
 import mobileBackground1 from '../images/home/mobile/background-01.png';
-import mobileBackground2 from '../images/home/mobile/background-02.png';
-import mobileBackground3 from '../images/home/mobile/background-03.png';
-import mobileBackground4 from '../images/home/mobile/background-04.png';
-import mobileBackground5 from '../images/home/mobile/background-05.png';
+// ... (остальные импорты мобильных)
 import mobileBackground6 from '../images/home/mobile/background-06.png';
 
 
@@ -48,7 +40,7 @@ export function Home() {
     }, []); 
     // -------------------------
     
-    // --- ЛОГИКА ЗАГРУЗКИ ФОНА (Выполняется только при загрузке) ---
+    // --- ЛОГИКА ЗАГРУЗКИ ФОНА ---
     useEffect(() => {
         const allResources: BackgroundResource[] = [
             { id: 1, url: background1, type: 'image' },
@@ -119,8 +111,16 @@ export function Home() {
 
 
     return (
-        // Родительский контейнер, который должен быть fixed и заполнять экран
-        <div className="fixed inset-0 -mt-24" style={{ zIndex: 1 }}> 
+        // НОВОЕ ПОЗИЦИОНИРОВАНИЕ: 
+        // top-0 и bottom-0, но с отступом сверху, равным высоте меню (96px)
+        // Мы используем inset-x-0 (left/right 0) и top-[96px] (отступ сверху) и bottom-0
+        <div 
+            className="fixed inset-x-0 bottom-0" 
+            style={{ 
+                zIndex: 1,
+                top: '96px', // Эквивалент top-24, что должно соответствовать высоте меню
+            }} 
+        > 
             {finalType === 'video' ? (
                 // Рендеринг видео
                 <video
@@ -132,15 +132,13 @@ export function Home() {
                     className="w-full h-full object-cover bg-black"
                 />
             ) : (
-                // Рендеринг изображения: ДОБАВЛЕНИЕ ИНЛАЙН СТИЛЕЙ
+                // Рендеринг изображения
                 <div
                     className="w-full h-full bg-cover bg-center"
                     style={{ 
                         backgroundImage: `url(${finalUrl})`,
-                        // ГАРАНТИЯ: Убеждаемся, что ширина контейнера 100%
                         width: '100%', 
                         height: '100%',
-                        // Для фона также используем cover, но на всякий случай
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
