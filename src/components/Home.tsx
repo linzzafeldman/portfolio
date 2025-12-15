@@ -47,14 +47,15 @@ export function Home() {
         const storedList = sessionStorage.getItem(STORAGE_KEY);
         if (storedList) {
             try {
+                // Если список найден, парсим его
                 remainingResources = JSON.parse(storedList);
             } catch (e) {
                 console.error("Error reading background list from Session Storage", e);
             }
         }
 
-        // 3. Если список пуст, перемешиваем полный список заново
-        if (!remainingResources || remainingResources.length === 0 || remainingResources.length !== initialResources.length) {
+        // 3. Если список пуст, недействителен или не содержит все ресурсы, перемешиваем полный список заново
+        if (!remainingResources || remainingResources.length === 0 || remainingResources.length > initialResources.length) {
             remainingResources = shuffleArray(initialResources);
         }
 
@@ -72,13 +73,13 @@ export function Home() {
     }, []); 
 
     if (!backgroundResource) {
-        return null;
+        return null; // или заглушка
     }
 
     const { url, type } = backgroundResource;
 
     return (
-        // УСТАНОВКА Z-INDEX: 1 (для фона)
+        // УСТАНОВКА Z-INDEX: 1 для фона
         <div className="fixed inset-0 -mt-24" style={{ zIndex: 1 }}> 
             {type === 'video' ? (
                 // Рендеринг видео
