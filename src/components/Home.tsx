@@ -80,7 +80,7 @@ export function Home() {
 
     return (
         // Контейнер с позиционированием и низким z-index, чтобы быть под навигацией
-        <div className="fixed inset-0 -mt-24 z-[-10]"> 
+        <div className="fixed inset-0 -mt-24 z-0"> 
             {type === 'video' ? (
                 // Рендеринг видео
                 <video
@@ -94,7 +94,7 @@ export function Home() {
             ) : (
                 // Рендеринг изображения
                 <div
-                    className="w-full h-full bg-cover bg-center"
+                    className="w-full h-full bg-cover bg-center z-0"
                     style={{ backgroundImage: `url(${url})` }}
                 />
             )}
