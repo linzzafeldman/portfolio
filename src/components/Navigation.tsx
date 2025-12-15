@@ -28,8 +28,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   };
 
   return (
-
-    <nav className="fixed top-0 left-0 right-0 bg-white border-b border-black z-99">
+    // Принудительное позиционирование: fixed и zIndex: 9999
+    <nav 
+        className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
+        style={{ zIndex: 9999 }} 
+    >
       <div className="max-w-7xl mx-auto px-8 py-6">
         
         <div className="flex items-center justify-between w-full"> 
@@ -81,10 +84,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       {/* МОБИЛЬНЫЙ ОВЕРЛЕЙ */}
       {isOpen && (
         <div 
-            className="fixed inset-0 z-[98] bg-white sm:hidden transition-opacity duration-300"
+            className="fixed inset-0 bg-white sm:hidden transition-opacity duration-300"
             style={{ 
                 opacity: isOpen ? 1 : 0, 
                 pointerEvents: isOpen ? 'auto' : 'none',
+                zIndex: 9998, // Чуть ниже навигации
             }}
         >
             <div className="flex flex-col items-center justify-center min-h-screen pt-20 pb-20">

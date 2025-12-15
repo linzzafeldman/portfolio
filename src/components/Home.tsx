@@ -49,12 +49,11 @@ export function Home() {
             try {
                 remainingResources = JSON.parse(storedList);
             } catch (e) {
-                // Если данные повреждены, начинаем с чистого списка
                 console.error("Error reading background list from Session Storage", e);
             }
         }
 
-        // 3. Если список пуст (все ресурсы были показаны или ошибка), перемешиваем полный список заново
+        // 3. Если список пуст, перемешиваем полный список заново
         if (!remainingResources || remainingResources.length === 0 || remainingResources.length !== initialResources.length) {
             remainingResources = shuffleArray(initialResources);
         }
@@ -79,8 +78,8 @@ export function Home() {
     const { url, type } = backgroundResource;
 
     return (
-        // Контейнер с позиционированием и низким z-index, чтобы быть под навигацией
-        <div className="fixed inset-0 -mt-24 z-0"> 
+        // Контейнер с позиционированием и z-index: 1
+        <div className="fixed inset-0 -mt-24" style={{ zIndex: 1 }}> 
             {type === 'video' ? (
                 // Рендеринг видео
                 <video
@@ -94,7 +93,7 @@ export function Home() {
             ) : (
                 // Рендеринг изображения
                 <div
-                    className="w-full h-full bg-cover bg-center z-0"
+                    className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${url})` }}
                 />
             )}
