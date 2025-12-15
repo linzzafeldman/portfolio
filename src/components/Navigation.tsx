@@ -12,21 +12,14 @@ const BREAKPOINT = 700;
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   
   const [isOpen, setIsOpen] = useState(false);
-  // Состояние для отслеживания ширины окна
   const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); 
 
   // --- ЛОГИКА РЕАКТИВНОСТИ ---
   useEffect(() => {
-    // Функция обновления состояния
     const handleResize = () => {
-      // Обновляем isMobile, что вызывает перерисовку
       setIsMobile(window.innerWidth < BREAKPOINT);
     };
-
-    // Подписываемся на событие resize
     window.addEventListener('resize', handleResize);
-    
-    // Очистка при размонтировании компонента
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -58,7 +51,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const menuContainerStyle: React.CSSProperties = {
       position: 'absolute', 
       top: '50%', 
-      right: '2rem', // Отступ от правого края
+      right: '2rem', 
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
@@ -105,12 +98,12 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           </div>
         </div>
           
-        {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: ЧИСТЫЙ CSS */}
+        {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА */}
         <div 
             style={menuContainerStyle} 
         > 
           
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Скрыто, если isMobile (ширина < 700px) */}
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ */}
             <ul 
                 style={isMobile ? hiddenStyle : desktopMenuStyle}
                 className="gap-12 items-center" 
@@ -129,14 +122,13 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР: Видима, если isMobile (ширина < 700px) */}
+            {/* 2. КНОПКА ГАМБУРГЕР */}
             <button
               style={isMobile ? hamburgerStyle : hiddenStyle} 
               className="z-[10000]" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
-              {/* Полоски гамбургера с инлайн стилями для гарантии размера и цвета */}
               <div 
                 style={{ width: '24px', height: '2px', backgroundColor: 'black' }} 
                 className={`transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}
@@ -155,7 +147,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Показывается только в мобильном режиме и центрирован */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ */}
       {isOpen && isMobile && ( 
         <div 
             className="fixed inset-0 bg-white/95 transition-opacity duration-300" 
@@ -175,7 +167,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
             {/* КОНТЕНТ МЕНЮ: Вертикально и горизонтально центрирован */}
             <div className="flex flex-col items-center justify-center flex-grow h-[calc(100%-80px)]"> 
-                <ul className="flex flex-col items-center gap-8">
+                <ul 
+                    // ИСПРАВЛЕНИЕ: Принудительно задаем flexDirection: 'column'
+                    style={{ flexDirection: 'column' }}
+                    className="flex items-center gap-8" 
+                >
                     {pages.map((page) => (
                         <li key={page.id}>
                             <button
