@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-import logo from '../images/home/logo.png'; // Убедитесь, что путь к логотипу верен
+import logo from '../images/home/logo.png';
 
 interface NavigationProps {
   currentPage: string;
@@ -20,12 +20,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const handleNavigate = (pageId: string) => {
     window.location.hash = pageId;
     onNavigate(pageId);
-    
-    // Закрывает мобильное меню после клика, если оно было открыто
     setIsOpen(false); 
   };
   
- 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -34,11 +31,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     <nav className="fixed top-0 left-0 right-0 bg-white border-b border-black z-50">
       <div className="max-w-7xl mx-auto px-8 py-6">
         
-        {/* ГЛАВНЫЙ КОНТЕЙНЕР: Разделяет Логотип и Навигацию/Гамбургер */}
+        {/* ГЛАВНЫЙ КОНТЕЙНЕР (Должен выравнивать элементы) */}
         <div className="flex items-center justify-between w-full"> 
           
-          {/* 1. Логотип (Левая часть) */}
-          <div className="flex-shrink-0">
+          {/* 1. Логотип (Левая часть) - ДОБАВЛЕН MR-12 для отступа */}
+          <div className="flex-shrink-0 mr-12"> 
             <button
               onClick={() => handleNavigate('home')}
               className="tracking-wider hover:opacity-50 transition-opacity flex items-center gap-3"
@@ -48,8 +45,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             </button>
           </div>
           
-          {/* 2. Десктопное меню (Правая часть, скрыто на мобильных) */}
-          <ul className="flex gap-12 items-center"> 
+          {/* 2. Десктопное меню (Правая часть: СКРЫТО на мобильных, ВИДНО на sm и выше) */}
+          {/* ЭТО МЕНЮ ВЕРОЯТНО ВЫ ВИДЕЛИ ДВАЖДЫ! */}
+          <ul className="hidden sm:flex gap-12 items-center"> 
             {pages.map((page) => (
               <li key={page.id}>
                 <button
@@ -64,9 +62,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             ))}
           </ul>
 
-          {/* 3. Кнопка-гамбургер (Правая часть, видна на мобильных) */}
+          {/* 3. Кнопка-гамбургер (Видна на мобильных, СКРЫТА на sm и выше) */}
           <button
-            className="flex flex-col items-end justify-center"
+            className="flex sm:hidden flex-col items-end justify-center" 
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -79,7 +77,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         </div>
       </div>
       
-      {/* 4. Мобильное меню (Появляется при нажатии на Гамбургер) */}
+      {/* 4. Мобильное меню (Скрыто на sm и выше) */}
+      {/* ВТОРОЙ КОНТЕЙНЕР МЕНЮ - ЭТОТ ЭЛЕМЕНТ ВЫ ВИДЕЛИ ВО ВТОРОЙ СТРОКЕ! */}
       <div 
         className={`sm:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-96 py-4 border-t border-black' : 'max-h-0' 
