@@ -35,15 +35,16 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 // --- Карта сопоставления ID и фактического URL импорта ---
-const RESOURCE_MAP: Record<number, { desktop: string; mobile?: string; type: 'image' | 'video' }> = {
-    1: { desktop: background1, mobile: mobileBackground1, type: 'image' },
-    2: { desktop: background2, mobile: mobileBackground2, type: 'image' },
-    3: { desktop: background3, mobile: mobileBackground3, type: 'image' },
-    4: { desktop: background4, mobile: mobileBackground4, type: 'image' },
-    5: { desktop: background5, mobile: mobileBackground5, type: 'image' },
-    6: { desktop: background6, mobile: mobileBackground6, type: 'image' },
-    7: { desktop: background7, type: 'video' },
-};
+// Мы используем эту карту только для быстрого поиска мобильных/десктопных версий
+const RESOURCE_MAP = [
+    { id: 1, desktop: background1, mobile: mobileBackground1, type: 'image' },
+    { id: 2, desktop: background2, mobile: mobileBackground2, type: 'image' },
+    { id: 3, desktop: background3, mobile: mobileBackground3, type: 'image' },
+    { id: 4, desktop: background4, mobile: mobileBackground4, type: 'image' },
+    { id: 5, desktop: background5, mobile: mobileBackground5, type: 'image' },
+    { id: 6, desktop: background6, mobile: mobileBackground6, type: 'image' },
+    { id: 7, desktop: background7, type: 'video' },
+];
 // ---------------------------------------------------------
 
 
@@ -62,45 +63,42 @@ export function Home() {
     
     // --- ЛОГИКА ЗАГРУЗКИ ФОНА (Выполняется только при загрузке) ---
     useEffect(() => {
-        // Здесь мы используем ID для цикла, а не URL.
-        const initialResources: BackgroundResource[] = [
-            { id: 1, url: RESOURCE_MAP[1].desktop, type: 'image' },
-            { id: 2, url: RESOURCE_MAP[2].desktop, type: 'image' },
-            { id: 3, url: RESOURCE_MAP[3].desktop, type: 'image' },
-            { id: 4, url: RESOURCE_MAP[4].desktop, type: 'image' },
-            { id: 5, url: RESOURCE_MAP[5].desktop, type: 'image' },
-            { id: 6, url: RESOURCE_MAP[6].desktop, type: 'image' },
-            { id: 7, url: RESOURCE_MAP[7].desktop, type: 'video' },
-        ];
+        // Здесь мы используем ID и URL для цикла
+        const allResources: BackgroundResource[] = RESOURCE_MAP.map(item => ({
+            id: item.id,
+            url: item.desktop, // Для цикла используем десктопный URL
+            type: item.type,
+        }));
 
         let remainingResources: BackgroundResource[] = [];
         const storedList = sessionStorage.getItem(STORAGE_KEY);
         
-        // ... (логика цикла и Session Storage) ...
-        
         if (storedList) {
             try {
-                // Пытаемся получить список из Session Storage
-                const parsedList = JSON.parse(storedList);
-                // Проверяем, что в Session Storage хранятся только ID, чтобы избежать дублирования
-                remainingResources = parsedList.map((res: { id: number }) => {
-                    const mapItem = RESOURCE_MAP[res.id];
-                    return { id: res.id, url: mapItem.desktop, type: mapItem.type };
-                });
+                // Восстанавливаем объекты BackgroundResource из сохраненных ID
+                const parsedIds = JSON.parse(storedList);
+                remainingResources = parsedIds.map((res: { id: number }) => {
+                    const mapItem = RESOURCE_MAP.find(r => r.id === res.id);
+                    // Если элемент найден, возвращаем его
+                    if (mapItem) {
+                        return { id: mapItem.id, url: mapItem.desktop, type: mapItem.type } as BackgroundResource;
+                    }
+                    return null;
+                }).filter((res): res is BackgroundResource => res !== null); // Отфильтровываем null
             } catch (e) {
                 console.error("Error reading background list from Session Storage", e);
             }
         }
 
-        if (!remainingResources || remainingResources.length === 0 || remainingResources.length > initialResources.length) {
-            remainingResources = shuffleArray(initialResources);
+        if (!remainingResources || remainingResources.length === 0 || remainingResources.length !== allResources.length) {
+            remainingResources = shuffleArray(allResources);
         }
 
         const nextResource = remainingResources.shift(); 
 
         if (nextResource) {
             setBackgroundResource(nextResource);
-            // Сохраняем в Session Storage только ID, чтобы избежать проблем с сериализацией
+            // Сохраняем в Session Storage только ID
             const idsToSave = remainingResources.map(r => ({ id: r.id }));
             sessionStorage.setItem(STORAGE_KEY, JSON.stringify(idsToSave));
         }
@@ -111,10 +109,10 @@ export function Home() {
     const getAdaptiveUrl = (resource: BackgroundResource | null, isMobileMode: boolean): string | null => {
         if (!resource) return null;
 
-        const mapItem = RESOURCE_MAP[resource.id];
+        const mapItem = RESOURCE_MAP.find(r => r.id === resource.id);
         if (!mapItem) return resource.url; 
 
-        // 1. Видео (всегда берем десктопный путь, как вы и просили)
+        // 1. Видео
         if (mapItem.type === 'video') {
             return mapItem.desktop; 
         }
@@ -139,9 +137,9 @@ export function Home() {
 
 
     return (
-        // КОНТЕЙНЕР ФОНА: Отступ top-24 (96px) восстановлен
+        // КОНТЕЙНЕР ФОНА: Отступ top-24 (96px) сохранен
         <div 
-            className="fixed inset-x-0 bottom-0 top-20 h-auto" 
+            className="fixed inset-x-0 bottom-0 top-[80px] h-auto" 
             style={{ 
                 zIndex: 1,
             }} 
