@@ -29,7 +29,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
   return (
     // ИСПРАВЛЕНО: Добавлен relative, чтобы гарантировать работу z-index
-    <nav className="fixed relative top-0 left-0 right-0 bg-white border-b border-black z-[99]">
+    <nav className="fixed top-0 left-0 right-0 bg-white border-b border-black z-[99]">
       <div className="max-w-7xl mx-auto px-8 py-6">
         
         <div className="flex items-center justify-between w-full"> 
