@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-// Импорт всех ресурсов
+// Импорт ВСЕХ десктопных ресурсов
 import background1 from '../images/home/background-01.png';
 import background2 from '../images/home/background-02.png';
 import background3 from '../images/home/background-03.png';
@@ -7,6 +7,7 @@ import background4 from '../images/home/background-04.png';
 import background5 from '../images/home/background-05.png';
 import background6 from '../images/home/background-06.png';
 import background7 from '../media/twisters/TWISTERS I-2 Bipolar.mp4'; 
+// !!! ИМПОРТЫ для мобильных картинок !!!
 import mobileBackground1 from '../images/home/mobile/background-01.png';
 import mobileBackground2 from '../images/home/mobile/background-02.png';
 import mobileBackground3 from '../images/home/mobile/background-03.png';
@@ -22,7 +23,7 @@ interface BackgroundResource {
 }
 
 const STORAGE_KEY = 'background_cycle_list';
-const BREAKPOINT = 700; 
+const BREAKPOINT = 700; // 700px
 
 function shuffleArray<T>(array: T[]): T[] {
     const newArray = [...array];
@@ -32,6 +33,19 @@ function shuffleArray<T>(array: T[]): T[] {
     }
     return newArray;
 }
+
+// --- Карта сопоставления ID и фактического URL импорта ---
+const RESOURCE_MAP: Record<number, { desktop: string; mobile?: string; type: 'image' | 'video' }> = {
+    1: { desktop: background1, mobile: mobileBackground1, type: 'image' },
+    2: { desktop: background2, mobile: mobileBackground2, type: 'image' },
+    3: { desktop: background3, mobile: mobileBackground3, type: 'image' },
+    4: { desktop: background4, mobile: mobileBackground4, type: 'image' },
+    5: { desktop: background5, mobile: mobileBackground5, type: 'image' },
+    6: { desktop: background6, mobile: mobileBackground6, type: 'image' },
+    7: { desktop: background7, type: 'video' },
+};
+// ---------------------------------------------------------
+
 
 export function Home() {
     const [backgroundResource, setBackgroundResource] = useState<BackgroundResource | null>(null);
@@ -46,38 +60,49 @@ export function Home() {
         return () => window.removeEventListener('resize', handleResize);
     }, []); 
     
-    // --- ЛОГИКА ЗАГРУЗКИ ФОНА ---
+    // --- ЛОГИКА ЗАГРУЗКИ ФОНА (Выполняется только при загрузке) ---
     useEffect(() => {
-        const allResources: BackgroundResource[] = [
-            { id: 1, url: background1, type: 'image' },
-            { id: 2, url: background2, type: 'image' },
-            { id: 3, url: background3, type: 'image' },
-            { id: 4, url: background4, type: 'image' },
-            { id: 5, url: background5, type: 'image' },
-            { id: 6, url: background6, type: 'image' },
-            { id: 7, url: background7, type: 'video' },
+        // Здесь мы используем ID для цикла, а не URL.
+        const initialResources: BackgroundResource[] = [
+            { id: 1, url: RESOURCE_MAP[1].desktop, type: 'image' },
+            { id: 2, url: RESOURCE_MAP[2].desktop, type: 'image' },
+            { id: 3, url: RESOURCE_MAP[3].desktop, type: 'image' },
+            { id: 4, url: RESOURCE_MAP[4].desktop, type: 'image' },
+            { id: 5, url: RESOURCE_MAP[5].desktop, type: 'image' },
+            { id: 6, url: RESOURCE_MAP[6].desktop, type: 'image' },
+            { id: 7, url: RESOURCE_MAP[7].desktop, type: 'video' },
         ];
 
         let remainingResources: BackgroundResource[] = [];
         const storedList = sessionStorage.getItem(STORAGE_KEY);
         
+        // ... (логика цикла и Session Storage) ...
+        
         if (storedList) {
             try {
-                remainingResources = JSON.parse(storedList);
+                // Пытаемся получить список из Session Storage
+                const parsedList = JSON.parse(storedList);
+                // Проверяем, что в Session Storage хранятся только ID, чтобы избежать дублирования
+                remainingResources = parsedList.map((res: { id: number }) => {
+                    const mapItem = RESOURCE_MAP[res.id];
+                    return { id: res.id, url: mapItem.desktop, type: mapItem.type };
+                });
             } catch (e) {
                 console.error("Error reading background list from Session Storage", e);
             }
         }
 
-        if (!remainingResources || remainingResources.length === 0 || remainingResources.length > allResources.length) {
-            remainingResources = shuffleArray(allResources);
+        if (!remainingResources || remainingResources.length === 0 || remainingResources.length > initialResources.length) {
+            remainingResources = shuffleArray(initialResources);
         }
 
         const nextResource = remainingResources.shift(); 
 
         if (nextResource) {
             setBackgroundResource(nextResource);
-            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(remainingResources));
+            // Сохраняем в Session Storage только ID, чтобы избежать проблем с сериализацией
+            const idsToSave = remainingResources.map(r => ({ id: r.id }));
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(idsToSave));
         }
         
     }, []); 
@@ -86,24 +111,21 @@ export function Home() {
     const getAdaptiveUrl = (resource: BackgroundResource | null, isMobileMode: boolean): string | null => {
         if (!resource) return null;
 
-        if (resource.type === 'video') {
-            return resource.url; 
+        const mapItem = RESOURCE_MAP[resource.id];
+        if (!mapItem) return resource.url; 
+
+        // 1. Видео (всегда берем десктопный путь, как вы и просили)
+        if (mapItem.type === 'video') {
+            return mapItem.desktop; 
         }
 
-        const mobileImageMap: { [key: number]: string } = {
-            1: mobileBackground1,
-            2: mobileBackground2,
-            3: mobileBackground3,
-            4: mobileBackground4,
-            5: mobileBackground5,
-            6: mobileBackground6,
-        };
-        
-        if (isMobileMode && mobileImageMap[resource.id]) {
-            return mobileImageMap[resource.id];
+        // 2. Изображения: Если мобильный режим и есть мобильный ресурс, используем его.
+        if (isMobileMode && mapItem.mobile) {
+            return mapItem.mobile;
         }
 
-        return resource.url;
+        // 3. Десктопное изображение
+        return mapItem.desktop;
     };
     // ---------------------------------
 
@@ -117,9 +139,9 @@ export function Home() {
 
 
     return (
-        // ВОССТАНОВЛЕНИЕ: Используем БЕЗОПАСНЫЙ Tailwind класс top-24 (96px)
+        // КОНТЕЙНЕР ФОНА: Отступ top-24 (96px) восстановлен
         <div 
-            className="fixed inset-x-0 bottom-0 top-24 h-auto" // top-24 - отступ 96px
+            className="fixed inset-x-0 bottom-0 top-24 h-auto" 
             style={{ 
                 zIndex: 1,
             }} 
