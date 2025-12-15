@@ -18,9 +18,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   ];
 
   const handleNavigate = (pageId: string) => {
+    // Используем хеш-навигацию и вызываем колбэк для смены состояния
     window.location.hash = pageId;
     onNavigate(pageId);
-    setIsOpen(false); 
+    setIsOpen(false); // Закрываем мобильное меню при навигации
   };
   
   const toggleMenu = () => {
@@ -28,7 +29,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   };
 
   return (
-    // Принудительное позиционирование: fixed и zIndex: 9999
+    // Навигация с высоким z-index, чтобы всегда быть поверх контента
     <nav 
         className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
         style={{ zIndex: 9999 }} 
@@ -37,6 +38,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         
         <div className="flex items-center justify-between w-full"> 
           
+          {/* Логотип и имя Olga Feldman */}
           <div className="flex-shrink-0 mr-12"> 
             <button
               onClick={() => handleNavigate('home')}
@@ -49,13 +51,14 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           
           <div className="flex items-center">
             
-            {/* ДЕСКТОПНОЕ МЕНЮ */}
+            {/* ДЕСКТОПНОЕ МЕНЮ (скрыто на мобильных, видно от sm и выше) */}
             <ul className="hidden sm:flex gap-12 items-center"> 
               {pages.map((page) => (
                 <li key={page.id}>
                   <button
                     onClick={() => handleNavigate(page.id)}
-                    className={`tracking-wider hover:opacity-50 transition-opacity ${
+                    // ИСПРАВЛЕНИЕ: text-black гарантирует видимость текста кнопок
+                    className={`text-black tracking-wider hover:opacity-50 transition-opacity ${
                       currentPage === page.id ? 'opacity-100' : 'opacity-40'
                     }`}
                   >
@@ -65,7 +68,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               ))}
             </ul>
 
-            {/* КНОПКА ГАМБУРГЕР */}
+            {/* КНОПКА ГАМБУРГЕР (видно только на мобильных) */}
             <button
               className="flex sm:hidden flex-col items-end justify-center" 
               onClick={toggleMenu}
@@ -88,7 +91,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             style={{ 
                 opacity: isOpen ? 1 : 0, 
                 pointerEvents: isOpen ? 'auto' : 'none',
-                zIndex: 9998, // Чуть ниже навигации
+                zIndex: 9998,
             }}
         >
             <div className="flex flex-col items-center justify-center min-h-screen pt-20 pb-20">
@@ -97,7 +100,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                         <li key={page.id}>
                             <button
                                 onClick={() => handleNavigate(page.id)}
-                                className={`tracking-wider text-2xl font-medium hover:opacity-50 transition-opacity ${
+                                // ИСПРАВЛЕНИЕ: text-black гарантирует видимость текста кнопок
+                                className={`text-black tracking-wider text-2xl font-medium hover:opacity-50 transition-opacity ${
                                     currentPage === page.id ? 'opacity-100' : 'opacity-40'
                                 }`}
                             >
