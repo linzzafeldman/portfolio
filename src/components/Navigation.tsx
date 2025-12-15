@@ -63,7 +63,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         > 
           
             {/* 1. ДЕСКТОПНОЕ МЕНЮ: Видимо на 'sm' (640px) и выше */}
-            <ul className="hidden sm:flex gap-12 items-center"> 
+            <ul className="flex sm:flex gap-12 items-center"> 
                 {pages.map((page) => (
                   <li key={page.id}>
                     <button
