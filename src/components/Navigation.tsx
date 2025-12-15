@@ -31,6 +31,30 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     setIsOpen(false);
   };
 
+  // --- Стили для обхода конфликтов Tailwind ---
+  const menuContainerStyle = {
+      position: 'absolute', 
+      top: '50%', 
+      right: '2rem', // Эквивалент right-8
+      transform: 'translateY(-50%)',
+      display: 'flex',
+      alignItems: 'center',
+      // Добавим padding и background для гарантии, что элемент занимает место
+      padding: '0 1rem', 
+  };
+  
+  const desktopMenuStyle = {
+      display: 'flex', // Гарантируем видимость на десктопе
+      gap: '3rem', // Эквивалент gap-12
+      alignItems: 'center',
+  };
+  
+  const hiddenOnMobileStyle = {
+      display: 'none',
+  }
+  // ---------------------------------------------
+
+
   return (
     // Навигационная панель: фиксирована и имеет zIndex: 9999
     <nav 
@@ -54,16 +78,17 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           </div>
         </div>
           
-        {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: 
-            ИЗОЛИРОВАН, прикреплен СПРАВА и ЦЕНТРИРОВАН по вертикали.
-            (Это решение, которое ГАРАНТИРУЕТ видимость и центрирование) */}
+        {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА: ЧИСТЫЙ CSS */}
         <div 
-            // УДАЛЕН bg-red-500, ИСПРАВЛЕНО ВЫРАВНИВАНИЕ
-            className="absolute top-1/2 right-8 transform -translate-y-1/2 flex items-center" 
+            style={menuContainerStyle as React.CSSProperties} 
         > 
           
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Видимо на 'sm' (640px) и выше */}
-            <ul className="hidden sm:flex gap-12 items-center"> 
+            {/* 1. ДЕСКТОПНОЕ МЕНЮ: Используем медиа-запрос для скрытия на мобильном 
+                Для десктопа мы явно задаем display: flex */}
+            <ul 
+                style={window.innerWidth >= 640 ? desktopMenuStyle as React.CSSProperties : hiddenOnMobileStyle as React.CSSProperties}
+                className="gap-12 items-center" // Tailwind классы для отступов и шрифтов
+            > 
                 {pages.map((page) => (
                   <li key={page.id}>
                     <button
@@ -78,9 +103,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР: Видима по умолчанию, скрыта на 'sm' (640px) и выше */}
+            {/* 2. КНОПКА ГАМБУРГЕР: Скрыта на десктопе, видна на мобильном */}
             <button
-              className="flex sm:hidden flex-col items-end justify-center z-[10000]" 
+              // Инлайн стили для адаптивности (должны работать более надежно)
+              style={window.innerWidth >= 640 ? hiddenOnMobileStyle as React.CSSProperties : desktopMenuStyle as React.CSSProperties}
+              className="flex-col items-end justify-center z-[10000]" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -93,7 +120,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
       </div>
       
-      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на 'sm' и выше */}
+      {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ: Скрыт на десктопе */}
       {isOpen && (
         <div 
             className="fixed inset-0 bg-white/95 sm:hidden transition-opacity duration-300" 
