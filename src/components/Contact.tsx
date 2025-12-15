@@ -45,6 +45,17 @@ export function Contact() {
             </a>
           
           </div>
+          <div className="flex gap-8">
+            <a
+              href="https://x.com/_olgafeldman_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-50 transition-opacity"
+            >
+              X Twitter
+            </a>
+          
+          </div>
         </div>
       </div>
     </div>
