@@ -120,7 +120,7 @@ export function Home() {
 
     return (
         // Родительский контейнер, который должен быть fixed и заполнять экран
-        <div className="fixed inset-x-0 bottom-0 top-[120px] h-auto" style={{ zIndex: 1 }}> 
+        <div className="fixed bottom-0 top-[120px] h-auto" style={{ zIndex: 1 }}> 
             {finalType === 'video' ? (
                 // Рендеринг видео
                 <video
