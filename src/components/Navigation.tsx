@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-import logo from '../images/home/logo.png';
+import logo from '../images/home/logo.png'; // Убедитесь, что путь к логотипу верен
 
 interface NavigationProps {
   currentPage: string;
@@ -21,6 +21,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     window.location.hash = pageId;
     onNavigate(pageId);
     
+    // Закрывает мобильное меню после клика, если оно было открыто
     setIsOpen(false); 
   };
   
@@ -32,31 +33,23 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white border-b border-black z-50">
       <div className="max-w-7xl mx-auto px-8 py-6">
-        <div className="flex items-center justify-between">
+        
+        {/* ГЛАВНЫЙ КОНТЕЙНЕР: Разделяет Логотип и Навигацию/Гамбургер */}
+        <div className="flex items-center justify-between w-full"> 
           
-          {/* Логотип */}
-          <button
-            onClick={() => handleNavigate('home')}
-            className="tracking-wider hover:opacity-50 transition-opacity flex items-center gap-3"
-          >
-            <img src={logo} alt="Logo" className="w-[30px] h-[30px]" />
-            OLGA FELDMAN
-          </button>
+          {/* 1. Логотип (Левая часть) */}
+          <div className="flex-shrink-0">
+            <button
+              onClick={() => handleNavigate('home')}
+              className="tracking-wider hover:opacity-50 transition-opacity flex items-center gap-3"
+            >
+              <img src={logo} alt="Logo" className="w-[30px] h-[30px]" />
+              OLGA FELDMAN
+            </button>
+          </div>
           
-          {/* 1. Кнопка-гамбургер (видна только на маленьких экранах) */}
-          <button
-            className="md:hidden" 
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {/* Простой "гамбургер" из трех линий */}
-            <div className={`w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}></div>
-            <div className={`w-6 h-0.5 bg-black mt-1 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></div>
-            <div className={`w-6 h-0.5 bg-black mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}></div>
-          </button>
-
-          {/* 2. Десктопное меню (скрыто на маленьких, видно на средних и больших) */}
-          <ul className="hidden md:flex gap-12"> 
+          {/* 2. Десктопное меню (Правая часть, скрыто на мобильных) */}
+          <ul className="hidden md:flex gap-12 items-center"> 
             {pages.map((page) => (
               <li key={page.id}>
                 <button
@@ -70,10 +63,23 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               </li>
             ))}
           </ul>
+
+          {/* 3. Кнопка-гамбургер (Правая часть, видна на мобильных) */}
+          <button
+            className="md:hidden flex flex-col items-end justify-center"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {/* Иконка Гамбургер */}
+            <div className={`w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}></div>
+            <div className={`w-6 h-0.5 bg-black mt-1 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></div>
+            <div className={`w-6 h-0.5 bg-black mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}></div>
+          </button>
+
         </div>
       </div>
       
-      {/* 3. Мобильное меню (появляется под шапкой) */}
+      {/* 4. Мобильное меню (Появляется при нажатии на Гамбургер) */}
       <div 
         className={`md:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-96 py-4 border-t border-black' : 'max-h-0' 
