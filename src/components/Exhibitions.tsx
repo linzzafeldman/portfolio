@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import { Shelter } from './Shelter';
-import { Grieving } from './Grieving';
-import { Hikli } from './Hikli';
 
 interface Exhibition {
   id: string;
@@ -12,8 +9,6 @@ interface Exhibition {
 }
 
 export function Exhibitions() {
-  const [selectedExhibition, setSelectedExhibition] = useState<string | null>(null);
-
   const exhibitions: Exhibition[] = [
     {
       id: 'shelter',
@@ -38,33 +33,22 @@ export function Exhibitions() {
     },
   ];
 
-  const handleBack = () => setSelectedExhibition(null);
-
-  // Render selected exhibition component
-  if (selectedExhibition === 'shelter') {
-    return <Shelter onBack={handleBack} />;
-  }
-  if (selectedExhibition === 'grieving') {
-    return <Grieving onBack={handleBack} />;
-  }
-  if (selectedExhibition === 'hikli') {
-    return <Hikli onBack={handleBack} />;
-  }
 
   return (
     <div className="max-w-7xl mx-auto px-8">
-      <h1 className="mb-12 tracking-wider">EXHIBITIONS</h1>
+      <h1 className="mb-12 tracking-wider text-xl">EXHIBITIONS</h1>
       <div className="space-y-12">
         {exhibitions.map((exhibition) => (
-          <button
+          // Теперь это ссылка <a>, которая меняет адрес страницы
+          <a
             key={exhibition.id}
-            onClick={() => setSelectedExhibition(exhibition.id)}
-            className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity"
+            href={`#${exhibition.id}`}
+            className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity no-underline text-black"
           >
-            <h2 className="mb-4 tracking-wider">{exhibition.title}</h2>
+            <h2 className="mb-4 tracking-wider text-lg">{exhibition.title}</h2>
             <p className="opacity-60 mb-4">{exhibition.year} | {exhibition.location}</p>
             <p className="max-w-2xl">{exhibition.description}</p>
-          </button>
+          </a>
         ))}
       </div>
     </div>
