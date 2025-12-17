@@ -10,7 +10,7 @@ import artwork2 from '../images/projects/women/artwork-02.png';
 export function Women() {
   const artworks = [
     {
-      id: 'art1',
+      id: "art1",
       // Теперь передаем список картинок в массиве []
       // Если хочешь добавить еще фото в этот слайдер, просто допиши их через запятую
       images: [artwork1], 
@@ -18,7 +18,7 @@ export function Women() {
       description: 'Layered abstract forms creating a symmetrical composition that explores mirroring and balance in digital space.',
     },
     {
-      id: 'art2',
+      id: "art2",
       // Даже если картинка одна, она должна быть в массиве [ ]
       images: [artwork2], 
       title: 'Emergence',
