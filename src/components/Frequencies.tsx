@@ -1,33 +1,17 @@
 import { Gallery } from './Gallery';
 
+import image1 from '../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
 
 
 export function Frequencies() {
   const artworks = [
     {
-      id: 'freq1',
-      imageUrl: 'wave-patterns',
+      id: "freq1",
+        images: [image1], 
       title: 'Resonance I',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     },
-    {
-      id: 'freq2',
-      imageUrl: 'abstract-waves',
-      title: 'Harmonic Series',
-      description: 'Mathematical beauty in oscillation patterns, translating audio frequencies into visual rhythms.',
-    },
-    {
-      id: 'freq3',
-      imageUrl: 'sound-visualization',
-      title: 'Amplitude',
-      description: 'The rise and fall of sonic energy captured in stark monochromatic compositions.',
-    },
-    {
-      id: 'freq4',
-      imageUrl: 'frequency-abstract',
-      title: 'Interference',
-      description: 'Overlapping waveforms creating unexpected patterns, a study in sonic collision and harmony.',
-    },
+   
   ];
 
   return (

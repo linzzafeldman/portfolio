@@ -13,37 +13,37 @@ export function AnAtomy() {
   const artworks = [
     {
       id: 'art7',
-      imageUrl: image1,
+      images: [image1],
       title: 'Fading',
       description: 'The gradual dissolution of memory over time, represented through deteriorating forms.',
     },
     {
       id: 'art8',
-      imageUrl: image2,
+      images: [image2], 
       title: 'Recall',
       description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
-      imageUrl: image3,
+        images: [image3], 
       title: 'Recall',
       description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
-      imageUrl: image4,
+        images: [image4], 
       title: 'Recall',
       description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
-      imageUrl: image5,
+       images: [image5], 
       title: 'Recall',
       description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
-      imageUrl: image6,
+       images: [image6], 
       title: 'Recall',
       description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },

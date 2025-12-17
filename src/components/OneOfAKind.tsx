@@ -7,7 +7,7 @@ export function OneOfAKind() {
   const artworks = [
     {
       id: "art1",
-      imageUrl: artwork1,
+      images: [artwork1], 
       title: "Cat 01",
       description:
         "Layered abstract forms creating a symmetrical composition that explores mirroring and balance in digital space.",
@@ -15,7 +15,7 @@ export function OneOfAKind() {
     },
     {
       id: "art2",
-      imageUrl: artwork2,
+      images: [artwork2], 
       title: "Male 02",
       description:
         "Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.",
