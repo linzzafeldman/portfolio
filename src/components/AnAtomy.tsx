@@ -54,7 +54,7 @@ export function AnAtomy() {
        <button
           // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'projects'}
-          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-white"
+          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
         >
           ← BACK TO PROJECTS
         </button>
