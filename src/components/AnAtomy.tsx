@@ -7,11 +7,9 @@ import image4 from '../images/projects/an-atomy/04_AnAtomyFull_2022.jpg';
 import image5 from '../images/projects/an-atomy/05_AnAtomyFull_2022.jpg';
 import image6 from '../images/projects/an-atomy/06_AnAtomyFull_2022.jpg';
 
-interface AnAtomyProps {
-  onBack: () => void;
-}
 
-export function AnAtomy({ onBack }: AnAtomyProps) {
+
+export function AnAtomy() {
   const artworks = [
     {
       id: 'art7',
@@ -53,12 +51,13 @@ export function AnAtomy({ onBack }: AnAtomyProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-8">
-      <button
-        onClick={onBack}
-        className="mb-12 tracking-wider hover:opacity-50 transition-opacity"
-      >
-        ← BACK TO PROJECTS
-      </button>
+       <button
+          // Теперь при клике мы просто меняем адрес на #projects
+          onClick={() => window.location.hash = 'projects'}
+          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-white"
+        >
+          ← BACK TO PROJECTS
+        </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">AN ATOMY</h1>
         <p className="mb-2 opacity-60">2022 | Photography, Digital Artwork</p>
