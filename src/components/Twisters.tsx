@@ -1,48 +1,70 @@
-import { Gallery } from './Gallery';
+import { Gallery } from "./Gallery";
+import artwork1 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork2 from "../images/projects/twisters/Twister-I-2_2500_2.jpg";
 
-interface TwistersProps {
-  onBack: () => void;
-}
-
-export function Twisters({ onBack }: TwistersProps) {
+// Мы убираем интерфейс TwistersProps, так как параметры больше не нужны
+export function Twisters() {
   const artworks = [
     {
-      id: 'art4',
-      imageUrl: 'shadow-photography',
-      title: 'Cast',
-      description: 'Shadows as subjects rather than absence, exploring their form and movement.',
+      id: "art1",
+      imageUrl: artwork1,
+      title: "Twister I-1. Bipolar",
+      description:
+        "Layered abstract forms creating a symmetrical composition that explores mirroring and balance in digital space.",
+      isImported: true,
     },
     {
-      id: 'art5',
-      imageUrl: 'light-study',
-      title: 'Illumination',
-      description: 'Natural light filtering through architectural spaces, creating ephemeral drawings.',
-    },
-    {
-      id: 'art6',
-      imageUrl: 'contrast-abstract',
-      title: 'Balance',
-      description: 'The interplay between darkness and brightness as a metaphor for equilibrium.',
+      id: "art2",
+      imageUrl: artwork2,
+      title: "Twister I-2. Anxiety",
+      description:
+        "Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.",
+      isImported: true,
     },
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-8">
-      <button
-        onClick={onBack}
-        className="mb-12 tracking-wider hover:opacity-50 transition-opacity"
-      >
-        ← BACK TO PROJECTS
-      </button>
-      <div className="mb-12">
-        <h1 className="mb-4 tracking-wider">TWISTERS</h1>
-        <p className="mb-2 opacity-60">2023 | Mixed Media</p>
-        <p className="max-w-2xl mt-6">
-          A meditation on duality, examining how shadows define form and light creates meaning 
-          in our visual experience.
-        </p>
+    <div className="bg-black text-white min-h-screen -mt-24 -mb-16 pt-24 pb-16">
+      <div className="max-w-7xl mx-auto px-8">
+        <button
+          // Теперь при клике мы просто меняем адрес на #projects
+          onClick={() => window.location.hash = 'projects'}
+          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-white"
+        >
+          ← BACK TO PROJECTS
+        </button>
+        <div className="mb-12">
+          <h1 className="mb-4 tracking-wider">TWISTERS</h1>
+          <p className="mb-2 opacity-60">
+            2017-2022 | Digital Art, Video, 3D
+          </p>
+          <p className="max-w-2xl mt-6">
+            "Twisters" short description. </p>
+            <p className="max-w-2xl mt-6">
+            The series presents abstract,
+            living shapes that hover between randomness and
+            recognition, as if each were a fleeting signal, a
+            momentary birth of a familiar form emerging from a
+            repetitive pattern of radio waves. The works balance
+            between precision and glitch, between the moment of
+            emergence and disappearance. Within their restrained
+            geometry lies a quiet irony: every form claims
+            uniqueness, yet all return to the same rhythm, an
+            echo, endlessly looping through variations of one
+            code. Universe has a structure, and we are part of it.</p>
+            <p className="max-w-2xl mt-6">
+            Though the series consists of multiple digital
+            drawings, their origin is neither purely manual nor
+            entirely artificial. Each image begins as a generative
+            sketch, an algorithmic whisper refined and redrawn by
+            hand into vector form. The process mirrors the concept
+            itself: individuality born from repetition, the human
+            refined through the artificial, and the artificial
+            softened by human touch.
+          </p>
+        </div>
+        <Gallery artworks={artworks} />
       </div>
-      <Gallery artworks={artworks} />
     </div>
   );
 }

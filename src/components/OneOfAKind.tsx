@@ -2,11 +2,8 @@ import { Gallery } from "./Gallery";
 import artwork1 from "../images/projects/one-of-a-kind/artwork-01.png";
 import artwork2 from "../images/projects/one-of-a-kind/artwork-02.png";
 
-interface OneOfAKindProps {
-  onBack: () => void;
-}
-
-export function OneOfAKind({ onBack }: OneOfAKindProps) {
+// Мы убираем интерфейс OneOfAKindProps, так как параметры больше не нужны
+export function OneOfAKind() {
   const artworks = [
     {
       id: "art1",
@@ -30,7 +27,8 @@ export function OneOfAKind({ onBack }: OneOfAKindProps) {
     <div className="bg-black text-white min-h-screen -mt-24 -mb-16 pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-8">
         <button
-          onClick={onBack}
+          // Теперь при клике мы просто меняем адрес на #projects
+          onClick={() => window.location.hash = 'projects'}
           className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-white"
         >
           ← BACK TO PROJECTS
