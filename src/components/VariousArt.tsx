@@ -3,11 +3,8 @@ import artwork1 from '../images/projects/various-art/artwork-01.png';
 import artwork2 from '../images/projects/various-art/artwork-02.png';
 import artwork3 from '../images/projects/various-art/artwork-03.png';
 
-interface VariousArtProps {
-  onBack: () => void;
-}
 
-export function VariousArt({ onBack }: VariousArtProps) {
+export function VariousArt() {
   const artworks = [
     {
       id: 'various1',
@@ -56,11 +53,12 @@ export function VariousArt({ onBack }: VariousArtProps) {
   return (
     <div className="max-w-7xl mx-auto px-8">
       <button
-        onClick={onBack}
-        className="mb-12 tracking-wider hover:opacity-50 transition-opacity"
-      >
-        ← BACK TO PROJECTS
-      </button>
+          // Теперь при клике мы просто меняем адрес на #projects
+          onClick={() => window.location.hash = 'projects'}
+          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
+        >
+          ← BACK TO PROJECTS
+        </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">VARIOUS ART</h1>
         <p className="mb-2 opacity-60">∞ — Digital Art, Vector Art, 3D Art, Video Art</p>
