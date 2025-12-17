@@ -35,15 +35,15 @@ export default function App() {
         description = "Olga Feldman. Artist Statement.";
         break;
       case 'exhibitions':
-        title = "Exhibitions | Olga Feldman";
+        title = "Olga Feldman | Exhibitions";
         description = "Olga Feldman. Recent and upcoming exhibitions.";
         break;
       case 'projects':
-        title = "Projects | Olga Feldman";
-        description = "Selected monochrome visual art projects by Olga Feldman.";
+        title = "Olga Feldman | Projects";
+        description = "Selected visual art projects by Olga Feldman.";
         break;
       case 'contact':
-        title = "Contact | Olga Feldman";
+        title = "Olga Feldman | Contact";
         description = "Get in touch with Olga Feldman.";
         break;
       
@@ -82,11 +82,11 @@ export default function App() {
         break;
       case 'variousart':
         title = "Various Art | Olga Feldman";
-        description = "Selected monochrome artworks by Olga Feldman.";
+        description = "Various monochrome artworks by Olga Feldman.";
         break;
 
       default:
-        title = "Olga Feldman Portfolio";
+        title = "Olga Feldman Artwork";
         description = "Olga Feldman. Monochrome visual artwork.";
     }
 

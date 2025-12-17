@@ -1,10 +1,4 @@
 import { useState } from 'react';
-import { OneOfAKind } from './OneOfAKind';
-import { Women } from './Women';
-import { Twisters } from './Twisters';
-import { AnAtomy } from './AnAtomy';
-import { Frequencies } from './Frequencies';
-import { VariousArt } from './VariousArt';
 
 interface Project {
   id: string;
@@ -15,11 +9,9 @@ interface Project {
 }
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
-
   const projects: Project[] = [
     {
-      id: 'one-of-a-kind',
+      id: 'oneofakind', // Изменил ID, чтобы он совпадал с case в App.tsx
       title: 'ONE OF A KIND',
       year: '2025',
       medium: 'Digital Art, AI, Vector Art',
@@ -47,14 +39,14 @@ export function Projects() {
       description: 'A series of paintings and graphic arts.',
     },
     {
-      id: 'an-atomy',
+      id: 'anatomy', // Убрал дефис, чтобы совпадало с App.tsx
       title: 'AN ATOMY',
       year: '2011',
       medium: 'Digital Art, Vector Art',
       description: 'Personal and collective memories explored through fragmented imagery and layered compositions, questioning the reliability and construction of remembrance.',
     },
     {
-      id: 'various-art',
+      id: 'variousart', // Убрал дефис
       title: 'VARIOUS ART',
       year: '∞',
       medium: 'Digital Art, Vector Art, 3D Art, Video Art',
@@ -62,42 +54,21 @@ export function Projects() {
     },
   ];
 
-  const handleBack = () => setSelectedProject(null);
-
-  // Render selected project component
-  if (selectedProject === 'one-of-a-kind') {
-    return <OneOfAKind onBack={handleBack} />;
-  }
-  if (selectedProject === 'women') {
-    return <Women onBack={handleBack} />;
-  }
-  if (selectedProject === 'twisters') {
-    return <Twisters onBack={handleBack} />;
-  }
-  if (selectedProject === 'frequencies') {
-    return <Frequencies onBack={handleBack} />;
-  }
-  if (selectedProject === 'an-atomy') {
-    return <AnAtomy onBack={handleBack} />;
-  }
-  if (selectedProject === 'various-art') {
-    return <VariousArt onBack={handleBack} />;
-  }
-
   return (
     <div className="max-w-7xl mx-auto px-8">
-      <h1 className="mb-12 tracking-wider">PROJECTS</h1>
+      <h1 className="mb-12 tracking-wider text-xl">PROJECTS</h1>
       <div className="space-y-12">
         {projects.map((project) => (
-          <button
+          // Теперь это ссылка <a>, которая меняет адрес страницы
+          <a
             key={project.id}
-            onClick={() => setSelectedProject(project.id)}
-            className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity"
+            href={`#${project.id}`}
+            className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity no-underline text-black"
           >
-            <h2 className="mb-4 tracking-wider">{project.title}</h2>
+            <h2 className="mb-4 tracking-wider text-lg">{project.title}</h2>
             <p className="opacity-60 mb-4">{project.year} | {project.medium}</p>
             <p className="max-w-2xl">{project.description}</p>
-          </button>
+          </a>
         ))}
       </div>
     </div>
