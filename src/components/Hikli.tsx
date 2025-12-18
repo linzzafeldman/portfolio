@@ -1,25 +1,14 @@
 import { Gallery } from './Gallery';
 
+import image1 from '../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
 
 
 export function Hikli() {
   const artworks = [
     {
-      id: 'hikli1',
-      imageUrl: 'corridor-minimal',
+      id: "hikli1",
+     images: [image1], 
       title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
-    },
-    {
-      id: 'hikli2',
-      imageUrl: 'stairs-minimal',
-      title: 'Artwork Title 2',
-      description: 'Description of the artwork from Hikli exhibition.',
-    },
-    {
-      id: 'hikli3',
-      imageUrl: 'empty-room',
-      title: 'Artwork Title 3',
       description: 'Description of the artwork from Hikli exhibition.',
     },
   ];
