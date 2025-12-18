@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 // Импорт ВСЕХ десктопных ресурсов
-import background1 from '../images/home/background-01.png';
-import background2 from '../images/home/background-02.png';
+import background1 from '../images/home/background-01.webp';
+import background2 from '../images/home/background-02.webp';
 import background3 from '../images/home/background-03.png';
-import background4 from '../images/home/background-04.png';
-import background5 from '../images/home/background-05.png';
-import background6 from '../images/home/background-06.png';
+import background4 from '../images/home/background-04.webp';
+import background5 from '../images/home/background-05.webp';
+import background6 from '../images/home/background-06.jpg';
 import background7 from '../media/twisters/TWISTERS I-2 Bipolar.mp4'; 
 // !!! НОВЫЕ ИМПОРТЫ для мобильных картинок !!!
 import mobileBackground1 from '../images/home/mobile/background-01.png';
