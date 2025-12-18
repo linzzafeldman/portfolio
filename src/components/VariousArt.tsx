@@ -8,46 +8,26 @@ export function VariousArt() {
   const artworks = [
     {
       id: "various1",
-      images: [artwork1],
+      imageUrl: artwork1, 
       title: 'Abstract Composition 01',
       description: 'Digital exploration of form and symmetry.',
       isImported: true,
     },
     {
       id: 'various2',
-      images: [artwork2],
+      imageUrl: artwork2, 
       title: 'Organic Forms 02',
       description: 'Vector art exploring natural patterns.',
       isImported: true,
     },
     {
       id: 'various3',
-      images: [artwork3],
+      imageUrl: artwork3, 
       title: 'Geometric Study 03',
       description: 'Minimal geometric composition.',
       isImported: true,
     },
-    {
-      id: 'various4',
-      images: [artwork3],
-      title: 'Digital Sketch 04',
-      description: 'Experimental digital artwork.',
-      isImported: true,
-    },
-    {
-      id: 'various5',
-      images: [artwork3],
-      title: 'Abstract Form 05',
-      description: 'Study in balance and contrast.',
-      isImported: true,
-    },
-    {
-      id: 'various6',
-      images: [artwork3],
-      title: 'Colorful Abstraction 06',
-      description: 'Vibrant digital art piece.',
-      isImported: true,
-    },
+  
   ];
 
   return (

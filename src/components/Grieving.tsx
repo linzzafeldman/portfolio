@@ -8,13 +8,13 @@ export function Grieving() {
   const artworks = [
     {
       id: 'grieving1',
-     images: [image1], 
+      imageUrl: image1, 
       title: 'Artwork Title 1',
       description: 'Description of the artwork from Grieving exhibition.',
     },
     {
       id: 'grieving2',
-      images: [image2], 
+      imageUrl: image2, 
       title: 'Artwork Title 2',
       description: 'Description of the artwork from Grieving exhibition.',
     },

@@ -6,16 +6,14 @@ export function Twisters() {
   const artworks = [
     {
       id: "art1",
-      // ИСПРАВЛЕНО: переименовано в images и обернуто в массив [ ]
-      images: [artwork1], 
+      imageUrl: artwork1, 
       title: "Twister I-1. Bipolar",
       description:
         "Layered abstract forms creating a symmetrical composition that explores mirroring and balance in digital space.",
     },
     {
       id: "art2",
-      // ИСПРАВЛЕНО: переименовано в images и обернуто в массив [ ]
-      images: [artwork2], 
+      imageUrl: artwork2, 
       title: "Twister I-2. Anxiety",
       description:
         "Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.",

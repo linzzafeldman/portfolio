@@ -7,7 +7,7 @@ export function Hikli() {
   const artworks = [
     {
       id: "hikli1",
-     images: [image1], 
+      imageUrl: image1, 
       title: 'Artwork Title 1',
       description: 'Description of the artwork from Hikli exhibition.',
     },

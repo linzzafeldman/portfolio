@@ -7,7 +7,7 @@ export function Frequencies() {
   const artworks = [
     {
       id: "freq1",
-        images: [image1], 
+      imageUrl: image1, 
       title: 'Resonance I',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     },
@@ -25,7 +25,7 @@ export function Frequencies() {
         </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">FREQUENCIES</h1>
-        <p className="mb-2 opacity-60">2023 — Sound Visualization, Digital Print</p>
+        <p className="mb-2 opacity-60">2023 | Sound Visualization, Digital Print</p>
         <p className="max-w-2xl mt-6">
           A series exploring the invisible world of sound through visual translation. By capturing 
           and transforming audio frequencies into graphic representations, this project bridges the 
