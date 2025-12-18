@@ -27,7 +27,7 @@ export function Women() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-8">
+    <div className="max-w-4xl mx-auto px-8">
       {/* Кнопка возврата к списку проектов */}
       <button
         onClick={() => window.location.hash = 'projects'}

@@ -25,7 +25,7 @@ export function OneOfAKind() {
 
   return (
     <div className="bg-black text-white min-h-screen -mt-24 -mb-16 pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-4xl mx-auto px-8">
         <button
           // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'projects'}

@@ -26,7 +26,7 @@ export function Shelter() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-8">
+    <div className="max-w-4xl mx-auto px-8">
   <button
           // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'exhibitions'}

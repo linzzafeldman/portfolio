@@ -1,6 +1,6 @@
 export function About() {
   return (
-    <div className="max-w-4xl mx-auto px-8">
+    <div className="max-w-7xl mx-auto px-8">
       <h1 className="mb-12 tracking-wider">ARTIST BIO</h1>
       <div className="space-y-6 max-w-2xl">
         <p>
