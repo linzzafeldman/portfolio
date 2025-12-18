@@ -50,7 +50,7 @@ export function AnAtomy() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-8">
+    <div className="max-w-5xl mx-auto px-8">
        <button
           // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'projects'}
