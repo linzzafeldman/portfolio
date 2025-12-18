@@ -3,7 +3,7 @@ import { Gallery } from './Gallery';
 import artwork1 from '../images/projects/frequencies/004_OlgaFeldman_AsAboveSoBelow.jpg';
 import artwork2 from '../images/projects/frequencies/007_OlgaFeldman_007_Seconds-Time.jpg';
 import artwork3 from '../images/projects/frequencies/008_OlgaFeldman_MountFuji.jpg';
-import artwork4 from '../images/projects/frequencies/009_OlgaFeldman__DistantShores.jpg';
+import artwork4 from '../images/projects/frequencies/009_OlgaFeldman_DistantShores.jpg';
 import artwork5 from '../images/projects/frequencies/010_OlgaFeldman_Direction.jpg';
 import artwork6 from '../images/projects/frequencies/013_OlgaFeldman_Balance.jpg';
 import artwork7 from '../images/projects/frequencies/014_OlgaFeldman_Fault.jpg';
