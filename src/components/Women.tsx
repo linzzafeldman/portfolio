@@ -2,7 +2,7 @@ import { Gallery } from './Gallery';
 // Импорт основных изображений
 import artwork1 from '../images/projects/women/OlgaFeldman_Banshee.png';
 import artwork2 from '../images/projects/women/OlgaFeldman_MsYou.png';
-import artwork3 from '../images/projects/women/OlgaFeldman_L.png';
+import artwork3 from '../images/projects/women/OlgaFeldman_L.jpg';
 
 
 // ПРИМЕР: Импорт дополнительных изображений для галереи (если они есть)
