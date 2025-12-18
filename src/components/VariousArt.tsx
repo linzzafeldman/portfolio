@@ -1,7 +1,7 @@
 import { MasonryGallery } from './MasonryGallery';
-import artwork1 from '../images/projects/various-art/artwork-01.png';
-import artwork2 from '../images/projects/various-art/artwork-02.png';
-import artwork3 from '../images/projects/various-art/artwork-03.png';
+import artwork1 from '../images/projects/various-art/OlgaFeldman_ClonikI.png';
+import artwork2 from '../images/projects/various-art/OlgaFeldman_Armour.jpg';
+import artwork3 from '../images/projects/various-art/OlgaFeldman_Vangogh.gif';
 
 
 export function VariousArt() {

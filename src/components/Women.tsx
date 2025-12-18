@@ -1,7 +1,9 @@
 import { Gallery } from './Gallery';
 // Импорт основных изображений
-import artwork1 from '../images/projects/women/artwork-01.png';
-import artwork2 from '../images/projects/women/artwork-02.png';
+import artwork1 from '../images/projects/women/OlgaFeldman_Banshee.png';
+import artwork2 from '../images/projects/women/OlgaFeldman_MsYou.png';
+import artwork3 from '../images/projects/women/OlgaFeldman_L.png';
+
 
 // ПРИМЕР: Импорт дополнительных изображений для галереи (если они есть)
 // import artwork1Detail from '../images/projects/women/artwork-01-detail.png';
@@ -13,15 +15,22 @@ export function Women() {
       id: "art1",
       // Теперь передаем список картинок в массиве []
       // Если хочешь добавить еще фото в этот слайдер, просто допиши их через запятую
-      images: [artwork1], 
-      title: 'Symmetry Study I',
+      imageUrl: artwork1, 
+      title: 'Banshee',
       description: 'Layered abstract forms creating a symmetrical composition that explores mirroring and balance in digital space.',
     },
     {
       id: "art2",
       // Даже если картинка одна, она должна быть в массиве [ ]
-      images: [artwork2], 
-      title: 'Emergence',
+      imageUrl: artwork2, 
+      title: 'Ms. You',
+      description: 'Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.',
+    },
+        {
+      id: "art3",
+      // Даже если картинка одна, она должна быть в массиве [ ]
+      imageUrl: artwork3, 
+      title: 'L',
       description: 'Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.',
     },
   ];
