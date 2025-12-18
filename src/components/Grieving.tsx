@@ -1,17 +1,20 @@
 import { Gallery } from './Gallery';
 
+import image1 from '../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
+import image2 from '../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
+
 
 export function Grieving() {
   const artworks = [
     {
       id: 'grieving1',
-      imageUrl: 'black-white-portrait',
+     images: [image1], 
       title: 'Artwork Title 1',
       description: 'Description of the artwork from Grieving exhibition.',
     },
     {
       id: 'grieving2',
-      imageUrl: 'abstract-shapes',
+      images: [image2], 
       title: 'Artwork Title 2',
       description: 'Description of the artwork from Grieving exhibition.',
     },
