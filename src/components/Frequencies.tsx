@@ -19,76 +19,76 @@ import artwork14 from '../images/projects/frequencies/026_OlgaFeldman_EmotionalL
 export function Frequencies() {
   const artworks = [
     {
-      id: "freq1",
+      id: "freq004",
       imageUrl: artwork1, 
-      title: 'Resonance I',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '004. As Above So Below.',
+      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.&nbsp 50cm. Acrylic on canvas. 2017',
     },
     {
-      id: "freq1",
+      id: "freq007",
       imageUrl: artwork2, 
-      title: 'Resonance I',
+      title: '007. Seconds (Time).',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq008",
       imageUrl: artwork3, 
-      title: 'Resonance I',
+      title: '008. Mount Fuji.',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq009",
       imageUrl: artwork4, 
-      title: 'Resonance I',
+      title: '009. Distant Shores.',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     },  {
-      id: "freq1",
+      id: "freq010",
       imageUrl: artwork5, 
-      title: 'Resonance I',
+      title: '010. Direction.',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq013",
       imageUrl: artwork6, 
-      title: 'Resonance I',
+      title: '013',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq014",
       imageUrl: artwork7, 
-      title: 'Resonance I',
+      title: '014',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq015",
       imageUrl: artwork8, 
-      title: 'Resonance I',
+      title: '015',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq016",
       imageUrl: artwork9, 
-      title: 'Resonance I',
+      title: '016',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq018",
       imageUrl: artwork10, 
-      title: 'Resonance I',
+      title: '018',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq019",
       imageUrl: artwork11, 
-      title: 'Resonance I',
+      title: '019',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq024",
       imageUrl: artwork12, 
-      title: 'Resonance I',
+      title: '024',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
-      id: "freq1",
+      id: "freq025",
       imageUrl: artwork13, 
-      title: 'Resonance I',
+      title: '025',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     },
     {
-      id: "freq1",
+      id: "freq026",
       imageUrl: artwork14, 
-      title: 'Resonance I',
+      title: '026',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     },
   ];
@@ -104,7 +104,7 @@ export function Frequencies() {
         </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">FREQUENCIES</h1>
-        <p className="mb-2 opacity-60">2023 | Sound Visualization, Digital Print</p>
+        <p className="mb-2 opacity-60">∞ | Acrylic on canvas</p>
         <p className="max-w-2xl mt-6">
           A series exploring the invisible world of sound through visual translation. By capturing 
           and transforming audio frequencies into graphic representations, this project bridges the 
