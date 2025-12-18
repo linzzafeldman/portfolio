@@ -7,7 +7,7 @@ export function Shelter() {
   const artworks = [
     {
       id: 'shelter1',
-      images: [photo1, photo2], 
+      images: [photo1], 
       title: 'Shelter exhibition poster',
       description: 'Description of the artwork from Shelter exhibition.',
     },
