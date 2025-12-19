@@ -4,9 +4,8 @@ interface Artwork {
   id: string;
   title: string;
   description: string;
-  // Поддерживаем оба формата данных для плавного перехода
-  images?: string[]; 
-  imageUrl?: string; 
+  images?: string[];   // Массив для нескольких ракурсов
+  imageUrl?: string;  // Строка для одиночных изображений
 }
 
 interface GalleryProps {
@@ -25,17 +24,20 @@ export function Gallery({ artworks }: GalleryProps) {
   return (
     <div className="grid grid-cols-1 gap-24">
       {artworks.map((artwork) => {
-        // Определяем массив изображений: приоритет у массива images, иначе берем одиночный imageUrl
-        const displayImages = artwork.images || (artwork.imageUrl ? [artwork.imageUrl] : []);
-        
+        // Усиленная логика выбора: сначала ищем массив, потом строку
+        const displayImages = (artwork.images && artwork.images.length > 0)
+          ? artwork.images
+          : (artwork.imageUrl ? [artwork.imageUrl] : []);
+
+        // Если данных совсем нет, пропускаем этот элемент
         if (displayImages.length === 0) return null;
 
         return (
           <div key={artwork.id} className="group">
-            {/* СЕТКА: 1 большая картинка или 1 большая + сетка справа */}
+            {/* СЕТКА: Главное изображение + опциональная сетка справа */}
             <div className="flex flex-col md:flex-row gap-2 h-auto md:h-[600px]">
               
-              {/* Главное изображение */}
+              {/* Главное изображение (слева) */}
               <div 
                 className="flex-[2] overflow-hidden bg-gray-50 cursor-zoom-in relative"
                 onClick={() => openLightbox(displayImages[0], displayImages)}
@@ -47,7 +49,7 @@ export function Gallery({ artworks }: GalleryProps) {
                 />
               </div>
 
-              {/* Сетка дополнительных картинок (только если их > 1) */}
+              {/* Сетка дополнительных картинок (справа, только если их > 1) */}
               {displayImages.length > 1 && (
                 <div className="flex-1 grid grid-cols-2 gap-2">
                   {displayImages.slice(1, 5).map((img, idx) => (
@@ -72,9 +74,11 @@ export function Gallery({ artworks }: GalleryProps) {
               <h3 className="text-lg uppercase tracking-[0.2em] font-medium text-black">
                 {artwork.title}
               </h3>
-              <p className="text-sm opacity-50 mt-3 leading-relaxed font-light">
-                {artwork.description}
-              </p>
+              <p 
+                className="text-sm opacity-50 mt-3 leading-relaxed font-light"
+                // Позволяет использовать &nbsp; и другие HTML-теги в описании
+                dangerouslySetInnerHTML={{ __html: artwork.description }}
+              />
             </div>
           </div>
         );
@@ -82,29 +86,36 @@ export function Gallery({ artworks }: GalleryProps) {
 
       {/* МОДАЛЬНОЕ ОКНО (LIGHTBOX) */}
       {selectedImage && (
-        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white/95 backdrop-blur-md p-4 md:p-12 animate-in fade-in duration-300">
-          
+        <div 
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white/95 backdrop-blur-md p-4 md:p-12 animate-in fade-in duration-300"
+          onClick={() => setSelectedImage(null)} // Закрытие при клике на фон
+        >
           {/* Кнопка закрытия */}
           <button 
-            onClick={() => setSelectedImage(null)}
+            onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
             className="absolute top-8 right-10 text-3xl font-light hover:rotate-90 transition-transform duration-300 z-[110]"
-            aria-label="Close"
           >
             ✕
           </button>
 
-          {/* Основное увеличенное фото */}
-          <div className="flex-1 flex items-center justify-center w-full max-h-[75vh]">
+          {/* Основное фото */}
+          <div 
+            className="flex-1 flex items-center justify-center w-full max-h-[75vh]"
+            onClick={(e) => e.stopPropagation()} // Чтобы клик по самой картинке не закрывал окно
+          >
             <img 
               src={selectedImage} 
               className="max-w-full max-h-full object-contain shadow-sm" 
-              alt="Full view"
+              alt="Detailed view"
             />
           </div>
 
-          {/* Сетка превью снизу для переключения */}
+          {/* Превью снизу */}
           {currentArtworkImages.length > 1 && (
-            <div className="mt-10 flex gap-4 overflow-x-auto py-4 max-w-full no-scrollbar">
+            <div 
+              className="mt-10 flex gap-4 overflow-x-auto py-4 max-w-full no-scrollbar"
+              onClick={(e) => e.stopPropagation()}
+            >
               {currentArtworkImages.map((img, idx) => (
                 <div 
                   key={idx}
@@ -115,13 +126,19 @@ export function Gallery({ artworks }: GalleryProps) {
                       : 'opacity-30 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} className="w-full h-full object-cover" alt={`Thumbnail ${idx + 1}`} />
+                  <img src={img} className="w-full h-full object-cover" alt="thumbnail" />
                 </div>
               ))}
             </div>
           )}
         </div>
       )}
+
+      {/* CSS для скрытия скроллбара в превью */}
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export function Frequencies() {
       id: "freq004",
       imageUrl: artwork1, 
       title: '004. As Above So Below.',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.&nbsp 50cm. Acrylic on canvas. 2017',
+      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies. <br>50cm. Acrylic on canvas. 2017',
     },
     {
       id: "freq007",
