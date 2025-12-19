@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Artwork {
   id: string;
   title: string;
   description: string;
-  images?: string[];   // Массив для нескольких ракурсов
-  imageUrl?: string;  // Строка для одиночных изображений
+  images?: string[];
+  imageUrl?: string;
 }
 
 interface GalleryProps {
@@ -16,67 +16,87 @@ export function Gallery({ artworks }: GalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentArtworkImages, setCurrentArtworkImages] = useState<string[]>([]);
 
-  const openLightbox = (image: string, allImages: string[]) => {
-    setSelectedImage(image);
-    setCurrentArtworkImages(allImages);
+  const navigateImage = (direction: 'next' | 'prev') => {
+    const currentIndex = currentArtworkImages.indexOf(selectedImage || '');
+    if (currentIndex === -1) return;
+    let nextIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+    if (nextIndex >= currentArtworkImages.length) nextIndex = 0;
+    if (nextIndex < 0) nextIndex = currentArtworkImages.length - 1;
+    setSelectedImage(currentArtworkImages[nextIndex]);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      if (e.key === 'ArrowRight') navigateImage('next');
+      if (e.key === 'ArrowLeft') navigateImage('prev');
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentArtworkImages]);
+
   return (
-    <div className="grid grid-cols-1 gap-24">
+    <div className="flex flex-col gap-40"> {/* Большой отступ между блоками проектов */}
       {artworks.map((artwork) => {
-        // Усиленная логика выбора: сначала ищем массив, потом строку
         const displayImages = (artwork.images && artwork.images.length > 0)
           ? artwork.images
           : (artwork.imageUrl ? [artwork.imageUrl] : []);
 
-        // Если данных совсем нет, пропускаем этот элемент
-        if (displayImages.length === 0) return null;
-
         return (
-          <div key={artwork.id} className="group">
-            {/* СЕТКА: Главное изображение + опциональная сетка справа */}
-            <div className="flex flex-col md:flex-row gap-2 h-auto md:h-[600px]">
+          <div key={artwork.id} className="w-full">
+            {/* СЕТКА (КВАДРАТЫ) */}
+            <div className="flex flex-col md:flex-row gap-2 w-full">
               
-              {/* Главное изображение (слева) */}
+              {/* Главная картинка (50% ширины, Квадрат) */}
               <div 
-                className="flex-[2] overflow-hidden bg-gray-50 cursor-zoom-in relative"
-                onClick={() => openLightbox(displayImages[0], displayImages)}
+                className="md:w-1/2 aspect-square overflow-hidden bg-neutral-100 cursor-zoom-in relative group"
+                onClick={() => {
+                  setSelectedImage(displayImages[0]);
+                  setCurrentArtworkImages(displayImages);
+                }}
               >
                 <img
                   src={displayImages[0]}
                   alt={artwork.title}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
 
-              {/* Сетка дополнительных картинок (справа, только если их > 1) */}
+              {/* Правая часть (сетка маленьких квадратов) */}
               {displayImages.length > 1 && (
-                <div className="flex-1 grid grid-cols-2 gap-2">
+                <div className="md:w-1/2 grid grid-cols-2 gap-2">
                   {displayImages.slice(1, 5).map((img, idx) => (
                     <div 
                       key={idx} 
-                      className="overflow-hidden bg-gray-50 cursor-zoom-in"
-                      onClick={() => openLightbox(img, displayImages)}
+                      className="aspect-square overflow-hidden bg-neutral-100 cursor-zoom-in group"
+                      onClick={() => {
+                        setSelectedImage(img);
+                        setCurrentArtworkImages(displayImages);
+                      }}
                     >
                       <img
                         src={img}
-                        alt={`${artwork.title} detail ${idx + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     </div>
+                  ))}
+                  
+                  {/* Заполнители для сохранения формы квадрата */}
+                  {displayImages.length < 5 && Array.from({ length: 5 - displayImages.length }).map((_, i) => (
+                    <div key={`filler-${i}`} className="aspect-square bg-neutral-50/30" />
                   ))}
                 </div>
               )}
             </div>
 
-            {/* Описание под изображением */}
-            <div className="mt-8 max-w-2xl">
-              <h3 className="text-lg uppercase tracking-[0.2em] font-medium text-black">
+            {/* ТЕКСТ СНИЗУ (с отступом сверху) */}
+            <div className="mt-10">
+              <h3 className="text-lg uppercase tracking-widest font-medium text-black">
                 {artwork.title}
               </h3>
               <p 
-                className="text-sm opacity-50 mt-3 leading-relaxed font-light"
-                // Позволяет использовать &nbsp; и другие HTML-теги в описании
+                className="text-sm opacity-60 mt-3 leading-relaxed max-w-2xl font-light"
                 dangerouslySetInnerHTML={{ __html: artwork.description }}
               />
             </div>
@@ -84,61 +104,33 @@ export function Gallery({ artworks }: GalleryProps) {
         );
       })}
 
-      {/* МОДАЛЬНОЕ ОКНО (LIGHTBOX) */}
+      {/* LIGHTBOX */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white/95 backdrop-blur-md p-4 md:p-12 animate-in fade-in duration-300"
-          onClick={() => setSelectedImage(null)} // Закрытие при клике на фон
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white/98 backdrop-blur-xl p-6"
+          onClick={() => setSelectedImage(null)}
         >
-          {/* Кнопка закрытия */}
-          <button 
-            onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
-            className="absolute top-8 right-10 text-3xl font-light hover:rotate-90 transition-transform duration-300 z-[110]"
-          >
-            ✕
-          </button>
-
-          {/* Основное фото */}
-          <div 
-            className="flex-1 flex items-center justify-center w-full max-h-[75vh]"
-            onClick={(e) => e.stopPropagation()} // Чтобы клик по самой картинке не закрывал окно
-          >
-            <img 
-              src={selectedImage} 
-              className="max-w-full max-h-full object-contain shadow-sm" 
-              alt="Detailed view"
-            />
+          <button className="absolute top-10 right-10 text-2xl font-light">✕</button>
+          <div className="flex-1 flex items-center justify-center w-full max-h-[70vh]" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedImage} className="max-w-full max-h-full object-contain" alt="zoom" />
           </div>
-
-          {/* Превью снизу */}
           {currentArtworkImages.length > 1 && (
-            <div 
-              className="mt-10 flex gap-4 overflow-x-auto py-4 max-w-full no-scrollbar"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="mt-12 flex gap-4 overflow-x-auto no-scrollbar" onClick={(e) => e.stopPropagation()}>
               {currentArtworkImages.map((img, idx) => (
                 <div 
                   key={idx}
                   onClick={() => setSelectedImage(img)}
-                  className={`w-24 h-24 flex-shrink-0 cursor-pointer transition-all duration-300 p-0.5 ${
-                    selectedImage === img 
-                      ? 'ring-1 ring-black scale-105' 
-                      : 'opacity-30 hover:opacity-100'
+                  className={`w-20 h-20 flex-shrink-0 cursor-pointer transition-all ${
+                    selectedImage === img ? 'ring-1 ring-black scale-105' : 'opacity-20 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} className="w-full h-full object-cover" alt="thumbnail" />
+                  <img src={img} className="w-full h-full object-cover" alt="thumb" />
                 </div>
               ))}
             </div>
           )}
         </div>
       )}
-
-      {/* CSS для скрытия скроллбара в превью */}
-      <style>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
     </div>
   );
 }
