@@ -27,7 +27,7 @@ export function Frequencies() {
     },
     {
       id: "freq007",
-      images: [artwork2, artwork2_2],
+      images: [artwork2, artwork2_2, artwork3, artwork5, artwork10],
       title: '007. Seconds (Time).',
       description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
     }, {
