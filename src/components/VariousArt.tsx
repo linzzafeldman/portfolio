@@ -1,7 +1,11 @@
 import { MasonryGallery } from './MasonryGallery';
 import artwork1 from '../images/projects/various-art/OlgaFeldman_ClonikI.png';
 import artwork2 from '../images/projects/various-art/OlgaFeldman_Armour.jpg';
-import artwork3 from '../images/projects/various-art/OlgaFeldman_Vangogh.gif';
+import artwork3 from '../images/projects/various-art/vangogh2500.jpg';
+import artwork4 from '../images/projects/various-art/josephine.jpg';
+
+
+
 
 
 export function VariousArt() {
@@ -9,21 +13,28 @@ export function VariousArt() {
     {
       id: "various1",
       imageUrl: artwork1, 
-      title: 'Abstract Composition 01',
+      title: 'Clonic I',
       description: 'Digital exploration of form and symmetry.',
       isImported: true,
     },
     {
       id: 'various2',
       imageUrl: artwork2, 
-      title: 'Organic Forms 02',
+      title: 'Armour',
       description: 'Vector art exploring natural patterns.',
       isImported: true,
     },
     {
       id: 'various3',
       imageUrl: artwork3, 
-      title: 'Geometric Study 03',
+      title: 'Vangogh Generative',
+      description: 'Minimal geometric composition.',
+      isImported: true,
+    },
+    {
+      id: 'various4',
+      imageUrl: artwork4, 
+      title: 'Josephine',
       description: 'Minimal geometric composition.',
       isImported: true,
     },

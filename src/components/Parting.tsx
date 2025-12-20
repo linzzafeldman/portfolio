@@ -11,12 +11,6 @@ export function Parting() {
       title: 'Artwork Title 1',
       description: 'Description of the artwork from Grieving exhibition.',
     },
-    {
-      id: 'parting2',
-      imageUrl: image2, 
-      title: 'Artwork Title 2',
-      description: 'Description of the artwork from Grieving exhibition.',
-    },
   ];
 
   return (

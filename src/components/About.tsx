@@ -20,7 +20,7 @@ export function About() {
           Petersburg State University, but her artistic practice
           extends beyond traditional graphic design. Her work
           integrates mathematical precision, influences of Op
-          art, principles of physics, and digital generative
+          Art, principles of physics, and digital generative
           techniques. Among her key inspirations are Bridget
           Riley, Eyvind Earle, and concepts related to
           oscillations, wave processes and structure of reality.
