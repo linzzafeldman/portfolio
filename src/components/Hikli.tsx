@@ -17,8 +17,8 @@ export function Hikli() {
     {
       id: "hikli1",
       imageUrl: image1, 
-      title: "The exhibition's poster",
-      description: 'Description of the artwork from Hikli exhibition.',
+    //  title: "The exhibition's poster",
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
     {
       id: "hikli2",

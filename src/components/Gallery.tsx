@@ -33,8 +33,8 @@ export function Gallery({ artworks }: GalleryProps) {
         const isGrid = allImages.length > 1;
 
         return (
-          <div key={artwork.id} className="block w-full mb-32 border-t border-black/10 pt-16">
-            <div className="w-full">
+          <div key={artwork.id} className="block w-full">
+            <div className="w-full pt-16">
               {!isGrid ? (
                 /* ОДИНОЧНАЯ КАРТИНКА */
                 <div 
@@ -46,7 +46,7 @@ export function Gallery({ artworks }: GalleryProps) {
               ) : (
                 /* МИНИ-ГАЛЕРЕЯ */
                 <div className="grid grid-cols-2 gap-1 w-full bg-white"> 
-                  {/* gap-1 и bg-white создают ту самую белую линию */}
+                  {/* gap-1 и bg-white создают белую линию */}
                   
                   <div 
                     className="w-full aspect-square overflow-hidden bg-neutral-100 cursor-zoom-in group"
@@ -58,7 +58,7 @@ export function Gallery({ artworks }: GalleryProps) {
                     />
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-1 w-full">
+                  <div className="grid grid-cols-2 gap-1 bg-white w-full">
                     {[1, 2, 3, 4].map((idx) => {
                       const currentImg = allImages[idx];
                       return (
@@ -81,10 +81,10 @@ export function Gallery({ artworks }: GalleryProps) {
               )}
             </div>
 
-            <div className="block mt-8 max-w-2xl text-left">
-              <h3 className="text-lg uppercase tracking-widest font-medium text-black">{artwork.title}</h3>
+            <div className=" block max-w-2xl text-left">
+              <h3 className="text-lg uppercase tracking-widest font-bold text-black">{artwork.title}</h3>
               <div 
-                className="text-sm opacity-60 mt-3 leading-relaxed font-light"
+                className="text-sm opacity-60 leading-relaxed font-light"
                 dangerouslySetInnerHTML={{ __html: artwork.description }}
               />
             </div>
