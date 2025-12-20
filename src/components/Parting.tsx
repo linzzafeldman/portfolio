@@ -1,19 +1,18 @@
 import { Gallery } from './Gallery';
 
-import image1 from '../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
-import image2 from '../images/projects/an-atomy/01_AnAtomyFull_2022.jpg';
+import image1 from '../images/exhibitions/grieving/parting_poster.jpg';
 
 
-export function Grieving() {
+export function Parting() {
   const artworks = [
     {
-      id: 'grieving1',
+      id: 'parting1',
       imageUrl: image1, 
       title: 'Artwork Title 1',
       description: 'Description of the artwork from Grieving exhibition.',
     },
     {
-      id: 'grieving2',
+      id: 'parting2',
       imageUrl: image2, 
       title: 'Artwork Title 2',
       description: 'Description of the artwork from Grieving exhibition.',
@@ -30,7 +29,7 @@ export function Grieving() {
           ← BACK TO EXHIBITIONS
         </button>
       <div className="mb-12">
-        <h1 className="mb-4 tracking-wider">GRIEVING</h1>
+        <h1 className="mb-4 tracking-wider">PARTING: stories of grief and letting go</h1>
         <p className="mb-2 opacity-60">2024 | Israel</p>
         <p className="max-w-2xl mt-6">
           A powerful group exhibition examining loss, memory, and the process of letting go through stark black and white imagery.

@@ -18,8 +18,8 @@ export function Exhibitions() {
       description: 'A group exhibition exploring themes of safety, refuge, and belonging during challenging times.',
     },
     {
-      id: 'grieving',
-      title: 'GRIEVING',
+      id: 'parting',
+      title: 'PARTING: stories of grief and letting go',
       year: '2024',
       location: 'Israel',
       description: 'A powerful group exhibition examining loss, memory, and the process of letting go through stark black and white imagery.',

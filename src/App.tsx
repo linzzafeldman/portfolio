@@ -13,7 +13,7 @@ import { Shelter } from './components/Shelter';
 import { Frequencies } from './components/Frequencies';
 import { AnAtomy } from './components/AnAtomy';
 import { OneOfAKind } from './components/OneOfAKind';
-import { Grieving } from './components/Grieving';
+import { Parting } from './components/Parting';
 import { Women } from './components/Women';
 import { VariousArt } from './components/VariousArt';
 
@@ -72,9 +72,9 @@ export default function App() {
         title = "One Of A Kind | Olga Feldman";
         description = "Unique artworks from 'One Of A Kind' series.";
         break;
-      case 'grieving':
-        title = "Grieving | Olga Feldman";
-        description = "Monochrome exploration in 'Grieving' project.";
+      case 'parting':
+        title = "Parting: stories of grief and letting go | Olga Feldman";
+        description = "Monochrome exploration in 'Parting' project.";
         break;
       case 'women':
         title = "Women | Olga Feldman";
@@ -131,7 +131,7 @@ export default function App() {
       case 'frequencies': return <Frequencies />;
       case 'anatomy': return <AnAtomy />;
       case 'oneofakind': return <OneOfAKind />;
-      case 'grieving': return <Grieving />;
+      case 'parting': return <Parting />;
       case 'women': return <Women />;
       case 'variousart': return <VariousArt />;
       
