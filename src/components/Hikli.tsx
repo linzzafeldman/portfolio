@@ -1,15 +1,14 @@
 import { Gallery } from './Gallery';
 
-import image1 from '../images/exhibitions/hikli/';
-import image2 from '../images/exhibitions/hikli/';
-import image3 from '../images/exhibitions/hikli/';
-import image4 from '../images/exhibitions/hikli/';
-import image5 from '../images/exhibitions/hikli/';
-import image6 from '../images/exhibitions/hikli/';
-import image7 from '../images/exhibitions/hikli/';
-import image8 from '../images/exhibitions/hikli/';
-import image9 from '../images/exhibitions/hikli/';
-import image10 from '../images/exhibitions/hikli/';
+import image1 from '../images/exhibitions/hikli/hikli_poster.jpg';
+import image2 from '../images/exhibitions/hikli/hikli04.jpg';
+import image3 from '../images/exhibitions/hikli/hikli03.jpg';
+import image4 from '../images/exhibitions/hikli/hikli02.jpg';
+import image5 from '../images/exhibitions/hikli/hikli05.jpg';
+import image6 from '../images/exhibitions/hikli/hikli06.jpg';
+import image7 from '../images/exhibitions/hikli/hikli07.jpg';
+import image8 from '../images/exhibitions/hikli/hikli08.jpg';
+import image9 from '../images/exhibitions/hikli/hikli09.jpg';
 
 
 
@@ -18,69 +17,63 @@ export function Hikli() {
     {
       id: "hikli1",
       imageUrl: image1, 
-      title: 'Artwork Title 1',
+      title: "The exhibition's poster",
       description: 'Description of the artwork from Hikli exhibition.',
     },
     {
-      id: "hikli1",
+      id: "hikli2",
       imageUrl: image2, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     // title: 'Artwork Title 1',
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
     {
-      id: "hikli1",
+      id: "hikli3",
       imageUrl: image3, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     // title: 'Artwork Title 1',
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
     {
       id: "hikli1",
       imageUrl: image4, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     // title: 'Artwork Title 1',
+      //description: 'Description of the artwork from Hikli exhibition.',
     },
     {
       id: "hikli1",
       imageUrl: image5, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     //title: 'Artwork Title 1',
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
     {
       id: "hikli1",
       imageUrl: image6, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     // title: 'Artwork Title 1',
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
     {
       id: "hikli1",
       imageUrl: image7, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     // title: 'Artwork Title 1',
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
     {
       id: "hikli1",
       imageUrl: image8, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     // title: 'Artwork Title 1',
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
     {
       id: "hikli1",
       imageUrl: image9, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
+     // title: 'Artwork Title 1',
+     // description: 'Description of the artwork from Hikli exhibition.',
     },
-    {
-      id: "hikli1",
-      imageUrl: image10, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Hikli exhibition.',
-    },
+    
   ];
 
   return (
     <div className="max-w-4xl mx-auto px-8">
     <button
-          // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'exhibitions'}
           className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
         >
