@@ -8,15 +8,14 @@ export function Parting() {
     {
       id: 'parting1',
       imageUrl: image1, 
-      title: 'Artwork Title 1',
-      description: 'Description of the artwork from Grieving exhibition.',
+      title: '"Parting" exhibition poster.',
+      //description: 'Description of the artwork from Grieving exhibition.',
     },
   ];
 
   return (
     <div className="max-w-4xl mx-auto px-8">
 <button
-          // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'exhibitions'}
           className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
         >

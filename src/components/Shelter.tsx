@@ -9,26 +9,25 @@ export function Shelter() {
       id: 'shelter1',
       imageUrl: photo1, 
       title: 'Shelter exhibition poster',
-      description: 'Description of the artwork from Shelter exhibition.',
+     // description: 'Description of the artwork from Shelter exhibition.',
     },
     {
       id: 'shelter2',
       imageUrl: photo2, 
-      title: 'Artwork Title 2',
-      description: 'Description of the artwork from Shelter exhibition.',
+     // title: 'Artwork Title 2',
+      //description: 'Description of the artwork from Shelter exhibition.',
     },
     {
       id: 'shelter3',
       imageUrl: photo3, 
-      title: 'Artwork Title 3',
-      description: 'Description of the artwork from Shelter exhibition.',
+     // title: 'Artwork Title 3',
+     // description: 'Description of the artwork from Shelter exhibition.',
     },
   ];
 
   return (
     <div className="max-w-4xl mx-auto px-8">
   <button
-          // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'exhibitions'}
           className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
         >
