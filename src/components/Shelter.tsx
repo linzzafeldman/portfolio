@@ -8,7 +8,7 @@ export function Shelter() {
     {
       id: 'shelter1',
       imageUrl: photo1, 
-      title: 'Shelter exhibition poster',
+     // title: 'Shelter exhibition poster',
      // description: 'Description of the artwork from Shelter exhibition.',
     },
     {

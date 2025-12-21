@@ -8,7 +8,7 @@ export function Parting() {
     {
       id: 'parting1',
       imageUrl: image1, 
-      title: '"Parting" exhibition poster.',
+     // title: '"Parting" exhibition poster.',
       //description: 'Description of the artwork from Grieving exhibition.',
     },
   ];
