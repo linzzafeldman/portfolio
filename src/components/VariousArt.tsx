@@ -1,8 +1,11 @@
 import { MasonryGallery } from './MasonryGallery';
 import artwork1 from '../images/projects/various-art/OlgaFeldman_ClonikI.png';
 import artwork2 from '../images/projects/various-art/OlgaFeldman_Armour.jpg';
-import artwork3 from '../images/projects/various-art/vangogh2500.jpg';
-import artwork4 from '../images/projects/various-art/josephine.jpg';
+import artwork3 from '../images/projects/various-art/OlgaFeldman_Vangogh_color.jpg';
+import artwork4 from '../images/projects/various-art/OlgaFeldman_Josephine.jpg';
+import artwork5 from '../images/projects/various-art/OlgaFeldman_Josephine.jpg';
+import artwork6 from '../images/projects/various-art/OlgaFeldman_Josephine.jpg';
+
 
 
 
@@ -34,6 +37,19 @@ export function VariousArt() {
     {
       id: 'various4',
       imageUrl: artwork4, 
+      title: 'Josephine',
+      description: "Kafka's Josephine",
+      isImported: true,
+    },
+    {
+      id: 'various5',
+      imageUrl: artwork5, 
+      title: 'Josephine',
+      description: 'Minimal geometric composition.',
+      isImported: true,
+    },{
+      id: 'various6',
+      imageUrl: artwork6, 
       title: 'Josephine',
       description: 'Minimal geometric composition.',
       isImported: true,
