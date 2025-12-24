@@ -76,7 +76,7 @@ export function VariousArt() {
         </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">VARIOUS ART</h1>
-        <p className="mb-2 opacity-60">∞ — Digital Art, Vector Art, 3D Art, Video Art</p>
+        <p className="mb-2 opacity-60">∞ | Digital Art, Vector Art, 3D Art, Video Art</p>
         <p className="max-w-2xl mt-6">
           A collection of various artworks exploring different techniques, mediums, and conceptual approaches. This diverse body of work represents experimental pieces, commissioned projects, and explorations outside of the main series.
         </p>
