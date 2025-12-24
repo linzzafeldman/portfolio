@@ -3,8 +3,10 @@ import artwork1 from '../images/projects/various-art/OlgaFeldman_ClonikI.png';
 import artwork2 from '../images/projects/various-art/OlgaFeldman_Armour.jpg';
 import artwork3 from '../images/projects/various-art/OlgaFeldman_Vangogh_color.jpg';
 import artwork4 from '../images/projects/various-art/OlgaFeldman_Josephine.jpg';
-import artwork5 from '../images/projects/various-art/OlgaFeldman_Josephine.jpg';
-import artwork6 from '../images/projects/various-art/OlgaFeldman_Josephine.jpg';
+import artwork5 from '../images/projects/various-art/OlgaFeldman_Bowie2_red.jpg';
+import artwork6 from '../images/projects/various-art/OlgaFeldman_ClonikII.jpg';
+import artwork7 from '../images/projects/various-art/OlgaFeldman_Desease.png';
+
 
 
 
@@ -44,13 +46,20 @@ export function VariousArt() {
     {
       id: 'various5',
       imageUrl: artwork5, 
-      title: 'Josephine',
+      title: 'Red Bowie',
       description: 'Minimal geometric composition.',
       isImported: true,
     },{
       id: 'various6',
       imageUrl: artwork6, 
-      title: 'Josephine',
+      title: 'Clonik II',
+      description: 'Minimal geometric composition.',
+      isImported: true,
+    },
+    {
+      id: 'various7',
+      imageUrl: artwork7, 
+      title: 'Desease',
       description: 'Minimal geometric composition.',
       isImported: true,
     },
