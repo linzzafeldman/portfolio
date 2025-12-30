@@ -17,7 +17,7 @@ export function Women() {
       // Если хочешь добавить еще фото в этот слайдер, просто допиши их через запятую
       imageUrl: artwork1, 
       title: 'Banshee',
-      description: 'Layered abstract forms creating a symmetrical composition that explores mirroring and balance in digital space.',
+      description: 'Banshee is a mythological creature of Irish culture. <br> Described as a female spirit with long hair and grey cloak, Banshee heralds death of a family member or warns someone of deadly circumstances. While Banshee is silent, you’re safe. That is what folklore tells us. As all the others, this one feels and knows everything. Her messed, enormously long hair is electrically charged, receiving frequencies of every human thought. Her body consists of millions quantum-size particles making her almost weightless. But even when she tries to speak, she remains unheard and unseen. Rejected. All she can do is float in a middle of darkness, all by herself, watching you. This Banshee is an embodiment of silence which precedes a future transformation. The original art was made in Adobe Illustrator and is a size limitless vector artwork based on a draft 3d render of the pose. All the details including hair and «particles» made by hands.'
     },
     {
       id: "art2",

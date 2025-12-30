@@ -155,8 +155,7 @@ export function About() {
           </div>
           <div>
             <p>
-              2024 | Designcollector, "Visual Tension and
-              Emotional Depth."
+              2024 | <a href="https://designcollector.net/likes/olga-feldman-frequencies?rq=feldman" target="_blank" rel="noopener noreferrer" className="publication-link">Designcollector "Visual Tension and Emotional Depth." </a>
             </p>
           </div>
           <div>
@@ -166,7 +165,8 @@ export function About() {
             <p>2012 | Hi-Fructose #19, USA.</p>
           </div>
           <div>
-            <p>2012 | Designcollector, "An_atomy project."</p>
+            <p>2012 | <a href="https://designcollector.net/likes/olga-feldman-linzza-an-anatomy?rq=feldman" target="_blank" rel="noopener noreferrer" className="publication-link">Designcollector, "An_atomy project."</a>
+            </p>
           </div>
           <div>
             <p>2010 | Russian Illustration Wow, v.2, Russia.</p>
