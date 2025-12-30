@@ -13,25 +13,23 @@ export function Women() {
   const artworks = [
     {
       id: "art1",
-      // Теперь передаем список картинок в массиве []
-      // Если хочешь добавить еще фото в этот слайдер, просто допиши их через запятую
       imageUrl: artwork1, 
       title: 'Banshee',
-      description: 'Banshee is a mythological creature of Irish culture. <br> Described as a female spirit with long hair and grey cloak, Banshee heralds death of a family member or warns someone of deadly circumstances. While Banshee is silent, you’re safe. That is what folklore tells us. As all the others, this one feels and knows everything. Her messed, enormously long hair is electrically charged, receiving frequencies of every human thought. Her body consists of millions quantum-size particles making her almost weightless. But even when she tries to speak, she remains unheard and unseen. Rejected. All she can do is float in a middle of darkness, all by herself, watching you. This Banshee is an embodiment of silence which precedes a future transformation. The original art was made in Adobe Illustrator and is a size limitless vector artwork based on a draft 3d render of the pose. All the details including hair and «particles» made by hands.'
+      description: '"Banshee" is a mythological creature of Irish culture. <br> Described as a female spirit with long hair and grey cloak, Banshee heralds death of a family member or warns someone of deadly circumstances. While Banshee is silent, you’re safe. That is what folklore tells us. <br>As all the others, this one feels and knows everything. Her messed, enormously long hair is electrically charged, receiving frequencies of every human thought. Her body consists of millions quantum-size particles making her almost weightless. But even when she tries to speak, she remains unheard and unseen. Rejected. All she can do is float in a middle of darkness, all by herself, watching you. This Banshee is an embodiment of silence which precedes a future transformation. '
     },
     {
       id: "art2",
       // Даже если картинка одна, она должна быть в массиве [ ]
       imageUrl: artwork2, 
       title: 'Ms. You',
-      description: 'Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.',
+      description: '"Ms.You" reflects the idea of individuals as carriers of distinct frequencies. Through meaningful encounters, these frequencies begin to shape an image of the other. Even after the object has disappeared, the form remains as a hollow structure sustained by memory. Absence itself can be shaped, held, and preserved from within.',
     },
         {
       id: "art3",
       // Даже если картинка одна, она должна быть в массиве [ ]
       imageUrl: artwork3, 
       title: 'L',
-      description: 'Flowing organic shapes contrasted against a dark void, representing the emergence of form from emptiness.',
+      description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
     },
   ];
 
@@ -50,8 +48,7 @@ export function Women() {
         <h1 className="mb-4 tracking-wider text-xl">WOMEN</h1>
         <p className="mb-2 opacity-60">2010-2014 | Digital Art, Vector Art</p>
         <p className="max-w-2xl mt-6">
-          An exploration of organic and geometric forms in digital space, examining the tension 
-          between order and chaos through parametric design and computational aesthetics.
+          Fragile research on emotional instability, loss and growth.
         </p>
       </div>
 
