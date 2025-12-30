@@ -22,7 +22,7 @@ export function Projects() {
       title: 'WOMEN',
       year: '2010-2014',
       medium: 'Digital Art, Vector Art',
-      description: 'An exploration of organic and geometric forms in digital space, examining the tension between order and chaos through parametric design and computational aesthetics.',
+      description: 'Fragile research on emotional instability, loss and growth.',
     },
     {
       id: 'twisters',
@@ -36,14 +36,14 @@ export function Projects() {
       title: 'FREQUENCIES',
       year: '∞',
       medium: 'Canvas, Acrylic',
-      description: 'A series of paintings and graphic arts.',
+      description: 'A series of paintings and graphic arts exploring wave theory through surface.',
     },
     {
       id: 'anatomy', // Убрал дефис, чтобы совпадало с App.tsx
       title: 'AN ATOMY',
       year: '2011',
       medium: 'Digital Art, Vector Art',
-      description: 'Personal and collective memories explored through fragmented imagery and layered compositions, questioning the reliability and construction of remembrance.',
+      description: '"an_atomy" explores the possibility of conveying subtle human emotions through digital vector graphics, using hand gestures as its primary subject.',
     },
     {
       id: 'variousart', // Убрал дефис

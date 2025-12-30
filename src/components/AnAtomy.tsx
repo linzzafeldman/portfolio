@@ -14,45 +14,44 @@ export function AnAtomy() {
     {
       id: 'art7',
       imageUrl: image1, 
-      title: 'Fading',
-      description: 'The gradual dissolution of memory over time, represented through deteriorating forms.',
+      title: '01. Gift',
+      //description: 'The gradual dissolution of memory over time, represented through deteriorating forms.',
     },
     {
       id: 'art8',
       imageUrl: image2, 
-      title: 'Recall',
-      description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
+      title: '02. You',
+      //description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
       imageUrl: image3, 
-      title: 'Recall',
-      description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
+      title: '03. Love',
+     // description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
       imageUrl: image4, 
-      title: 'Recall',
-      description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
+      title: '04. Mom',
+      //description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
       imageUrl: image5, 
-      title: 'Recall',
-      description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
+      title: '05. Stop',
+     // description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
     {
       id: 'art8',
       imageUrl: image6, 
-      title: 'Recall',
-      description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
+      title: '06. Dying',
+     // description: 'The imperfect nature of remembering, captured in soft focus and ambiguous spaces.',
     },
   ];
 
   return (
     <div className="max-w-4xl mx-auto px-8">
        <button
-          // Теперь при клике мы просто меняем адрес на #projects
           onClick={() => window.location.hash = 'projects'}
           className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
         >
@@ -60,10 +59,11 @@ export function AnAtomy() {
         </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">AN ATOMY</h1>
-        <p className="mb-2 opacity-60">2022 | Photography, Digital Artwork</p>
+        <p className="mb-2 opacity-60">2022 | Photography, Digital Artwork, Vector Artwork</p>
         <p className="max-w-2xl mt-6">
-          Personal and collective memories explored through fragmented imagery and layered 
-          compositions, questioning the reliability and construction of remembrance.
+          An_atomy explores the possibility of conveying subtle human emotions through digital vector graphics, using hand gestures as its primary subject. 
+          Reduced to minimal line structures, the hands become a language of tension, vulnerability, and silent communication, where meaning emerges through precision, restraint, and rhythm rather than expression. 
+          All the series based on photos made by the artist.
         </p>
       </div>
       <Gallery artworks={artworks} />
