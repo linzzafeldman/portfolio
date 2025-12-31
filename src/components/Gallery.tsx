@@ -38,7 +38,7 @@ export function Gallery({ artworks }: GalleryProps) {
               {!isGrid ? (
                 /* ОДИНОЧНАЯ КАРТИНКА */
                 <div 
-                  className="w-full max-w-2xl mx-auto aspect-square overflow-hidden bg-neutral-100 cursor-zoom-in"
+                  className="w-full max-w-3xl mx-auto aspect-square overflow-hidden bg-neutral-100 cursor-zoom-in"
                   onClick={() => setSelectedImage(allImages[0])}
                 >
                   <img src={allImages[0]} className="w-full h-full object-cover" alt={artwork.title} />
@@ -99,7 +99,7 @@ export function Gallery({ artworks }: GalleryProps) {
           style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
           onClick={() => setSelectedImage(null)}
         >
-          <button className="absolute top-8 right-8 text-3xl font-light z-[1010] p-4">✕</button>
+          <button className="absolute  right-8 text-3xl font-light z-[1010] p-1">✕</button>
           <img 
             src={selectedImage} 
             className="fixed shadow-2xl bg-white"

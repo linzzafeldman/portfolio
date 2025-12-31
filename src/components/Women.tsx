@@ -5,18 +5,12 @@ import artwork2 from '../images/projects/women/OlgaFeldman_MsYou.png';
 import artwork3 from '../images/projects/women/OlgaFeldman_L2.jpg';
 import artwork4 from '../images/projects/women/OlgaFeldman_BlackLight.jpg';
 import artwork5 from '../images/projects/women/OlgaFeldman_Cosmodiva.jpg';
-import artwork6 from '../images/projects/women/OlgaFeldman_BlackLight.jpg';
+import artwork6 from '../images/projects/women/OlgaFeldman_Redevil.jpg';
 import artwork7 from '../images/projects/women/OlgaFeldman_Rainbow.jpg';
 import artwork8 from '../images/projects/women/OlgaFeldman_Spectra02.jpg';
-import artwork9 from '../images/projects/women/OlgaFeldman_Spectra01.jpg';
+import artwork8_detail01 from '../images/projects/women/OlgaFeldman_Spectra01.jpg';
 
 
-
-
-
-// ПРИМЕР: Импорт дополнительных изображений для галереи (если они есть)
-// import artwork1Detail from '../images/projects/women/artwork-01-detail.png';
-// import artwork1Process from '../images/projects/women/artwork-01-process.png';
 
 export function Women() {
   const artworks = [
@@ -64,7 +58,7 @@ export function Women() {
     },
     {
       id: "art8",
-      images: [artwork8,artwork9], 
+      images: [artwork8,artwork8_detail01], 
       title: 'Spectra',
     //  description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
     },
