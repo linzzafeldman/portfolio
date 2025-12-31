@@ -10,31 +10,31 @@ import artwork2 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
 import artwork2_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork2_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
-import artwork3 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
+import artwork3 from "../media/twisters/TWISTERS I-3 WhiteNoise.mp4";
 import artwork3_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork3_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
-import artwork4 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
+import artwork4 from "../media/twisters/TWISTERS I-4 Blackness.mp4";
 import artwork4_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork4_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
-import artwork5 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
+import artwork5 from "../media/twisters/TWISTERS I-5 Glitch.mp4";
 import artwork5_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork5_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
-import artwork6 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
+import artwork6 from "../media/twisters/TWISTERS I-6 Letters.mp4";
 import artwork6_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork6_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
-import artwork7 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
+import artwork7 from "../media/twisters/TWISTERS I-7 Betrayal.mp4";
 import artwork7_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork7_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
-import artwork8 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
+import artwork8 from "../media/twisters/TWISTERS I-8 Simulacrum.mp4";
 import artwork8_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork8_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
-import artwork9 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
+import artwork9 from "../media/twisters/TWISTERS I-9_Arrogance.mp4";
 import artwork9_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork9_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
