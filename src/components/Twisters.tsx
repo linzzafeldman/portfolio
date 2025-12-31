@@ -7,45 +7,45 @@ import artwork1_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
 import artwork1_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
 
 import artwork2 from "../media/twisters/TWISTERS I-2 Bipolar.mp4";
-import artwork2_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork2_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork2_2 from "../images/projects/twisters/Twister-I-2_2500_1.jpg";
+import artwork2_3 from "../images/projects/twisters/Twister-I-2_2500_2.jpg";
 
 import artwork3 from "../media/twisters/TWISTERS I-3 WhiteNoise.mp4";
-import artwork3_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork3_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork3_2 from "../images/projects/twisters/Twisters_I-3-27_2500.jpg";
+import artwork3_3 from "../images/projects/twisters/Twisters_I-3-31_2500.jpg";
 
 import artwork4 from "../media/twisters/TWISTERS I-4 Blackness.mp4";
-import artwork4_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork4_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork4_2 from "../images/projects/twisters/TI-4_STILL_2500.jpg";
+import artwork4_3 from "../images/projects/twisters/TI-4_STILL2_2500.jpg";
 
 import artwork5 from "../media/twisters/TWISTERS I-5 Glitch.mp4";
-import artwork5_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork5_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork5_2 from "../images/projects/twisters/T-I-5_STILL1_2500.jpg";
+import artwork5_3 from "../images/projects/twisters/T-I-5_STILL2_2500.jpg";
 
 import artwork6 from "../media/twisters/TWISTERS I-6 Letters.mp4";
-import artwork6_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork6_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork6_2 from "../images/projects/twisters/Twisters_I-6_STILL2_2500.jpg";
+import artwork6_3 from "../images/projects/twisters/Twisters_I-6_STILL1_2500.jpg";
 
 import artwork7 from "../media/twisters/TWISTERS I-7 Betrayal.mp4";
-import artwork7_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork7_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork7_2 from "../images/projects/twisters/Twisters-I-7_Betrayal-4_2500.jpg";
+import artwork7_3 from "../images/projects/twisters/Twisters-I-7_Betrayal-2_2500.jpg";
 
 import artwork8 from "../media/twisters/TWISTERS I-8 Simulacrum.mp4";
-import artwork8_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork8_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork8_2 from "../images/projects/twisters/T_1-8_Still029_3000.jpg";
+import artwork8_3 from "../images/projects/twisters/T_1-8_Still074_3000.jpg";
 
 import artwork9 from "../media/twisters/TWISTERS I-9_Arrogance.mp4";
-import artwork9_2 from "../images/projects/twisters/Twister-I-1_STILL-2_.jpg";
-import artwork9_3 from "../images/projects/twisters/Twister-I-1_STILL-3_.jpg";
+import artwork9_2 from "../images/projects/twisters/T_1-9_Stills_3000_74.jpg";
+import artwork9_3 from "../images/projects/twisters/T_1-9_Stills_3000_86.jpg";
 
 export function Twisters() {
   const artworks = [
     {
       id: "art0",
       images: [artwork_set],
-      title: "Twister I set of 9",
+      title: "Twisters I set of 9",
       description:
-        "Twister I set of 9",
+        "Twisters I set of 9",
     },
     {
       id: "art1",
@@ -64,51 +64,51 @@ export function Twisters() {
     {
       id: "art3",
       images: [artwork3, artwork3_2, artwork3_3],
-      title: "Twister I-3. Anxiety",
+      title: "Twister I-3. White Noise",
       description:
-        "Twister I-3. Anxiety",
+        "Twister I-3. White Noise",
     },
     {
       id: "art4",
       images: [artwork4, artwork4_2, artwork4_3],
-      title: "Twister I-4. Anxiety",
+      title: "Twister I-4. Blackness",
       description:
-        "Twister I-4. Anxiety",
+        "Twister I-4. Blackness",
     },
     {
       id: "art5",
       images: [artwork5, artwork5_2, artwork5_3],
-      title: "Twister I-5. Anxiety",
+      title: "Twister I-5. Glitch",
       description:
-        "Twister I-5. Anxiety",
+        "Twister I-5. Glitch",
     },
     {
       id: "art6",
       images: [artwork6, artwork6_2, artwork6_3],
-      title: "Twister I-6. Anxiety",
+      title: "Twister I-6. Letters",
       description:
-        "Twister I-6. Anxiety",
+        "Twister I-6. Letters",
     },
     {
       id: "art7",
       images: [artwork7, artwork7_2, artwork7_3],
-      title: "Twister I-7. Anxiety",
+      title: "Twister I-7. Betrayal",
       description:
-        "Twister I-7. Anxiety",
+        "Twister I-7. Betrayal",
     },
     {
       id: "art8",
       images: [artwork8, artwork8_2, artwork8_3],
-      title: "Twister I-8. Anxiety",
+      title: "Twister I-8. Simulacrum",
       description:
-        "Twister I-8. Anxiety",
+        "Twister I-8. Simulacrum",
     },
     {
       id: "art9",
       images: [artwork9, artwork9_2, artwork9_3],
-      title: "Twister I-9. Anxiety",
+      title: "Twister I-9. Arrogance",
       description:
-        "Twister I-9. Anxiety",
+        "Twister I-9. Arrogance",
     },
   ];
 
