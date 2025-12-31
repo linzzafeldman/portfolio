@@ -32,7 +32,7 @@ export function Twisters() {
         <div className="mb-12">
           <h1 className="mb-4 tracking-wider">TWISTERS</h1>
           <p className="mb-2 opacity-60">
-            2017-2022 | Digital Art, Video, 3D
+            2017-2022 | 3D, Digital Art, Video Art
           </p>
           <div className="max-w-2xl">
             <p className="mt-6 italic">"Twisters" series.</p>

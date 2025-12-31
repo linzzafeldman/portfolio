@@ -28,7 +28,7 @@ export function Projects() {
       id: 'twisters',
       title: 'TWISTERS',
       year: '2017-2021',
-      medium: 'Mixed Media, Video Art',
+      medium: '3D, Video Art',
       description: 'A meditation on duality, examining how shadows define form and light creates meaning in our visual experience.',
     },
     {

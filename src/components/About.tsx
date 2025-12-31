@@ -162,7 +162,8 @@ export function About() {
             <p>2012 | Dark Inspiration, Hong Kong.</p>
           </div>
           <div>
-            <p>2012 | Hi-Fructose #19, USA.</p>
+            <p>2012 | <a href="https://hifructose.com/2010/03/11/hi-fructose-volume-19/" target="_blank" rel="noopener noreferrer" className="publication-link">Hi-Fructose #19, USA.</a>
+            </p>
           </div>
           <div>
             <p>2012 | <a href="https://designcollector.net/likes/olga-feldman-linzza-an-anatomy?rq=feldman" target="_blank" rel="noopener noreferrer" className="publication-link">Designcollector, "An_atomy project."</a>

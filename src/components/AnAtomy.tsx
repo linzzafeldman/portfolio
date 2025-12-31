@@ -59,7 +59,7 @@ export function AnAtomy() {
         </button>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">AN ATOMY</h1>
-        <p className="mb-2 opacity-60">2022 | Photography, Digital Artwork, Vector Artwork</p>
+        <p className="mb-2 opacity-60">2022 | Photography, Digital Art, Vector Art</p>
         <p className="max-w-2xl mt-6">
           An_atomy explores the possibility of conveying subtle human emotions through digital vector graphics, using hand gestures as its primary subject. 
           Reduced to minimal line structures, the hands become a language of tension, vulnerability, and silent communication, where meaning emerges through precision, restraint, and rhythm rather than expression. 
