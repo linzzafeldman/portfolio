@@ -23,6 +23,17 @@ export function Gallery({ artworks }: GalleryProps) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedImage]);
 
+  const checkVideo = (url: string) => url?.toLowerCase().endsWith('.mp4');
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLVideoElement>) => {
+    e.currentTarget.play().catch(err => console.log("Playback blocked", err));
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLVideoElement>) => {
+    e.currentTarget.pause();
+    e.currentTarget.currentTime = 0; 
+  };
+
   return (
     <div className="block w-full">
       {artworks.map((artwork) => {
@@ -33,43 +44,69 @@ export function Gallery({ artworks }: GalleryProps) {
         const isGrid = allImages.length > 1;
 
         return (
-          <div key={artwork.id} className="block w-full">
+          <div key={artwork.id} className="block w-full mb-32">
             <div className="w-full pt-16">
               {!isGrid ? (
-                /* ОДИНОЧНАЯ КАРТИНКА */
                 <div 
                   className="w-full max-w-3xl mx-auto aspect-square overflow-hidden bg-neutral-100 cursor-zoom-in"
                   onClick={() => setSelectedImage(allImages[0])}
                 >
-                  <img src={allImages[0]} className="w-full h-full object-cover" alt={artwork.title} />
+                  {checkVideo(allImages[0]) ? (
+                    <video 
+                      src={allImages[0]} 
+                      className="w-full h-full object-cover" 
+                      muted loop playsInline 
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    />
+                  ) : (
+                    <img src={allImages[0]} className="w-full h-full object-cover" alt={artwork.title} />
+                  )}
                 </div>
               ) : (
-                /* МИНИ-ГАЛЕРЕЯ */
-                <div className="grid grid-cols-2 gap-1 w-full bg-white"> 
-                  {/* gap-1 и bg-white создают белую линию */}
-                  
+                <div className="grid grid-cols-2 gap-1 w-full"> 
                   <div 
                     className="w-full aspect-square overflow-hidden bg-neutral-100 cursor-zoom-in group"
                     onClick={() => setSelectedImage(allImages[0])}
                   >
-                    <img 
-                      src={allImages[0]} 
-                      className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" 
-                    />
+                    {checkVideo(allImages[0]) ? (
+                      <video 
+                        src={allImages[0]} 
+                        className="w-full h-full object-cover" 
+                        muted loop playsInline 
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                      />
+                    ) : (
+                      <img 
+                        src={allImages[0]} 
+                        className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" 
+                      />
+                    )}
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-1 bg-white w-full">
+                  <div className="grid grid-cols-2 gap-1 w-full">
                     {[1, 2, 3, 4].map((idx) => {
-                      const currentImg = allImages[idx];
+                      const currentMedia = allImages[idx];
+                      if (!currentMedia) return <div key={idx} className="aspect-square bg-neutral-50" />;
+                      
                       return (
                         <div 
                           key={idx}
                           className="relative aspect-square overflow-hidden bg-neutral-50 cursor-zoom-in group"
-                          onClick={() => currentImg && setSelectedImage(currentImg)}
+                          onClick={() => setSelectedImage(currentMedia)}
                         >
-                          {currentImg && (
+                          {checkVideo(currentMedia) ? (
+                            <video 
+                              src={currentMedia} 
+                              className="w-full h-full object-cover" 
+                              muted loop playsInline 
+                              onMouseEnter={handleMouseEnter}
+                              onMouseLeave={handleMouseLeave}
+                            />
+                          ) : (
                             <img 
-                              src={currentImg} 
+                              src={currentMedia} 
                               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" 
                             />
                           )}
@@ -81,10 +118,12 @@ export function Gallery({ artworks }: GalleryProps) {
               )}
             </div>
 
-            <div className=" block max-w-2xl text-left">
-              <h3 className="text-lg uppercase tracking-widest font-bold text-black">{artwork.title}</h3>
+            <div className="artwork-info-container block max-w-2xl text-left">
+              <h3 className="artwork-title text-lg uppercase tracking-widest font-bold text-black">
+                {artwork.title}
+              </h3>
               <div 
-                className="text-sm opacity-60 leading-relaxed font-light"
+                className="artwork-description text-sm opacity-60 leading-relaxed font-light"
                 dangerouslySetInnerHTML={{ __html: artwork.description }}
               />
             </div>
@@ -92,26 +131,30 @@ export function Gallery({ artworks }: GalleryProps) {
         );
       })}
 
-      {/* МОДАЛЬНОЕ ОКНО */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-[999] backdrop-blur-xl"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
+          className="fixed inset-0 z-[999] backdrop-blur-xl flex items-center justify-center"
+          style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
           onClick={() => setSelectedImage(null)}
         >
-          <button className="absolute  right-8 text-3xl font-light z-[1010] p-1">✕</button>
-          <img 
-            src={selectedImage} 
-            className="fixed shadow-2xl bg-white"
-            style={{ 
-              top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-              maxHeight: '80vh', maxWidth: '90vw', height: '80vh', width: 'auto',
-              objectFit: 'contain', zIndex: 1005
-            }}
-            onClick={(e) => e.stopPropagation()} 
-          />
+          <button className="fixed top-8 right-8 text-3xl font-light z-[1010] p-1">✕</button>
+          
+          {checkVideo(selectedImage) ? (
+            <video 
+              src={selectedImage} 
+              controls autoPlay loop
+              className="max-h-[85vh] max-w-[90vw] shadow-2xl"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          ) : (
+            <img 
+              src={selectedImage} 
+              className="shadow-2xl bg-white object-contain"
+              style={{ maxHeight: '85vh', maxWidth: '90vw' }}
+              onClick={(e) => e.stopPropagation()} 
+            />
+          )}
         </div>
       )}
     </div>
-  );
-}
+  );}

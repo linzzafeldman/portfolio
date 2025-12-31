@@ -8,7 +8,7 @@ import artwork5 from '../images/projects/women/OlgaFeldman_Cosmodiva.jpg';
 import artwork6 from '../images/projects/women/OlgaFeldman_Redevil.jpg';
 import artwork7 from '../images/projects/women/OlgaFeldman_Rainbow.jpg';
 import artwork8 from '../images/projects/women/OlgaFeldman_Spectra02.jpg';
-import artwork8_detail01 from '../images/projects/women/OlgaFeldman_Spectra01.jpg';
+import artwork8_2 from '../images/projects/women/OlgaFeldman_Spectra01.jpg';
 
 
 
@@ -58,7 +58,7 @@ export function Women() {
     },
     {
       id: "art8",
-      images: [artwork8,artwork8_detail01], 
+      images: [artwork8,artwork8_2], 
       title: 'Spectra',
     //  description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
     },
