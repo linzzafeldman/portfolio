@@ -2,7 +2,16 @@ import { Gallery } from './Gallery';
 // Импорт основных изображений
 import artwork1 from '../images/projects/women/OlgaFeldman_Banshee.png';
 import artwork2 from '../images/projects/women/OlgaFeldman_MsYou.png';
-import artwork3 from '../images/projects/women/OlgaFeldman_L.jpg';
+import artwork3 from '../images/projects/women/OlgaFeldman_L2.jpg';
+import artwork4 from '../images/projects/women/OlgaFeldman_BlackLight.jpg';
+import artwork5 from '../images/projects/women/OlgaFeldman_Cosmodiva.jpg';
+import artwork6 from '../images/projects/women/OlgaFeldman_BlackLight.jpg';
+import artwork7 from '../images/projects/women/OlgaFeldman_Rainbow.jpg';
+import artwork8 from '../images/projects/women/OlgaFeldman_Spectra02.jpg';
+import artwork9 from '../images/projects/women/OlgaFeldman_Spectra01.jpg';
+
+
+
 
 
 // ПРИМЕР: Импорт дополнительных изображений для галереи (если они есть)
@@ -19,17 +28,45 @@ export function Women() {
     },
     {
       id: "art2",
-      // Даже если картинка одна, она должна быть в массиве [ ]
       imageUrl: artwork2, 
       title: 'Ms. You',
       description: '"Ms.You" reflects the idea of individuals as carriers of distinct frequencies. Through meaningful encounters, these frequencies begin to shape an image of the other. Even after the object has disappeared, the form remains as a hollow structure sustained by memory. Absence itself can be shaped, held, and preserved from within.',
     },
         {
       id: "art3",
-      // Даже если картинка одна, она должна быть в массиве [ ]
       imageUrl: artwork3, 
       title: 'L',
       description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
+    },
+    {
+      id: "art4",
+      imageUrl: artwork4, 
+      title: 'Black Light',
+    //  description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
+    },
+     {
+      id: "art5",
+      imageUrl: artwork5, 
+      title: 'Cosmodiva',
+    //  description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
+    },
+    {
+      id: "art6",
+      imageUrl: artwork6, 
+      title: 'Redevil',
+    //  description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
+    },
+    {
+      id: "art7",
+      imageUrl: artwork7, 
+      title: 'Rainbow',
+    //  description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
+    },
+    {
+      id: "art8",
+      images: [artwork8,artwork9], 
+      title: 'Spectra',
+    //  description: '”L” depicts a woman in love, reaching toward her dream at the moment it is finally attained. As she moves closer, her body dissolves into countless particles, becoming a surrounding presence, like air itself, merging with the object of her desire.',
     },
   ];
 
