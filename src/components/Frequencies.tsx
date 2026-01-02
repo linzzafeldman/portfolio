@@ -27,74 +27,75 @@ export function Frequencies() {
       id: "freq004",
       imageUrl: artwork1, 
       title: '004. As Above So Below.',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies. <br>50cm. Acrylic on canvas. 2017',
+      description: '50cm. Acrylic on canvas. 2017',
     },
     {
       id: "freq007",
-      images: [artwork2, artwork2_2, artwork2_3, artwork2_4, artwork2_5, artwork5],
+      images: [artwork2, artwork2_2, artwork2_3, artwork2_4, artwork2_5],
       title: '007. Seconds (Time).',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
-    }, {
+      description: '50cm. Acrylic on canvas. 2017.',
+    }, 
+    {
       id: "freq008",
       imageUrl: artwork3, 
       title: '008. Mount Fuji.',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      description: '50cm. Acrylic on canvas. 2017.',
     }, {
       id: "freq009",
       imageUrl: artwork4, 
       title: '009. Distant Shores.',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      description: '50cm. Acrylic on canvas. 2017.',
     },  {
       id: "freq010",
       imageUrl: artwork5, 
       title: '010. Direction.',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      description: '50cm. Acrylic on canvas. 2017.',
     }, {
       id: "freq013",
       imageUrl: artwork6, 
-      title: '013',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '013. Balance',
+      description: '50cm. Acrylic on canvas. 2017.',
     }, {
       id: "freq014",
       imageUrl: artwork7, 
-      title: '014',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '014. Fault',
+      description: '60cm. Acrylic on canvas. 2021.',
     }, {
       id: "freq015",
       imageUrl: artwork8, 
-      title: '015',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '015. Waterfalls',
+      description: '50cm. Acrylic on canvas. 2017.',
     }, {
       id: "freq016",
       imageUrl: artwork9, 
-      title: '016',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '016. Liberty',
+      description: '50cm. Acrylic on canvas. 2022',
     }, {
       id: "freq018",
       imageUrl: artwork10, 
-      title: '018',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '018. Clif I',
+      description: '50cm. Acrylic on canvas. 2022',
     }, {
       id: "freq019",
       imageUrl: artwork11, 
-      title: '019',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '019. Cliff II',
+      description: '50cm. Acrylic on canvas. 2022.',
     }, {
       id: "freq024",
       imageUrl: artwork12, 
-      title: '024',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '024. Kusama Tribute',
+      description: '40x40 cm. Acrylic on canvas. 2023',
     }, {
       id: "freq025",
       imageUrl: artwork13, 
-      title: '025',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '025. The Word',
+      description: '40x40 cm. Acrylic on canvas. 2023',
     },
     {
       id: "freq026",
       imageUrl: artwork14, 
-      title: '026',
-      description: 'Visualizing sound waves as tangible forms, exploring the physicality of invisible frequencies.',
+      title: '026. Emotional Landscapes',
+      description: '60x60 cm. Acrylic on canvas. 2024.',
     },
   ];
 
@@ -110,12 +111,24 @@ export function Frequencies() {
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">FREQUENCIES</h1>
         <p className="mb-2 opacity-60">∞ | Acrylic on canvas</p>
-        <p className="max-w-2xl mt-6">
-          A series exploring the invisible world of sound through visual translation. By capturing 
-          and transforming audio frequencies into graphic representations, this project bridges the 
-          gap between auditory and visual perception, revealing the hidden patterns in sonic landscapes.
+        <p className="max-w-3xl mt-6">
+          This series is an example of algorithmic, generative perception of reality.
+Monochrome paintings "Frequencies" was created in attempts to display simple concepts and sensations using traditional graphic techniques and materials: high contrast match of white acrylic and black canvas.
+Minimizing the number of expressive methods helped to build a surface as an optical illusion, referring in this series to the principles of the wave theory of light and electromagnetic oscillations.
         </p>
-      </div>
+        <p className="mt-6">ARTIST STATEMENT</p>
+        <p className="mt-4">I see waves.</p>
+<p>I see waves everywhere.</p>
+<p>I'm fascinated by the fact that all this reality can be described mathematically by wave equations.</p>
+<p className="mt-6">Colours, sounds and movements are waves.</p>
+<p>Forms and their elements are waves.</p>
+<p>The movement of leaves on a tree branch is a repeating fractal wave.</p>
+<p>A change of mood is a wave, and human emotions can be described as a constantly moving wave cluster of one's mind.
+"Black" and "white" days of life are no more than waves of interference changing each other. Moving waves that consist of an uncountable amount of tiny possibilities, a giant point cloud beating and vibing amidst the silence, creating the universe itself.
+</p>
+<p className="mt-6">And we are part of this storm.
+</p></div>
+      
       <Gallery artworks={artworks} />
     </div>
   );

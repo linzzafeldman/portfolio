@@ -24,7 +24,7 @@ export function Women() {
       id: "art2",
       imageUrl: artwork2, 
       title: 'Ms. You',
-      description: '"Ms.You" reflects the idea of individuals as carriers of distinct frequencies. Through meaningful encounters, these frequencies begin to shape an image of the other. Even after the object has disappeared, the form remains as a hollow structure sustained by memory. Absence itself can be shaped, held, and preserved from within.',
+      description: "We're no more than mere radio waves wandering in black space, repeatedly shaping out forms and paths that may suddenly, accidentally, unexpectedly contain someone else. And after while, illusion disappears leaving empty shapes that we’re trying to refill. Ms.You reflects the idea of individuals as carriers of distinct frequencies. Through meaningful encounters, these frequencies begin to shape an image of the other. Even after the object has disappeared, the form remains as a hollow structure sustained by memory. Absence itself can be shaped, held, and preserved from within.",
     },
         {
       id: "art3",

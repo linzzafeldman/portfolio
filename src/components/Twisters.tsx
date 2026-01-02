@@ -124,19 +124,23 @@ export function Twisters() {
         <div className="mb-12">
           <h1 className="mb-4 tracking-wider">TWISTERS</h1>
           <p className="mb-2 opacity-60">
-            2017-2022 | 3D, Digital Art, Video Art
+            2017-2021 | 3D, Digital Art, Video Art
           </p>
           <div className="max-w-2xl">
             <p className="mt-6">
-              The series presents abstract, living shapes that hover between randomness and
-              recognition, as if each were a fleeting signal, a momentary birth of a familiar 
-              form emerging from a repetitive pattern of radio waves.
-            </p>
-            <p className="mt-6">
-              Though the series consists of multiple digital drawings, their origin is neither 
-              purely manual nor entirely artificial. Each image begins as a generative sketch, 
-              an algorithmic whisper refined and redrawn by hand into vector form.
-            </p>
+              TTWISTERS is an original series of abstract monochrome animated artworks. </p>
+<p className="mt-6">It is a visual project about inconstant and changeable human nature, and about different ways people may react 
+to something that doesn’t fit their expectations. Based on a wordplay when the word «twist» can have several meanings. Each portrait represents an anthropomorphic torso contained of thousand layers, which became visible only when it twists: reacts to circumstances out of the frame.</p>
+<p className="mt-6">
+Once I’ve come to a dialogue, people were talking about silence, absence and lack of social presence.</p>
+<p>«Why don’t you talk to people anymore?», one asked.</p>
+<p>«Because I say something and people twist», said the other after a brief pause.
+</p>
+            <p className="mt-6">The project dedicated to those who keeps silence.</p>
+            <p className="mt-6">TWISTERS contains 9 monochromatic sets. 
+Each set contains one animation in mp4 format and 2 still keyframes. The animation has no sound.
+Each set represents a state of a human personality reaction.
+</p>
           </div>
         </div>
         <Gallery artworks={artworks} />
