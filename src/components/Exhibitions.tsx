@@ -22,14 +22,14 @@ export function Exhibitions() {
       title: 'PARTING: stories of grief and letting go',
       year: '2024',
       location: 'Israel',
-      description: 'A powerful group exhibition examining loss, memory, and the process of letting go through stark black and white imagery.',
+      description: 'A powerful group exhibition examining loss, memory, and the process of letting go.',
     },
     {
       id: 'hikli',
       title: 'HIKLI',
       year: '2012',
       location: 'Russia',
-      description: 'A group exhibition examining transitional spaces and moments of transformation through minimalist photography and installation.',
+      description: 'A group exhibition examining transitional spaces and moments of transformation.',
     },
   ];
 

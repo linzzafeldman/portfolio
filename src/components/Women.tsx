@@ -77,7 +77,7 @@ export function Women() {
         <h1 className="mb-4 tracking-wider text-xl">WOMEN</h1>
         <p className="mb-2 opacity-60">2010-2014 | Digital Art, Vector Art</p>
         <p className="max-w-2xl mt-6">
-          Fragile research on emotional instability, loss and growth.
+          Research on emotional instability, fragility, loss and growth.
         </p>
       </div>
 

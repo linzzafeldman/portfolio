@@ -22,7 +22,14 @@ export function Projects() {
       title: 'WOMEN',
       year: '2010-2014',
       medium: 'Digital Art, Vector Art',
-      description: 'Fragile research on emotional instability, loss and growth.',
+      description: 'Research on emotional instability, fragility, loss and growth.',
+    },
+    {
+      id: 'frequencies',
+      title: 'FREQUENCIES',
+      year: '∞',
+      medium: 'Canvas, Acrylic',
+      description: 'A series of paintings and graphic arts exploring wave theory through surface.',
     },
     {
       id: 'twisters',
@@ -32,11 +39,11 @@ export function Projects() {
       description: 'A meditation on duality, examining how shadows define form and light creates meaning in our visual experience.',
     },
     {
-      id: 'frequencies',
-      title: 'FREQUENCIES',
-      year: '∞',
-      medium: 'Canvas, Acrylic',
-      description: 'A series of paintings and graphic arts exploring wave theory through surface.',
+      id: 'talkingmouse',
+      title: 'DECOMPOSITION OF THE TALKING MOUSE',
+      year: '2009-2013',
+      medium: 'Digital Art',
+      description: 'Embodiment of one depression',
     },
     {
       id: 'anatomy', 

@@ -16,6 +16,8 @@ import { OneOfAKind } from './components/OneOfAKind';
 import { Parting } from './components/Parting';
 import { Women } from './components/Women';
 import { VariousArt } from './components/VariousArt';
+import { Talkingmouse } from './components/Talkingmouse';
+
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -23,16 +25,16 @@ export default function App() {
   // --- ФУНКЦИЯ ОБНОВЛЕНИЯ МЕТАТЕГОВ ---
   const updateMetaTags = (page: string) => {
     let title = "Olga Feldman";
-    let description = "Olga Feldman. Monochrome visual artwork.";
+    let description = "Olga Feldman. Monoxrome visual artwork.";
 
     switch (page) {
       case 'home':
-        title = "Olga Feldman | Monochrome visual artwork";
-        description = "Olga Feldman. Monochrome visual artwork.";
+        title = "Olga Feldman | Monoxrome visual artwork";
+        description = "Olga Feldman. Monoxrome visual artwork.";
         break;
       case 'about':
-        title = "Olga Feldman | Artist Statement";
-        description = "Olga Feldman. Artist Statement.";
+        title = "Olga Feldman | Bio & Artist Statement";
+        description = "Olga Feldman. Bio & Artist Statement.";
         break;
       case 'exhibitions':
         title = "Olga Feldman | Exhibitions";
@@ -84,10 +86,14 @@ export default function App() {
         title = "Various Art | Olga Feldman";
         description = "Various monochrome artworks by Olga Feldman.";
         break;
+      case 'talkingmouse':
+        title = "Decomposition of the Talking Mouse | Olga Feldman";
+        description = "Reaearch on humans and mice";
+        break;
 
       default:
         title = "Olga Feldman Artwork";
-        description = "Olga Feldman. Monochrome visual artwork.";
+        description = "Olga Feldman. Monoxrome visual artwork.";
     }
 
     document.title = title;
@@ -134,6 +140,8 @@ export default function App() {
       case 'parting': return <Parting />;
       case 'women': return <Women />;
       case 'variousart': return <VariousArt />;
+      case 'talkingmouse': return <Talkingmouse/>;
+
       
       default: return <Home />;
     }
