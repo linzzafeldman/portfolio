@@ -9,7 +9,7 @@ export function Talkingmouse() {
       images: [artwork_set],
       title: "Red Mouse",
       description:
-        "Initial artwork depicting the Talking Mouse. 2019",
+        "Initial artwork depicting the Talking Mouse. 2009",
     },
  ];
 
