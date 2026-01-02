@@ -11,7 +11,7 @@ interface Project {
 export function Projects() {
   const projects: Project[] = [
     {
-      id: 'oneofakind', // Изменил ID, чтобы он совпадал с case в App.tsx
+      id: 'oneofakind', 
       title: 'ONE OF A KIND',
       year: '2025',
       medium: 'Digital Art, AI, Vector Art',
@@ -28,7 +28,7 @@ export function Projects() {
       id: 'twisters',
       title: 'TWISTERS',
       year: '2017-2021',
-      medium: '3D, Video Art',
+      medium: '3D, Video Art, Digital Art',
       description: 'A meditation on duality, examining how shadows define form and light creates meaning in our visual experience.',
     },
     {
@@ -39,14 +39,14 @@ export function Projects() {
       description: 'A series of paintings and graphic arts exploring wave theory through surface.',
     },
     {
-      id: 'anatomy', // Убрал дефис, чтобы совпадало с App.tsx
+      id: 'anatomy', 
       title: 'AN ATOMY',
       year: '2011',
       medium: 'Digital Art, Vector Art',
       description: '"an_atomy" explores the possibility of conveying subtle human emotions through digital vector graphics, using hand gestures as its primary subject.',
     },
     {
-      id: 'variousart', // Убрал дефис
+      id: 'variousart', 
       title: 'VARIOUS ART',
       year: '∞',
       medium: 'Digital Art, Vector Art, 3D Art, Video Art',
@@ -59,7 +59,6 @@ export function Projects() {
       <h1 className="mb-12 tracking-wider text-xl">PROJECTS</h1>
       <div className="space-y-12">
         {projects.map((project) => (
-          // Теперь это ссылка <a>, которая меняет адрес страницы
           <a
             key={project.id}
             href={`#${project.id}`}

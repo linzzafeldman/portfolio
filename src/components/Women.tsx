@@ -1,5 +1,5 @@
 import { Gallery } from './Gallery';
-// Импорт основных изображений
+
 import artwork1 from '../images/projects/women/OlgaFeldman_Banshee.png';
 import artwork2 from '../images/projects/women/OlgaFeldman_MsYou.png';
 import artwork3 from '../images/projects/women/OlgaFeldman_L2.jpg';
@@ -66,7 +66,6 @@ export function Women() {
 
   return (
     <div className="max-w-4xl mx-auto px-8">
-      {/* Кнопка возврата к списку проектов */}
       <button
         onClick={() => window.location.hash = 'projects'}
         className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
@@ -74,7 +73,6 @@ export function Women() {
         ← BACK TO PROJECTS
       </button>
 
-      {/* Заголовок и описание страницы проекта */}
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider text-xl">WOMEN</h1>
         <p className="mb-2 opacity-60">2010-2014 | Digital Art, Vector Art</p>
@@ -83,7 +81,6 @@ export function Women() {
         </p>
       </div>
 
-      {/* Компонент галереи, который теперь умеет делать слайдеры */}
       <Gallery artworks={artworks} />
     </div>
   );

@@ -122,7 +122,10 @@ export function About() {
         </h2>
         <div className="space-y-4">
           <div>
-            <p>2025 | "Twisters", solo exhibition, Georgia.</p>
+            <p>2025 | "Art Rave #3", group exhibition, "Kooool" gallery, Israel.</p>
+          </div>
+          <div>
+            <p>2025 | "Twisters", solo exhibition, "Kofevar" gallery,  Georgia.</p>
           </div>
           <div>
             <p>
