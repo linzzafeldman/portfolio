@@ -30,7 +30,7 @@ export function Talkingmouse() {
           <div className="max-w-2xl">
             <p className="mt-6">
               It was an accident. It wasn’t an accident. </p>
-<p>I came back home late at night. Exhausted. Empty. Desperate. Children has already slept. I was alone, overstressed and shattered. I turned on the computer and opened on of me art. 
+<p>I came back home late at night. Exhausted. Empty. Desperate. Children has already slept. I was alone, overstressed and shattered. I turned on the computer and opened one of my art. 
 So bright, full of details and colors. Razzle red. Deep yellow. Misty violent. All at once. I felt sick. Selected the shapes. Switched to monochrome mode. Still, that wasn’t enough. Different shades of black (of white?) irritated me. I selected the shapes again and deleted all the color fills. Now it was what I needed. Silence. Quietness. Serenity. Ghost of an art. In other words, that was a start of depression.
 </p>
 
