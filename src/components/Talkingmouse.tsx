@@ -16,9 +16,9 @@ export function Talkingmouse() {
     {
       id: "art2",
       images: [artwork2],
-      title: "Empty Mouse",
+      title: "Blank Mouse",
       description:
-        "Talking Mouse. 2013",
+        "Talking Mouse, blank edition. 2013",
     },
  ];
 
