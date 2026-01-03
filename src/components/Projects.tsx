@@ -40,7 +40,7 @@ export function Projects() {
     },
     {
       id: 'talkingmouse',
-      title: 'DECOMPOSITION OF THE TALKING MOUSE',
+      title: 'DECONSTRUCTION OF THE TALKING MOUSE',
       year: '2009-2013',
       medium: 'Digital Art',
       description: 'Embodiment of one depression',

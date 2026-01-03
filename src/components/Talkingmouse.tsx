@@ -1,15 +1,24 @@
 import { Gallery } from "./Gallery";
 
-import artwork_set from "../images/projects/talkingmouse/OlgaFeldman_Mouse_red.webp";
+import artwork1 from "../images/projects/talkingmouse/OlgaFeldman_Mouse_red.webp";
+import artwork2 from "../images/projects/talkingmouse/OlgaFeldman_Mouse_blank.webp";
+
 
 export function Talkingmouse() {
   const artworks = [
     {
-      id: "art0",
-      images: [artwork_set],
+      id: "art1",
+      images: [artwork1],
       title: "Red Mouse",
       description:
         "Initial artwork depicting the Talking Mouse. 2009",
+    },
+    {
+      id: "art2",
+      images: [artwork2],
+      title: "Empty Mouse",
+      description:
+        "Talking Mouse. 2013",
     },
  ];
 
@@ -23,7 +32,7 @@ export function Talkingmouse() {
           ← BACK TO PROJECTS
         </button>
         <div className="mb-12">
-          <h1 className="mb-4 tracking-wider">DECOMPOSITION OF THE TALKING MOUSE</h1>
+          <h1 className="mb-4 tracking-wider">DECONSTRUCTION OF THE TALKING MOUSE</h1>
           <p className="mb-2 opacity-60">
             2009-2013 | Digital Art
           </p>
