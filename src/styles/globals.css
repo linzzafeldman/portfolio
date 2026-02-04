@@ -218,18 +218,27 @@ h3.artwork-title {
   font-weight: 300;
 }
 
+
+
 a {
-  /* Цвет: по умолчанию черный, но наследуется на темных страницах */
-  color: inherit !important; 
-  
-  /* Подчеркивание: тонкое и аккуратное */
-  text-decoration: underline !important;
-  text-decoration-thickness: 1px !important;
-  text-underline-offset: 3px !important;
-  
-  /* Плавность при наведении */
+  text-decoration: none !important;
+  color: inherit !important;
+
   transition: opacity 0.2s ease-in-out !important;
   cursor: pointer !important;
+}
+
+/* 2. Подчеркивание ТОЛЬКО для ссылок внутри обычных абзацев */
+/* Это сработает для страницы About и не тронет страницу Projects */
+p a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 4px !important;
+}
+
+/* 3. Эффект наведения */
+a:hover {
+  opacity: 0.5 !important;
 }
 
 /* Эффект при наведении для всех ссылок */
