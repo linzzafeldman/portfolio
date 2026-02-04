@@ -22,8 +22,8 @@
   --input: transparent;
   --input-background: #f3f3f5;
   --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
+  --font-weight-medium: 400;
+  --font-weight-normal: 300;
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -62,7 +62,7 @@
   --input: oklch(0.269 0 0);
   --ring: oklch(0.439 0 0);
   --font-weight-medium: 500;
-  --font-weight-normal: 400;
+  --font-weight-normal: 300;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -189,27 +189,27 @@ html {
 }
 
 .artwork-info-container {
-  margin-top: 80px !important; /* Тот самый отступ от картинки вниз */
-  padding-bottom: 20px;
+  margin-top: 12px !important; /* Тот самый отступ от картинки вниз */
+  padding-bottom: 80px;
 }
 
 .artwork-title {
-  font-weight: 800 !important; /* Жирный шрифт */
+  font-weight: 300 !important; /* Жирный шрифт */
   margin-bottom: 12px !important;
 }
 
 
 .artwork-info-container {
-  margin-top: 80px !important; 
-  padding-bottom: 20px;
+  margin-top: 12px !important; 
+  padding-bottom: 40px;
 }
 
 h3.artwork-title {
-  font-weight: 800 !important;
+  font-weight: 300 !important;
   margin-bottom: 12px !important;
   color: inherit !important; 
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .artwork-description {
