@@ -122,10 +122,10 @@ export function About() {
         </h2>
         <div className="space-y-4">
           <div>
-            <p>2026 | <a href="https://www.anvbiennale.com/en/future-events" target="_blank" rel="noopener noreferrer" >"Bridge Inside Out" </a>, group exhibition, ArtNeuroVerse Bienalle, Israel.</p>
+            <p>2026 | <a href="https://www.anvbiennale.com/en/future-events" target="_blank" rel="noopener noreferrer" >"Bridge Inside Out"</a>  group exhibition, ArtNeuroVerse Bienalle, Israel.</p>
           </div>
            <div>
-            <p>2026 | <a href="https://thebakeryartgallery.com/pages/the-cat-show-the-artist-mews" target="_blank" rel="noopener noreferrer" >"The Cat Show: The Artist's Mews"</a>, group exhibition, "The Bakery" gallery, UK.</p>
+            <p>2026 | <a href="https://thebakeryartgallery.com/pages/the-cat-show-the-artist-mews" target="_blank" rel="noopener noreferrer" >"The Cat Show: The Artist's Mews"</a>  group exhibition, "The Bakery" gallery, UK.</p>
           </div>
           <div>
             <p>2025 | "Art Rave #3", group exhibition, "Kooool" gallery, Israel.</p>
@@ -140,7 +140,7 @@ export function About() {
             </p>
           </div>
           <div>
-            <p>2024 | "Shelter", group exhibition, Israel.</p>
+            <p>2024 | <a href="https://www.israelculture.info/ubezhishhe-peredvizhnaya-vystavka-v-publichnom-prostranstve-stanciya-2-akko/" target="_blank" rel="noopener noreferrer" >"Shelter"</a>  group exhibition, Israel.</p>
           </div>
           <div>
             <p>2012 | "Hikli", group exhibition, Russia.</p>
@@ -163,7 +163,7 @@ export function About() {
           </div>
           <div>
             <p>
-              2024 | <a href="https://designcollector.net/likes/olga-feldman-frequencies?rq=feldman" target="_blank" rel="noopener noreferrer" className="publication-link">Designcollector "Visual Tension and Emotional Depth." </a>
+              2024 | <a href="https://designcollector.net/likes/olga-feldman-frequencies?rq=feldman" target="_blank" rel="noopener noreferrer" className="publication-link">Designcollector "Visual Tension and Emotional Depth."</a>
             </p>
           </div>
           <div>
