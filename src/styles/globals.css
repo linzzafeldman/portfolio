@@ -251,3 +251,33 @@ a:hover {
 nav a, button a {
   text-decoration: none !important;
 }
+
+.nav-glass {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+   border-bottom-color: rgba(0, 0, 0) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important; /* Для Safari и iPhone */
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease !important;
+}
+
+/* Автоматическое переключение на темное стекло для темных проектов (Twisters) */
+.bg-black .nav-glass {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Чтобы текст меню на темных страницах стал белым */
+.bg-black .nav-glass button,
+.bg-black .nav-glass .text-black {
+  color:  rgba(255, 255, 255)!important;
+}
+
+
+.logo-svg {
+  shape-rendering: geometricPrecision !important;
+  /* Добавляем легкое аппаратное ускорение для принудительного сглаживания */
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+
+  filter: blur(0.1px); 
+}

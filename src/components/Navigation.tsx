@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'; 
-import logo from '../images/home/logo.png';
+import logo from '../../favicon.svg';
 
 interface NavigationProps {
   currentPage: string;
@@ -96,30 +96,29 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
   return (
     <nav 
-        className="fixed top-0 left-0 right-0 bg-white border-b border-black" 
-        style={{ zIndex: 9999 }} 
+      className="fixed top-0 left-0 right-0 border-b border-black/10 nav-glass" 
+      style={{ zIndex: 9999 }} 
     >
       <div className="max-w-7xl mx-auto px-8 py-6 relative"> 
-        
         <div className="flex items-center justify-between w-full"> 
-          
           {/* ЛОГОТИП (СЛЕВА) */}
           <div className="flex-shrink-0"> 
             <button
               onClick={() => handleNavigate('home')}
               className="tracking-wider text-black hover:opacity-50 transition-opacity flex items-center gap-3"
             >
-              <img src={logo} alt="Logo" className="w-[30px] h-[30px]" />
+              <img 
+                src={logo} 
+                alt="Logo" 
+                className="w-[30px] h-[30px] logo-svg" 
+              />
               OLGA FELDMAN
             </button>
           </div>
         </div>
           
         {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА */}
-        <div 
-            style={menuContainerStyle} 
-        > 
-          
+        <div style={menuContainerStyle}> 
             {/* 1. ДЕСКТОПНОЕ МЕНЮ */}
             <ul 
                 style={isMobile ? hiddenStyle : desktopMenuStyle}
@@ -139,7 +138,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОТКА ГАМБУРГЕР */}
+            {/* 2. КНОПКА ГАМБУРГЕР */}
             <button
               style={isMobile ? hamburgerStyle : hiddenStyle} 
               className="z-[10000]" 
@@ -159,18 +158,12 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 className={`transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}
               ></div>
             </button>
-          
         </div>
-
       </div>
       
       {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ */}
       {isOpen && isMobile && ( 
-        <div 
-            style={overlayStyle} 
-        >
-            
-            {/* КНОТКА ЗАКРЫТИЯ (X) */}
+        <div style={overlayStyle}>
             <div className="flex justify-center p-8">
                 <button
                     onClick={closeMenu}
@@ -180,8 +173,6 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                     &times; 
                 </button>
             </div>
-
-            {/* КОНТЕНТ МЕНЮ: Вертикально и горизонтально центрирован */}
             <div className="flex flex-col items-center justify-center flex-grow h-[calc(100%-80px)]"> 
                 <ul 
                     style={{ flexDirection: 'column' }}
@@ -204,7 +195,6 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             </div>
         </div>
       )}
-
     </nav>
   );
 }
