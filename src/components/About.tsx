@@ -122,10 +122,10 @@ export function About() {
         </h2>
         <div className="space-y-4">
           <div>
-            <p>2026 | <a href="https://www.anvbiennale.com/en/future-events" target="_blank" rel="noopener noreferrer" className="publication-link">"Bridge Inside Out" </a>, group exhibition, Tel Aviv University and ArtNeuroVerse Bienalle, Israel.</p>
+            <p>2026 | <a href="https://www.anvbiennale.com/en/future-events" target="_blank" rel="noopener noreferrer" >"Bridge Inside Out" </a>, group exhibition, ArtNeuroVerse Bienalle, Israel.</p>
           </div>
            <div>
-            <p>2026 | <a href="https://thebakeryartgallery.com/pages/the-cat-show-the-artist-mews" target="_blank" rel="noopener noreferrer" className="publication-link">"The Cat Show: Artist's Mews"</a>, group exhibition, "The Bakery" gallery, UK.</p>
+            <p>2026 | <a href="https://thebakeryartgallery.com/pages/the-cat-show-the-artist-mews" target="_blank" rel="noopener noreferrer" >"The Cat Show: The Artist's Mews"</a>, group exhibition, "The Bakery" gallery, UK.</p>
           </div>
           <div>
             <p>2025 | "Art Rave #3", group exhibition, "Kooool" gallery, Israel.</p>
@@ -158,8 +158,7 @@ export function About() {
           </div>
           <div>
             <p>
-              2024 | MetaSpaceGallery, "Contrast" art catalogue,
-              UK.
+              2024 | MetaSpaceGallery, "Contrast #1" art catalogue, UK.
             </p>
           </div>
           <div>

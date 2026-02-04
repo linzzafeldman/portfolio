@@ -129,9 +129,7 @@
   }
 }
 
-/**
- * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
- */
+
 @layer base {
   :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
     h1 {
@@ -182,6 +180,7 @@
       line-height: 1.5;
     }
   }
+
 }
 
 html {
@@ -208,15 +207,38 @@ html {
 h3.artwork-title {
   font-weight: 800 !important;
   margin-bottom: 12px !important;
-  /* ВАЖНО: берем цвет текста, установленный для всей страницы */
   color: inherit !important; 
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .artwork-description {
-  /* Описание будет просто чуть прозрачнее основного цвета текста */
   color: inherit !important;
   opacity: 0.7 !important;
   font-weight: 300;
+}
+
+a {
+  /* Цвет: по умолчанию черный, но наследуется на темных страницах */
+  color: inherit !important; 
+  
+  /* Подчеркивание: тонкое и аккуратное */
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+  
+  /* Плавность при наведении */
+  transition: opacity 0.2s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+/* Эффект при наведении для всех ссылок */
+a:hover {
+  opacity: 0.5 !important;
+  text-decoration-thickness: 1px !important; /* Линия становится чуть толще */
+}
+
+/* Исключение для кнопок навигации (чтобы они не подчеркивались лишний раз) */
+nav a, button a {
+  text-decoration: none !important;
 }
