@@ -88,7 +88,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       position: 'fixed', 
       inset: 0,
       zIndex: 9998,
-      backgroundColor: 'rgba(255, 255, 255, 0.95)', 
+      backgroundColor: 'rgba(255, 255, 255, 0.5)', 
+      backdropFilter: 'blur(6px)',
+      WebkitBackdropFilter: 'blur(6px)', 
       transition: 'opacity 300ms',
   }
   // ---------------------------------------------
@@ -100,30 +102,23 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       style={{ zIndex: 9999 }} 
     >
       <div className="max-w-7xl mx-auto px-8 py-6 relative"> 
+        
         <div className="flex items-center justify-between w-full"> 
-          {/* ЛОГОТИП (СЛЕВА) */}
-          <div className="flex-shrink-0"> 
+          {/* ЛОГОТИП (СЛЕВА) — Скрываем, если меню открыто */}
+          <div className={`flex-shrink-0 transition-opacity duration-300 ${isOpen && isMobile ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}> 
             <button
               onClick={() => handleNavigate('home')}
               className="tracking-wider text-black hover:opacity-50 transition-opacity flex items-center gap-3"
             >
-              <img 
-                src={logo} 
-                alt="Logo" 
-                className="w-[30px] h-[30px] logo-svg" 
-              />
+              <img src={logo} alt="Logo" className="w-[30px] h-[30px] logo-svg" />
               OLGA FELDMAN
             </button>
           </div>
         </div>
           
-        {/* КОНТЕЙНЕР МЕНЮ И ГАМБУРГЕРА */}
         <div style={menuContainerStyle}> 
-            {/* 1. ДЕСКТОПНОЕ МЕНЮ */}
-            <ul 
-                style={isMobile ? hiddenStyle : desktopMenuStyle}
-                className="gap-12 items-center" 
-            > 
+            {/* ДЕСКТОПНОЕ МЕНЮ (без изменений) */}
+            <ul style={isMobile ? hiddenStyle : desktopMenuStyle} className="gap-12 items-center"> 
                 {pages.map((page) => (
                   <li key={page.id}>
                     <button
@@ -138,63 +133,52 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 ))}
             </ul>
 
-            {/* 2. КНОПКА ГАМБУРГЕР */}
-            <button
-              style={isMobile ? hamburgerStyle : hiddenStyle} 
-              className="z-[10000]" 
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-            >
-              <div 
-                style={{ width: '24px', height: '2px', backgroundColor: 'black' }} 
-                className={`transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[0.375rem]' : ''}`}
-              ></div>
-              <div 
-                style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
-                className={`transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}
-              ></div>
-              <div 
-                style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}
-                className={`transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[0.375rem]' : ''}`}
-              ></div>
-            </button>
+            {/* ГАМБУРГЕР — Скрываем, если меню открыто (так как внутри меню есть свой крестик) */}
+            {!isOpen && (
+              <button
+                style={isMobile ? hamburgerStyle : hiddenStyle} 
+                className="z-[10000]" 
+                onClick={toggleMenu}
+                aria-label="Toggle menu"
+              >
+                <div style={{ width: '24px', height: '2px', backgroundColor: 'black' }}></div>
+                <div style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}></div>
+                <div style={{ width: '24px', height: '2px', backgroundColor: 'black', marginTop: '4px' }}></div>
+              </button>
+            )}
         </div>
       </div>
       
       {/* 3. МОБИЛЬНЫЙ ОВЕРЛЕЙ */}
       {isOpen && isMobile && ( 
-        <div style={overlayStyle}>
-            <div className="flex justify-center p-8">
-                <button
-                    onClick={closeMenu}
-                    className="text-black text-3xl font-light hover:opacity-50 transition-opacity"
-                    aria-label="Close menu"
-                >
-                    &times; 
-                </button>
-            </div>
-            <div className="flex flex-col items-center justify-center flex-grow h-[calc(100%-80px)]"> 
-                <ul 
-                    style={{ flexDirection: 'column' }}
-                    className="flex items-center gap-8" 
-                >
-                    {pages.map((page) => (
-                        <li key={page.id}>
-                            <button
-                                onClick={() => handleNavigate(page.id)}
-                                className={`text-black tracking-wider text-2xl font-medium hover:opacity-50 transition-opacity ${
-                                    currentPage === page.id ? 'opacity-100' : 'opacity-40'
-                                }`}
-                                style={{ textAlign: 'center' }} 
-                            >
-                                {page.label}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
-      )}
+  <div className="mobile-menu-overlay">
+      {/* Кнопка закрытия сверху */}
+      <div className="flex justify-center p-8">
+          <button 
+            onClick={closeMenu} 
+            className="text-black font-size: 80px font-light"
+          >
+            &times;
+          </button>
+      </div>
+
+      {/* Кнопки в столбик */}
+      <ul className="mobile-menu-stack">
+          {pages.map((page) => (
+              <li key={page.id}>
+                  <button
+                      onClick={() => handleNavigate(page.id)}
+                      className={`tracking-wider text-2xl text-black ${
+                        currentPage === page.id ? 'opacity-100' : 'opacity-40'
+                      }`}
+                  >
+                      {page.label.toUpperCase()}
+                  </button>
+              </li>
+          ))}
+      </ul>
+  </div>
+)}
     </nav>
   );
 }
