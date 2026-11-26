@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
-// Импорт ВСЕХ десктопных ресурсов
+import { useEffect, useRef, useState } from 'react';
 import background1 from '../images/home/background-01.webp';
 import background2 from '../images/home/background-02.webp';
 import background3 from '../images/home/background-03.png';
 import background4 from '../images/home/background-04.webp';
 import background5 from '../images/home/background-05.webp';
 import background6 from '../images/home/background-06.jpg';
-import background7 from '../media/twisters/TWISTERS I-2 Bipolar.mp4'; 
-// !!! НОВЫЕ ИМПОРТЫ для мобильных картинок !!!
+import background7 from '../media/twisters/TWISTERS I-2 Bipolar.mp4';
 import mobileBackground1 from '../images/home/mobile/background-01.png';
 import mobileBackground2 from '../images/home/mobile/background-02.png';
 import mobileBackground3 from '../images/home/mobile/background-03.png';
@@ -15,144 +13,79 @@ import mobileBackground4 from '../images/home/mobile/background-04.png';
 import mobileBackground5 from '../images/home/mobile/background-05.png';
 import mobileBackground6 from '../images/home/mobile/background-06.png';
 
+const slides = [
+  { id: 1, src: background1, mobile: mobileBackground1 },
+  { id: 2, src: background2, mobile: mobileBackground2 },
+  { id: 3, src: background3, mobile: mobileBackground3 },
+  { id: 4, src: background4, mobile: mobileBackground4 },
+  { id: 5, src: background5, mobile: mobileBackground5 },
+  { id: 6, src: background6, mobile: mobileBackground6 },
+  { id: 7, src: background7 },
+];
 
-interface BackgroundResource {
-    url: string;
-    type: 'image' | 'video';
-    id: number; 
-}
+const storageKey = 'background_cycle_list';
 
-const STORAGE_KEY = 'background_cycle_list';
-const BREAKPOINT = 700; 
+function getSlideOrder() {
+  const shuffled = [...slides];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
 
-function shuffleArray<T>(array: T[]): T[] {
-    const newArray = [...array];
-    for (let i = newArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
+  // Older visits stored the remaining slides as objects with an id.
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(storageKey) || '[]');
+    const ids = saved.map((entry: number | { id: number }) => typeof entry === 'number' ? entry : entry.id);
+    const remaining = slides.filter(slide => ids.includes(slide.id))
+      .sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id));
+    return [...remaining, ...shuffled.filter(slide => !ids.includes(slide.id))];
+  } catch {
+    return shuffled;
+  }
 }
 
 export function Home() {
-    const [backgroundResource, setBackgroundResource] = useState<BackgroundResource | null>(null);
-    const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); 
+  const [order] = useState(getSlideOrder);
+  const [step, setStep] = useState(0);
+  const video = useRef<HTMLVideoElement>(null);
+  const current = step % order.length;
+  const next = (current + 1) % order.length;
+  const previous = step > 0 ? (current + order.length - 1) % order.length : -1;
 
-    // --- ЛОГИКА РЕАКТИВНОСТИ ---
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < BREAKPOINT);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []); 
-    // -------------------------
-    
-    // --- ЛОГИКА ЗАГРУЗКИ ФОНА (Выполняется только при загрузке) ---
-    useEffect(() => {
-        const allResources: BackgroundResource[] = [
-            { id: 1, url: background1, type: 'image' },
-            { id: 2, url: background2, type: 'image' },
-            { id: 3, url: background3, type: 'image' },
-            { id: 4, url: background4, type: 'image' },
-            { id: 5, url: background5, type: 'image' },
-            { id: 6, url: background6, type: 'image' },
-            { id: 7, url: background7, type: 'video' },
-        ];
+  useEffect(() => {
+    const timer = window.setInterval(() => setStep(value => value + 1), 5000);
+    return () => window.clearInterval(timer);
+  }, []);
 
-        let remainingResources: BackgroundResource[] = [];
-        const storedList = sessionStorage.getItem(STORAGE_KEY);
-        
-        if (storedList) {
-            try {
-                // ВАЖНО: Это исходная логика, которая может вызывать сбои, но мы ее сохраняем
-                // по вашему требованию.
-                remainingResources = JSON.parse(storedList);
-            } catch (e) {
-                console.error("Error reading background list from Session Storage", e);
-            }
-        }
-
-        if (!remainingResources || remainingResources.length === 0 || remainingResources.length > allResources.length) {
-            remainingResources = shuffleArray(allResources);
-        }
-
-        const nextResource = remainingResources.shift(); 
-
-        if (nextResource) {
-            setBackgroundResource(nextResource);
-            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(remainingResources));
-        }
-        
-    }, []); 
-    
-    // --- ВЫЧИСЛЕНИЕ АДАПТИВНОГО URL ---
-    const getAdaptiveUrl = (resource: BackgroundResource | null, isMobileMode: boolean): string | null => {
-        if (!resource) return null;
-
-        if (resource.type === 'video') {
-            return resource.url; 
-        }
-
-        const mobileImageMap: { [key: number]: string } = {
-            1: mobileBackground1,
-            2: mobileBackground2,
-            3: mobileBackground3,
-            4: mobileBackground4,
-            5: mobileBackground5,
-            6: mobileBackground6,
-        };
-        
-        if (isMobileMode && mobileImageMap[resource.id]) {
-            return mobileImageMap[resource.id];
-        }
-
-        return resource.url;
-    };
-    // ---------------------------------
-
-
-    if (!backgroundResource) {
-        return null;
+  useEffect(() => {
+    if (!order[current].mobile) video.current?.play().catch(() => {});
+    try {
+      const remaining = [...order.slice(next), ...order.slice(0, next)];
+      sessionStorage.setItem(storageKey, JSON.stringify(remaining.map(slide => slide.id)));
+    } catch {
+      // The slideshow also works when browser storage is unavailable.
     }
+  }, [order, current, next]);
 
-    const finalUrl = getAdaptiveUrl(backgroundResource, isMobile);
-    const finalType = backgroundResource.type;
-
-
-    return (
-        // ИСПРАВЛЕНИЕ ПОЗИЦИОНИРОВАНИЯ: Используем fixed inset-0 и переопределяем 'top' инлайн-стилем.
-        // Это самый надежный способ добавить отступ, не ломая Tailwind.
-        <div 
-            className="fixed inset-0" 
-            style={{ 
-                zIndex: 1,
-                top: '78px', // Инлайн-стиль для отступа, эквивалент top-24
-            }} 
-        > 
-            {finalType === 'video' ? (
-                // Рендеринг видео
-                <video
-                    src={finalUrl || ''} 
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover bg-black"
-                />
+  return (
+    <div className="home-slideshow" aria-hidden="true">
+      {order.map((slide, index) => {
+        if (index !== current && index !== previous && index !== next) return null;
+        const layer = index === current ? 'current' : index === previous ? 'previous' : 'upcoming';
+        return (
+          <div key={slide.id} className={`home-slide ${layer}`} data-fade={step > 0}>
+            {slide.mobile ? (
+              <picture>
+                <source media="(max-width: 699px)" srcSet={slide.mobile} />
+                <img src={slide.src} alt="" className="w-full h-full object-cover" />
+              </picture>
             ) : (
-                // Рендеринг изображения
-                <div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{ 
-                        backgroundImage: `url(${finalUrl})`,
-                        width: '100%', 
-                        height: '100%',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
+              <video ref={video} src={slide.src} muted loop playsInline preload="auto"
+                className="w-full h-full object-cover" />
             )}
-        </div>
-    );
+          </div>
+        );
+      })}
+    </div>
+  );
 }

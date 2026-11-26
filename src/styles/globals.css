@@ -315,3 +315,36 @@ nav a, button a {
 
   filter: blur(0.1px); 
 }
+
+html:has(.home-slideshow) {
+  scrollbar-gutter: auto;
+  overflow: hidden;
+}
+
+.home-slideshow {
+  position: fixed;
+  inset: 78px 0 0;
+  z-index: 1;
+  overflow: hidden;
+  background: black;
+}
+
+.home-slide {
+  position: absolute;
+  inset: 0;
+}
+
+.home-slide.upcoming { opacity: 0; }
+.home-slide.previous { z-index: 1; }
+.home-slide.current { z-index: 2; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-slide.current[data-fade="true"] {
+    animation: home-crossfade 1.2s ease-in-out;
+  }
+}
+
+@keyframes home-crossfade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
