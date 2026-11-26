@@ -1,33 +1,35 @@
 import { pages, type Page } from '../pages';
+import { artOfBeingAlone } from './ArtOfBeingAlone';
 
 interface Exhibition {
   id: Page;
   title: string;
-  year: string;
+  dates: string;
   location: string;
-  description: string;
+  description?: string;
 }
 
 export function Exhibitions() {
   const exhibitions: Exhibition[] = [
+    artOfBeingAlone,
     {
       id: 'shelter',
       title: 'SHELTER',
-      year: '2024',
+      dates: '2024',
       location: 'Israel',
       description: 'A group exhibition exploring themes of safety, refuge, and belonging during challenging times.',
     },
     {
       id: 'parting',
       title: 'PARTING: stories of grief and letting go',
-      year: '2024',
+      dates: '2024',
       location: 'Israel',
       description: 'A powerful group exhibition examining loss, memory, and the process of letting go.',
     },
     {
       id: 'hikli',
       title: 'HIKLI',
-      year: '2012',
+      dates: '2012',
       location: 'Russia',
       description: 'A group exhibition examining transitional spaces and moments of transformation.',
     },
@@ -46,8 +48,8 @@ export function Exhibitions() {
             className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity no-underline text-black"
           >
             <h2 className="mb-4 tracking-wider text-lg">{exhibition.title}</h2>
-            <p className="opacity-60 mb-4">{exhibition.year} | {exhibition.location}</p>
-            <p className="max-w-2xl">{exhibition.description}</p>
+            <p className="opacity-60 mb-4">{exhibition.dates} | {exhibition.location}</p>
+            {exhibition.description && <p className="max-w-2xl">{exhibition.description}</p>}
           </a>
         ))}
       </div>

@@ -4,6 +4,7 @@ import { Navigation } from './components/Navigation';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { Exhibitions } from './components/Exhibitions';
+import { ArtOfBeingAlone } from './components/ArtOfBeingAlone';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 
@@ -22,6 +23,7 @@ const components: Record<Page, ComponentType> = {
   home: Home,
   about: About,
   exhibitions: Exhibitions,
+  'art-of-being-alone': ArtOfBeingAlone,
   projects: Projects,
   contact: Contact,
   twisters: Twisters,
