@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { pages, type Page } from '../pages';
 
 interface Project {
-  id: string;
+  id: Page;
   title: string;
   year: string;
   medium: string;
@@ -68,7 +68,7 @@ export function Projects() {
         {projects.map((project) => (
           <a
             key={project.id}
-            href={`#${project.id}`}
+            href={pages[project.id].path}
             className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity no-underline text-black"
           >
             <h2 className="mb-4 tracking-wider text-lg">{project.title}</h2>

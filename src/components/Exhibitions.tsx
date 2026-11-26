@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { pages, type Page } from '../pages';
 
 interface Exhibition {
-  id: string;
+  id: Page;
   title: string;
   year: string;
   location: string;
@@ -42,7 +42,7 @@ export function Exhibitions() {
           // Теперь это ссылка <a>, которая меняет адрес страницы
           <a
             key={exhibition.id}
-            href={`#${exhibition.id}`}
+            href={pages[exhibition.id].path}
             className="block w-full text-left border-b border-black pb-8 hover:opacity-50 transition-opacity no-underline text-black"
           >
             <h2 className="mb-4 tracking-wider text-lg">{exhibition.title}</h2>

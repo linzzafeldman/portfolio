@@ -27,12 +27,12 @@ export function Shelter() {
 
   return (
     <div className="max-w-4xl mx-auto px-8">
-  <button
-          onClick={() => window.location.hash = 'exhibitions'}
-          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
-        >
-          ← BACK TO EXHIBITIONS
-        </button>
+      <a
+        href="/exhibitions"
+        className="inline-block mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
+      >
+        ← BACK TO EXHIBITIONS
+      </a>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">SHELTER</h1>
         <p className="mb-2 opacity-60">2024 | Israel</p>

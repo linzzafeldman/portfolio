@@ -2,10 +2,31 @@
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react-swc';
   import path from 'path';
+  import { pages } from './src/pages';
 
   export default defineConfig({
-    plugins: [react()],
-    base: "./",
+    plugins: [
+      react(),
+      {
+        name: 'portfolio-page-entries',
+        enforce: 'post',
+        generateBundle(_, bundle) {
+          // GitHub Pages serves directory indexes for direct visits and refreshes.
+          const index = bundle['index.html'];
+          if (index?.type !== 'asset' || typeof index.source !== 'string') {
+            this.error('Missing built index.html');
+          }
+          for (const [slug, { path }] of Object.entries(pages)) {
+            if (path === '/') continue;
+            this.emitFile({ type: 'asset', fileName: path.slice(1) + '/index.html', source: index.source });
+            // Keep the old flat URLs reachable so the app can update saved links.
+            if (path !== '/' + slug) {
+              this.emitFile({ type: 'asset', fileName: slug + '/index.html', source: index.source });
+            }
+          }
+        },
+      },
+    ],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
@@ -55,7 +76,8 @@
       outDir: 'docs',
     },
     server: {
-      port: 3000,
+      port: 5173,
+      strictPort: true,
       open: true,
     },
   });

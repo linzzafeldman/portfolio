@@ -101,13 +101,12 @@ export function Frequencies() {
 
   return (
     <div className="max-w-4xl mx-auto px-8">
-       <button
-          // Теперь при клике мы просто меняем адрес на #projects
-          onClick={() => window.location.hash = 'projects'}
-          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
-        >
-          ← BACK TO PROJECTS
-        </button>
+      <a
+        href="/projects"
+        className="inline-block mb-12 tracking-wider hover:opacity-50 transition-opacity text-black"
+      >
+        ← BACK TO PROJECTS
+      </a>
       <div className="mb-12">
         <h1 className="mb-4 tracking-wider">FREQUENCIES</h1>
         <p className="mb-2 opacity-60">∞ | Acrylic on canvas</p>

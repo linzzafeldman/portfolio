@@ -25,12 +25,12 @@ export function Talkingmouse() {
    return (
     <div className="bg-black text-white min-h-screen -mt-24 -mb-16 pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-8">
-        <button
-          onClick={() => window.location.hash = 'projects'}
-          className="mb-12 tracking-wider hover:opacity-50 transition-opacity text-white"
+        <a
+          href="/projects"
+          className="inline-block mb-12 tracking-wider hover:opacity-50 transition-opacity text-white"
         >
           ← BACK TO PROJECTS
-        </button>
+        </a>
         <div className="mb-12">
           <h1 className="mb-4 tracking-wider">DECONSTRUCTION OF THE TALKING MOUSE</h1>
           <p className="mb-2 opacity-60">

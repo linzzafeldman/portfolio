@@ -3,13 +3,12 @@ import logo from '../../favicon.svg';
 
 interface NavigationProps {
   currentPage: string;
-  onNavigate: (page: string) => void;
 }
 
 // БРЕЙКПОИНТ
 const BREAKPOINT = 700; 
 
-export function Navigation({ currentPage, onNavigate }: NavigationProps) {
+export function Navigation({ currentPage }: NavigationProps) {
   
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT); 
@@ -33,21 +32,6 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     { id: 'contact', label: 'Contact' },
   ];
 
-  // --- ИЗМЕНЕННАЯ ФУНКЦИЯ НАВИГАЦИИ ---
-  const handleNavigate = (pageId: string) => {
-    // Если пользователь на главной странице и нажимает на "Home" или логотип
-    if (pageId === 'home' && currentPage === 'home') {
-      window.location.reload(); // Принудительная полная перезагрузка страницы
-      return; // Останавливаем дальнейшее выполнение
-    }
-    
-    // Стандартная навигация
-    window.location.hash = pageId;
-    onNavigate(pageId);
-    setIsOpen(false); 
-  };
-  // ------------------------------------
-  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -106,13 +90,13 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         <div className="flex items-center justify-between w-full"> 
           {/* ЛОГОТИП (СЛЕВА) — Скрываем, если меню открыто */}
           <div className={`flex-shrink-0 transition-opacity duration-300 ${isOpen && isMobile ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}> 
-            <button
-              onClick={() => handleNavigate('home')}
+            <a
+              href="/"
               className="tracking-wider text-black hover:opacity-50 transition-opacity flex items-center gap-3"
             >
               <img src={logo} alt="Logo" className="w-[30px] h-[30px] logo-svg" />
               OLGA FELDMAN
-            </button>
+            </a>
           </div>
         </div>
           
@@ -121,14 +105,16 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             <ul style={isMobile ? hiddenStyle : desktopMenuStyle} className="gap-12 items-center"> 
                 {pages.map((page) => (
                   <li key={page.id}>
-                    <button
-                      onClick={() => handleNavigate(page.id)}
+                    <a
+                      href={`/${page.id}`}
+                      onClick={closeMenu}
+                      aria-current={currentPage === page.id ? 'page' : undefined}
                       className={`text-black tracking-wider hover:opacity-50 transition-opacity ${
                         currentPage === page.id ? 'opacity-100' : 'opacity-40'
                       }`}
                     >
                       {page.label}
-                    </button>
+                    </a>
                   </li>
                 ))}
             </ul>
@@ -166,14 +152,16 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       <ul className="mobile-menu-stack">
           {pages.map((page) => (
               <li key={page.id}>
-                  <button
-                      onClick={() => handleNavigate(page.id)}
+                  <a
+                      href={`/${page.id}`}
+                      onClick={closeMenu}
+                      aria-current={currentPage === page.id ? 'page' : undefined}
                       className={`tracking-wider text-2xl text-black ${
                         currentPage === page.id ? 'opacity-100' : 'opacity-40'
                       }`}
                   >
                       {page.label.toUpperCase()}
-                  </button>
+                  </a>
               </li>
           ))}
       </ul>
