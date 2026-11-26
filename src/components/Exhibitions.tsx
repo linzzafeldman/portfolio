@@ -11,7 +11,7 @@ interface Exhibition {
 
 export function Exhibitions() {
   const exhibitions: Exhibition[] = [
-    artOfBeingAlone,
+    { ...artOfBeingAlone, dates: '2026', location: 'Israel' },
     {
       id: 'shelter',
       title: 'SHELTER',
