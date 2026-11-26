@@ -1,6 +1,6 @@
 export const artOfBeingAlone = {
   id: 'art-of-being-alone',
-  title: 'Art of Being Alone',
+  title: 'ART OF BEING ALONE',
   dates: '29 September – 14 October 2026',
   location: 'Jerusalem',
 } as const;

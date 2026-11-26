@@ -16,7 +16,7 @@ export const pages = {
   },
   'art-of-being-alone': {
     path: "/exhibitions/art-of-being-alone",
-    title: "Art of Being Alone | Olga Feldman",
+    title: "ART OF BEING ALONE | Olga Feldman",
     description: "Art of Being Alone, an exhibition in Jerusalem from 29 September to 14 October 2026.",
   },
   projects: {
